@@ -1,0 +1,194 @@
+﻿<style>
+    thead > tr > th:first-child {
+        display: none;
+    }
+</style>
+
+<script type="text/ng-template" id="firstTimeLocationEntry.html">
+    <div class="modal-header">
+        <h3 class="modal-title custom-font">Step 5: Setup Store</h3>
+    </div>
+
+    <div class="modal-body">
+        For this final step, search for your business, and click 'Add +' to claim it.  Then you'll be able to manage the menu and receive orders from customers!
+    </div>
+
+    <div class="modal-footer">
+        <button class="btn btn-rounded btn-greensea btn-ef btn-ef-3 btn-ef-3c" ng-click="cancel()"> OK!</button>
+    </div>
+</script>
+
+<div class="page page-grid" ng-controller="LocationsCtrl as locationGrid">
+
+
+    <!-- page header -->
+    <div class="pageheader">
+
+        <h2>{{page.title}} <span>{{page.subtitle}}</span></h2>
+
+        <div class="page-bar">
+
+            <ul class="page-breadcrumb">
+                <li>
+                    <a ui-sref="app.admin"><i class="fa fa-home"></i> {{main.title}}</a>
+                </li>
+                <li>
+                    <a ui-sref="app.admin.staff">{{page.title}}</a>
+                </li>
+            </ul>
+
+        </div>
+
+    </div>
+    <!-- /page header -->
+    <!-- page content -->
+    <div class="pagecontent">
+
+
+        <!-- row -->
+        <div class="row">
+            <!-- col -->
+            <div class="col-md-12">
+
+
+
+                <!-- tile -->
+                <section class="tile" fullscreen="isFullscreen01">
+
+                    <!-- tile header -->
+                    <div class="tile-header  bg-greensea dvd dvd-btm">
+                        <h1 class="custom-font"><strong>Locations</strong>List</h1>
+                        <ul class="controls">
+                            <li class="dropdown" dropdown on-toggle="toggled(open)">
+
+                                <a href dropdown-toggle class="dropdown-toggle settings"><i class="fa fa-cog"></i></a>
+
+                                <ul class="dropdown-menu pull-right with-arrow animated littleFadeInUp">
+                                    <li>
+                                        <a href tile-control-toggle>
+                                            <span class="minimize"><fa name="angle-down"></fa>&nbsp;&nbsp;&nbsp;Minimize</span>
+                                            <span class="expand"><fa name="angle-up"></fa>&nbsp;&nbsp;&nbsp;Expand</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href tile-control-refresh ng-click="ajaxFaker()">
+                                            <fa name="refresh"></fa> Refresh
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href tile-control-fullscreen ng-click="isFullscreen01 = !isFullscreen01">
+                                            <fa name="expand"></fa> Fullscreen
+                                        </a>
+                                    </li>
+
+                                </ul>
+
+                            </li>
+                            <li class="remove"><a href tile-control-close><i class="fa fa-times"></i></a></li>
+                        </ul>
+                    </div>
+                    <!-- /tile header -->
+                    <!-- tile body -->
+                    <div class="tile-body">
+                        <div class="form-group">
+                            <label for="searchLocationInput" class="col-sm-2 control-label">
+                                <div class="pull-left rightIndicatorArrow"><span class="blocktext">Search Your Location</span></div>
+                            </label>
+                            <div class="col-sm-6">
+                                <input id="searchLocationInput" type="text" g-places-autocomplete ng-model="addressSearchVar" class="pull-left form-control rounded" />
+                            </div>
+                            <div class="col-sm-1">
+                                <button class="btn btn-rounded btn-primary pull-left" ng-click="locationGrid.locationAdd()">Add <i class="fa fa-plus"></i></button>
+                            </div>
+                        </div>
+                        <!--<div>
+                <button class="btn btn-rounded btn-default pull-left" ng-click="locationGrid.add()">Add <i class="fa fa-plus"></i></button>
+                <div class="pull-left leftIndicatorArrow"><span class="blocktext">Click to Add Location</span></div>
+            </div>-->
+
+                        <button ng-click="locationGrid.tableParams.sorting({})" class="btn btn-rounded btn-default pull-right">Clear sorting</button>
+                        <button ng-click="locationGrid.tableParams.filter({})" class="btn btn-rounded btn-default pull-right">Clear filter</button>
+
+                        <table ng-table="locationGrid.tableParams" show-filter="true" class="table table-bordered table-striped" ng-form="locationGrid.tableForm" disable-filter="locationGrid.isAdding" row-tracked-table="locationGrid.tableTracker">
+                            <tr ng-repeat="row in $data" ng-form="rowForm" row-tracked-table-row="row">
+                                <td class="hidden">
+                                    <!--Hidden Fields-->
+                                    <input type="hidden" name="address" ng-model="row.address" />
+                                    <input type="hidden" name="googlePlaceId" ng-model="row.googlePlaceId" />
+                                    <input type="hidden" name="geoLat" ng-model="row.geoLat" />
+                                    <input type="hidden" name="geoLng" ng-model="row.geoLng" />
+                                </td>
+                                <td data-title="'Name'" filter="{name: 'text'}" sortable="'name'" ng-switch="row.isEditing" ng-class="name.$dirty ? 'bg-warning' : ''" ng-form="name" row-tracked-table-cell>
+                                    <span ng-switch-default class="editable-text">{{row.name}}</span>
+                                    <div class="controls" ng-class="name.$invalid && name.$dirty ? 'has-error' : ''" ng-switch-when="true">
+                                        <div class="help-tag-container">
+                                            <input type="text" name="name" ng-model="row.name" class="editable-input form-control input-sm help-tag-container" required placeholder="Add Name" />
+                                            <div class="upIndicatorArrow ml-40" ng-if="showHelp() && rowForm.$pristine"><span class="blocktext">Enter Details</span></div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td data-title="'Street'" filter="{street: 'text'}" sortable="'name'" ng-switch="row.isEditing" ng-class="name.$dirty ? 'bg-warning' : ''" ng-form="street" row-tracked-table-cell>
+                                    <span ng-switch-default class="editable-text">{{row.address1}}</span>
+                                    <div class="controls" ng-class="name.$invalid && name.$dirty ? 'has-error' : ''" ng-switch-when="true">
+                                        <input type="text" name="street" ng-model="row.address1" class="editable-input form-control input-sm" required placeholder="Street Name/Number" />
+                                    </div>
+                                </td>
+                                <td data-title="'City'" sortable="'city'" filter="{ 'city': 'text' }" ng-switch="row.isEditing" ng-class="name.$dirty ? 'bg-warning' : ''" ng-form="city" row-tracked-table-cell>
+                                    <span ng-switch-default class="editable-input-form-control">{{row.locality}}</span>
+                                    <div class="controls" ng-class="name.$invalid && name.$dirty ? 'has-error' : ''" ng-switch-when="true">
+                                        <input type="text" name="city" ng-model="row.locality" class="editable-input form-control input-sm" />
+                                    </div>
+                                </td>
+                                <td data-title="'State'" ng-switch="row.isEditing" ng-class="name.$dirty ? 'bg-warning' : ''" ng-form="state" row-tracked-table-cell>
+                                    <span ng-switch-default class="editable-text">{{row.region}}</span>
+                                    <div class="controls" ng-class="name.$invalid && name.$dirty ? 'has-error' : ''" ng-switch-when="true">
+                                        <select name="state" ng-model="row.region" class="editable-input-form-control input-sm" required placeholder="Select State" ng-options="state.name as state.name for state in page.states"></select>
+                                        <!--<select ng-model="filterCondition.operator" ng-options="operator.value as operator.displayName for operator in operators"></select>-->
+
+                                    </div>
+                                </td>
+                                <td data-title="'ZipCode'" filter="{zipcode: 'text'}" sortable="'zipcode'" ng-switch="row.isEditing" ng-class="name.$dirty ? 'bg-warning' : ''" ng-form="zipcode" row-tracked-table-cell>
+                                    <span ng-switch-default class="editable-text">{{row.postalCode}}</span>
+                                    <div class="controls" ng-class="name.$invalid && name.$dirty ? 'has-error' : ''" ng-switch-when="true">
+                                        <input type="text" name="zipcode" ng-model="row.postalCode" class="editable-input form-control input-sm" required placeholder="Enter Zip Code" maxlength="12" />                                        
+                                    </div>
+                                </td>
+
+                                <td>
+                                    <button class="btn btn-rounded btn-primary btn-sm" ng-click="locationGrid.save(row, rowForm)" ng-if="row.isEditing" ng-disabled="rowForm.$pristine || rowForm.$invalid">
+                                        <div class="help-tag-container">
+                                            <span class="glyphicon glyphicon-ok help-tag-container"></span>
+                                            <div class="upIndicatorArrow" ng-if="showHelp() && !rowForm.$pristine"><span class="blocktext">Press <span class="glyphicon glyphicon-ok"></span> to save.</span></div>
+                                        </div>
+                                    </button>
+                                    <button class="btn btn-rounded btn-default btn-sm" ng-click="locationGrid.cancel(row, rowForm)" ng-if="row.isEditing"><span class="glyphicon glyphicon-remove"></span></button>
+                                    <button class="btn btn-rounded btn-default btn-sm" ng-click="row.isEditing = true" ng-if="!row.isEditing"><span class="glyphicon glyphicon-pencil"></span></button>
+                                    <button class="btn btn-rounded btn-danger btn-sm" ng-click="locationGrid.del(row)" ng-if="!row.isEditing"><span class="glyphicon glyphicon-trash"></span></button>
+                                </td>
+                                <!--<td>
+                        <button class="btn btn-rounded btn-primary mb-10" ng-click="openUpdateStaffSplash($event)" data-options="splash-2 splash-ef-14">Edit</button>
+                    </td>-->
+                            </tr>
+                        </table>
+
+                    </div>
+                    <!-- /tile body -->
+
+                </section>
+                <!-- /tile -->
+
+            </div>
+            <!-- /col -->
+        </div>
+        <!-- /row -->
+
+
+
+
+    </div>
+    <!-- /page content -->
+
+
+
+
+</div>

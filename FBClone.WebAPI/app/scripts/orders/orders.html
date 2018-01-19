@@ -1,0 +1,174 @@
+<div class="page">
+
+    <!-- page header -->
+    <div class="pageheader">
+
+        <h2>{{page.title}} <span>{{page.subtitle}}</span></h2>
+
+        <div class="page-bar">
+
+            <ul class="page-breadcrumb">
+                <li>
+                    <a ui-sref="app"><i class="fa fa-home"></i> {{main.title}}</a>
+                </li>
+                <li>
+                    <a ui-sref="app.orders">{{page.title}}</a>
+                </li>
+            </ul>
+
+        </div>
+
+    </div>
+    <!-- /page header -->
+    <!-- page content -->
+    <div class="pagecontent">
+        <!-- row -->
+        <div class="row mb-40">
+            <div class="col-md-5">
+                <div class="pull-left">
+                    <h4>Select a store location:</h4>
+                </div>
+                <div class="pull-left" style="margin-left: 10px">
+                    <ui-select ng-model="currentLocation.selected" class="w-xxl mb-10" on-select="setLocation($item, $model)">
+                        <ui-select-match placeholder="Select or search a store location..." style="height:75px;">
+                            <div class="filled bg-greensea lter">
+                                <span>{{$select.selected.name}} <a href ng-click="clear($event)"><i class="fa fa-times"></i></a><br /></span>
+                                <span class="text-xs">{{$select.selected.address}}</span>
+                            </div>
+                        </ui-select-match>
+                        <ui-select-choices repeat="location in locations | filter: $select.search">
+                            <span ng-bind-html="location.name | highlight: $select.search"></span><br />
+                            <span ng-bind-html="location.address | highlight: $select.search"></span>
+                        </ui-select-choices>
+                    </ui-select>
+                </div>
+            </div>
+            <div class="col-md-4" ng-show="currentLocation.selected">
+                <!--<p class="row">
+                    <div class="col-md-12">
+                        <div class="pull-left">
+                            <h4>Select a menu:</h4>
+                        </div>
+                        <div class="pull-left" style="margin-left: 10px">
+                            <ui-select ng-model="currentMenu.selected" class="w-md" on-select="setMenu($item, $model)">
+                                <ui-select-match placeholder="Select a menu...">
+                                    <span>{{$select.selected.description}} <a href ng-click="clear($event)"><i class="fa fa-times"></i></a></span>
+                                </ui-select-match>
+                                <ui-select-choices repeat="menu in menus | filter: $select.search">
+                                    <span ng-bind-html="menu.description | highlight: $select.search"></span><br />
+                                </ui-select-choices>
+                            </ui-select>
+                        </div>
+                    </div>
+                </p>-->
+                <p class="row">
+                    <div class="col-md-12" ng-show="currentLocation.selected">
+                        <h4 class="custom-font text-lightred" ng-show="qrCodeText == null">You currently have no QR Code Generated. You must generate one in order to receive orders from your customer.</h4>
+                        <button class="btn btn-rounded btn-orange" ng-bind-html="qrCodeText == null ? 'Click to Generate QR Code' : 'Re-generate QR Code'" ng-click="generateQrCode()"></button>
+                    </div>
+                </p>
+            </div>
+            <div class="col-md-3" ng-show="currentLocation.selected && qrCodeText != null">
+                <qrcode id="qrcode" data="{{qrCodeText}}" size="150" download></qrcode><br/>
+                <span class="badge badge-warning text-md">Right-click and select<br > 'Save As' to Download Code</span>
+            </div>
+        </div>
+        <div class="row">
+            <!-- col -->
+            <div class="col-md-offset-1 col-md-10" ng-show="currentLocation.selected">
+                <!-- tile -->
+                <section class="tile" fullscreen="isFullscreen01">
+
+                    <!-- tile header -->
+                    <div class="tile-header  bg-greensea dvd dvd-btm">
+                        <h1 class="custom-font"><strong>Orders</strong>List</h1>
+                    </div>
+                    <!-- /tile header -->
+                    <!-- tile body -->
+                    <div class="tile-body" ng-if="orders.length > 0">
+                        <div>
+                            <!--Headers-->
+                            <div class="row">
+                                <div class="col-md-1"><h4>Order No.</h4></div>
+                                <div class="col-md-2"><h4>Location</h4></div>
+                                <div class="col-md-3"><h4>Description</h4></div>
+                                <div class="col-md-1"><h4>Quantity</h4></div>
+                                <div class="col-md-3"><h4></h4></div>
+                            </div>
+                            <md-card class="md-default-theme" ng-repeat="order in orders">
+                                <md-card-content>
+                                    <div class="row" >
+                                        <div class="col-md-1">
+                                            {{order.orderNumber}}
+                                        </div>
+                                        <div class="col-md-2">
+                                            {{order.location.name}}
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="row" ng-repeat="item in order.orderDetails">
+                                                <div class="col-md-6">
+                                                    <span ng-bind-html="item.menuItem.itemText"></span>
+                                                </div>
+                                                <!--<div class="col-md-4">
+                                                    Name: {{item.menuItem.itemText}}
+                                                </div>-->
+                                                <div class="col-md-3">
+                                                    {{item.quantity}}
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <button class="btn btn-rounded-20 btn-lg" ng-class="{ 'btn-greensea': order.status == 'Complete', 'btn-lightred btn-ef btn-ef-5 btn-ef-5a': order.status != 'Complete'}" 
+                                                    ng-click="completeOrder(order);">
+                                                <i class="fa fa-check"></i>
+                                                <span>{{order.status}}</span>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </md-card-content>
+                            </md-card>
+                        </div>
+                    </div>
+                    <!-- /tile body -->
+
+                </section>
+                <!-- /tile -->
+
+            </div>
+            <!-- /col -->
+        </div>
+        <!-- /row -->
+        <!--Questions Grid-->
+        <!-- row -->
+        <div class="row">
+            <!-- col -->
+            <div class="col-md-12">
+                <!-- tile -->
+                <section class="tile" fullscreen="isFullscreen02" ng-if="isSurveySelected()">
+
+                    <!-- tile header -->
+                    <div class="tile-header  bg-greensea dvd dvd-btm">
+                        <h1 class="custom-font"><strong>Completed</strong>Orders</h1>
+                        <h3>These orders are ready for billing</h3>
+                    </div>
+                    <!-- /tile header -->
+                    <!-- tile body -->
+                    <div class="tile-body">
+
+                    </div>
+                    <!-- /tile body -->
+
+                </section>
+                <!-- /tile -->
+
+            </div>
+            <!-- /col -->
+        </div>
+        <!-- /row -->
+        <!--Answers Grid-->
+
+
+    </div>
+    <!-- /page content -->
+
+</div>

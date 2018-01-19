@@ -1,0 +1,77 @@
+﻿<div class="modal-header">
+    <h3 class="modal-title custom-font">Select Answer Choices</h3>
+</div>
+
+<form name="answerChoiceSelectionForm" submit-validate ng-submit="updateAnswerChoices(answerChoiceSelectionForm.$valid)" role="form" novalidate>
+    <div class="modal-body">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">Add Answer Choice</h3>
+            </div>
+            <div class="panel-body">
+                <div class="form-inline" ng-form="answerChoiceForm">
+                    <div class="form-group col-sm-5" ng-class="{ 'has-error' : answerChoiceForm.name.$invalid && !answerChoiceForm.name.$pristine, 'has-success' : answerChoiceForm.name.$valid && !answerChoiceForm.name.$pristine}">
+                        <label for="answerText">Answer Text: </label><br />
+                        <input type="text" name="answerText" id="answerText" class="form-control rounded form-control-static" ng-model="newAnswerChoice.answerText" on-blur-validation required>
+                        <p class="help-block">
+                            <span ng-show="answerChoiceForm.answerText.$invalid && !answerChoiceForm.answerText.$pristine">Answer Text is Required</span>
+                        </p>
+                    </div>
+
+                    <div class="form-group col-sm-4">
+                        <label for="answerFactor">%Weight </label><br />
+                        <input type="number" name="answerFactor" id="answerFactor" class="form-control rounded form-control-static" ng-model="newAnswerChoice.answerFactor" ng-pattern="/^[0-9]+$/" on-blur-validation required>
+                        <p class="help-block">
+                            <span ng-show="answerChoiceForm.answerFactor.$invalid && !answerChoiceForm.answerFactor.$pristine">Answer %Weight is Required</span>
+                        </p>
+                    </div>
+
+                    <!--<div class="form-group col-sm-2" ng-class="{ 'has-error' : answerChoiceForm.passcode.$invalid && !answerChoiceForm.sequence.$pristine, 'has-success' : answerChoiceForm.sequence.$valid && !answerChoiceForm.sequence.$pristine}">
+                        <label for="sequence">Sequence: </label><br />
+                        <span>{{newAnswerChoice.sequence}}</span>
+                        <input type="hidden" name="sequence" id="sequence" class="form-control rounded form-control-static" ng-model="newAnswerChoice.sequence" on-blur-validation required>
+                        <p class="help-block">
+                            <span ng-show="answerChoiceForm.sequence.$invalid && !answerChoiceForm.sequence.$pristine">Sequence is required</span>
+                        </p>
+                    </div>-->
+                    <div class="form-group col-sm-1">
+                        <br />
+                        <button class="btn btn-rounded btn-primary btn-sm" ng-click="answerDraftGrid_Create(answerChoiceForm)" ng-disabled="answerChoiceForm.$pristine || answerChoiceForm.$invalid"><span class="glyphicon glyphicon-plus-sign"></span></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="panel panel-default" ng-form="answerChoiceSelectionForm">
+            <div class="panel-heading">
+                <h3 class="panel-title">Select Answer Choices (drag to sort)</h3>
+            </div>
+            <div class="panel-body">
+                <table id="answer-choice-ngtable" ng-table="tableParams" show-filter="true" class="table table-bordered table-striped">
+                    <tbody id="answer-choice-container" as-sortable="sortableOptions" ng-model="$data">
+                        <tr ng-repeat="row in $data" ng-class="isRowSelected(row.active) ? 'info' : ''" as-sortable-item class="as-sortable-item" on-last-repeat>
+                            <td class="col-sm-1" data-title="Included" filter="{selected: 'text'}" sortable="'selected'">
+                                <input type="checkbox" ng-model="row.active" name="answerChoiceCheckBoxList" ng-change="answerCheckBoxChanged(row, $index);" />
+                            </td>
+                            <td class="col-sm-10 as-sortable-item-handle" data-title="'Answer Text'" filter="{answerText: 'text'}" sortable="'answerText'" as-sortable-item-handle>
+                                <span>{{row.answerText}}</span>
+                            </td>
+                            <td class="col-sm-1" data-title="'Sequence'" filter="{sequence: 'text'}" sortable="'sequence'">
+                                <span>{{getSequence(row.sequence)}}</span>
+                            </td>
+                            <td>
+                                <button class="btn btn-rounded btn-danger btn-sm" ng-click="del(row)"><span class="glyphicon glyphicon-trash"></span></button>
+                            </td>
+                        </tr>
+                    </tbody>
+                    <tr style="background-color:gray"></tr>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal-footer">
+        <button type="submit" class="btn btn-rounded btn-primary" ng-click="ok(answerChoiceSelectionForm.selected, answerChoiceSelectionForm.$valid)">Confirm Selections</button>
+        <button class="btn btn-rounded btn-default btn-border" ng-click="cancel()">Cancel</button>
+    </div>
+</form>

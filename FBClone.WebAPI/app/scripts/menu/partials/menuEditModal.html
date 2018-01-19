@@ -1,0 +1,67 @@
+﻿<div>
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+        <h4 class="modal-title" id="myModalLabel" ng-bind="modalTitle"></h4>
+    </div>
+
+    <div class="modal-body">
+        <form role="form" name="menuForm">
+            <div class="row">
+
+                <div class="form-group col-md-8 hidden" ng-class="{ 'has-error' : menuForm.id.$invalid && !menuForm.id.$pristine, 'has-success' : menuForm.id.$valid && !menuForm.id.$pristine}">
+                    <label for="name">Id: </label>
+                    <input type="text" name="id" id="id" class="form-control" ng-model="entity.id" eadonly>
+                </div>
+
+                <div class="form-group col-md-8" ng-class="{ 'has-error' : menuForm.description.$invalid && !menuForm.description.$pristine, 'has-success' : menuForm.description.$valid && !menuForm.description.$pristine}">
+                    <label for="name">Description: </label>
+                    <input type="text" name="description" id="description" class="form-control" ng-model="entity.description" on-blur-validation required>
+                    <p class="help-block">
+                        <span ng-show="menuForm.description.$invalid && !menuForm.description.$pristine">Description is required.</span>
+                    </p>
+                </div>
+
+                <div class="form-group col-md-12" ng-class="{ 'has-error' : menuForm.locations.$invalid && !menuForm.locations.$pristine, 'has-success' : menuForm.locations.$valid && !menuForm.locations.$pristine}">
+                    <div class="row">
+                        <label class="col-md-12 control-label" for="name">Store Locations Where Menu is Active: </label>
+                        <div class="col-md-12">
+                            <select ui-jq="chosen" ng-model="entity.locations" multiple ui-options="{width: '340px'}"
+                                ng-options="l as l.longName for l in possibleLocations">
+                            </select>
+                            <!--<ui-select multiple ng-model="entity.locations" class="w-xxl">
+                                <ui-select-match placeholder="Select locations...">{{$item.longName}}</ui-select-match>
+                                <ui-select-choices repeat="location in possibleLocations | filter:$select.search">
+                                    {{location.longName}}
+                                </ui-select-choices>
+                            </ui-select>-->
+                        </div>
+                    </div>
+                    <!--<select name="categoryId" ng-model="row.category" class="editable-input-form-control input-sm help-tag-container" required
+                            ng-options="c as c.name for c in questionGrid.categories">
+                        <option value="" selected>Select</option>
+                    </select>-->
+                    <!--<input type="text" name="locations" id="locations" class="form-control" ng-model="entity.locations" on-blur-validation required>-->
+                    <p class="help-block">
+                        <span ng-show="menuForm.description.$invalid && !menuForm.description.$pristine">At least one location must be selected</span>
+                    </p>
+                </div>
+
+                <div class="form-group col-md-2" ng-class="{ 'has-error' : menuForm.active.$invalid && !menuForm.active.$pristine, 'has-success' : menuForm.active.$valid && !menuForm.active.$pristine}">
+                    <label for="name">Active: </label><br />
+                    <div class="onoffswitch greensea inline-block">
+                        <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="activeSwitch" checked="{{entity.active == 'Active' ? true : false}}">
+                        <label class="onoffswitch-label" for="activeSwitch">
+                            <span class="onoffswitch-inner"></span>
+                            <span class="onoffswitch-switch"></span>
+                        </label>
+                    </div>
+                </div>
+
+            </div>
+        </form>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-rounded btn-primary" ng-click="save()">Save</button>
+        <button class="btn btn-rounded btn-lightred" ng-click="cancel()">Cancel</button>
+    </div>
+</div>

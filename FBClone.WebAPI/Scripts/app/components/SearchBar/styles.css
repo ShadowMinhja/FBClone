@@ -1,0 +1,42 @@
+﻿#search-container {
+    height: 50px;
+    border: thin solid #ccc;
+    border-radius: 25px;
+    margin-top: 40px;
+}
+
+.search-box-wrapper {
+    background-color: transparent;
+}
+
+.search-box-wrapper input {
+    background-color: transparent;
+}
+
+#searchTextBox {
+    color: inherit;
+}
+
+.searchItem {
+    color: gray;
+    display: inline-block;
+}
+
+.algoliaLogo {
+    background: transparent  url(/assets/images/Algolia_logo_bg-white.svg) no-repeat center center;
+    width: 55px;
+    height: 15px;
+    background-size: cover;
+    display: inline-block;
+}
+
+@media only screen and (max-width: 1200px) {
+   
+}
+
+@media only screen and (max-width: 991px) {
+    #search-container {
+        float: none;
+        margin-top: 5px !important;
+    }
+}

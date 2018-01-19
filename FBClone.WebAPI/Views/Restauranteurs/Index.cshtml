@@ -1,0 +1,670 @@
+﻿@{
+    Layout = null;
+    ViewBag.Title = "fbClone | Restaurant Service Solutions";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta name="description" content="We strive to aid restauranteurs by simplifying the collection of customer feedback. This lets you focus your energy on what you do best - making awesome food!">
+    <meta name="keywords" content="Customer Service, Restaurant Analytics, Restauranteur, Restaurant">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+@if (ViewBag.Environment != null && ViewBag.Environment == "PROD")
+{
+    <meta property="og:image" content="http://www.fbClone.io/corporate/assets/images/slider/bg-2-thumb.jpg">
+    <meta property="og:title" content="fbClone - Portal Dashboard">
+    <meta property="og:description" content="We strive to aid restauranteurs by simplifying the collection of customer feedback. This lets you focus your energy on what you do best - making awesome food!">
+    <meta property="og:site_name" content="fbClone">    
+    <meta property="fb:app_id" content="1210353988992773">
+}
+
+    <!-- ============================================
+    ================= Stylesheets ===================
+    ============================================= -->
+
+    <link href="http://fonts.googleapis.com/css?family=Lato:300,400,400italic,700,700italic|Raleway:300,400,500,600,700" rel="stylesheet" type="text/css" />
+    
+    <!-- ============================================
+    ============= Main App Stylesheet ===============
+    ============================================= -->
+
+    <link rel="stylesheet" href="/corporate/assets/css/bundle.min.css" type="text/css" />
+
+    <!-- jQuery -->
+    <script type="text/javascript" src="corporate/assets/js/vendor/jquery-1.11.2.min.js"></script>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <!--[if lt IE 9]>
+        <script src="http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"></script>
+    <![endif]-->
+    <!-- ============================================
+    ================== Page Title ===================
+    ============================================= -->
+
+    <title>@ViewBag.Title</title>
+
+
+
+
+
+
+
+</head>
+
+<body>
+@if (ViewBag.Environment != null && ViewBag.Environment == "PROD")
+{
+    <script>
+       
+    </script>
+}
+
+
+    <!-- ============================================
+    ================= Page Wrapper ==================
+    ============================================= -->
+
+    <div id="wrapper" class="clearfix animsition">
+
+
+
+
+
+
+
+        <!-- ================================================
+        ================= Search Container ==================
+        ================================================= -->
+
+        @*<div id="search-container" class="search-box-wrapper">
+            <div class="container">
+                <i class="fa fa-search"></i>
+                <div class="search-box">
+                    <form action="http://example.com/" class="search-form" role="search">
+                        <input type="search" name="s" value="" title="Press Enter to submit your search" placeholder="Search…" class="search-field">
+                        <input type="submit" value="Search" class="search-submit">
+                    </form>
+                </div>
+            </div>
+        </div>*@
+        <!--/ #search-container -->
+        <!-- ============================================
+        ==================== Header =====================
+        ============================================= -->
+
+        <header id="header" class="transparent-header light">
+            <!-- class .sticky-mobile makes header sticky on small devices -->
+
+            <div id="header-wrap">
+
+                <div class="container clearfix">
+
+                    <div id="main-navbar-toggle"><i class="fa fa-bars"></i></div>
+
+
+
+
+
+
+
+                    <!-- ============================================
+                    =================== Branding ====================
+                    ============================================= -->
+
+                    @Html.Partial("_BrandingPartial")
+                    <!-- ============================================
+                    ================= Main Navbar ===================
+                    ============================================= -->
+
+                    @Html.Partial("_MenuPartial")
+
+                </div>
+
+            </div>
+
+        </header><!-- #header end -->
+        <!-- ============================================
+        ==================== Slider =====================
+        ============================================= -->
+
+        <section id="slider" class="slider-parallax">
+
+            <!--
+            #################################
+                - THEMEPUNCH BANNER -
+            #################################
+            -->
+
+            <div class="tp-banner-container">
+
+                <div class="tp-banner">
+
+                    <ul>
+
+                        <!-- SLIDE  -->
+                        <li class="light" data-transition="slideleft" data-slotamount="1" data-masterspeed="1000" data-thumb="corporate/assets/images/slider/bg-1-thumb.jpg">
+
+                            <!-- MAIN IMAGE -->
+                            <img src="corporate/assets/images/slider/bg-1.jpg" alt="" data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat">
+
+                            <!-- LAYERS -->
+                            <!-- LAYER NR. 1 -->
+                            <div class="tp-caption black_thin_blackbg_30 bg-greensea lft fadeout"
+                                 data-x="120"
+                                 data-y="80"
+                                 data-speed="800"
+                                 data-start="1000"
+                                 data-easing="easeOutQuad"
+                                 data-endspeed="1000"
+                                 data-endeasing="Power4.easeIn" style="white-space: normal;">
+                                A revolution in restaurant management
+                            </div>
+
+                            <!-- LAYER NR. 2 -->
+                            <div class="tp-caption big-text text-white skewfromleft fadeout"
+                                 data-x="120"
+                                 data-y="140"
+                                 data-speed="800"
+                                 data-start="1000"
+                                 data-easing="easeOutQuad"
+                                 data-endspeed="1000"
+                                 data-endeasing="Power4.easeIn"  style="z-index: 8; white-space: nowrap;">
+                                Take the guess work out of brilliant<br />  customer service.                                 
+                            </div>
+
+                            <!-- LAYER NR. 3 -->
+                            @*<div class="tp-caption light_normal_22 text-center bg-default skewfromright fadeout"
+                                     data-x="210"
+                                     data-y="400"
+                                     data-speed="800"
+                                     data-start="1000"
+                                     data-easing="easeOutQuad"
+                                     data-endspeed="1000"
+                                     data-endeasing="Power4.easeIn" style="width: 680px; max-width: 680px; white-space: normal;">
+                                    Make data-driven decisions.
+                                </div>*@
+
+                            <!-- LAYER NR. 4 -->
+                            <div class="tp-caption lfb fadeout"
+                                 data-x="480"
+                                 data-y="560"
+                                 data-speed="800"
+                                 data-start="1000"
+                                 data-easing="easeOutQuad"
+                                 data-endspeed="1000"
+                                 data-endeasing="Power4.easeIn">
+                                <a href="/Home/Services" class="myBtn myBtn-3d myBtn-dark myBtn-lg myBtn-rounded text-sm"><span>Take Tour</span> <i class="fa fa-angle-right"></i></a>
+                            </div>
+
+
+                        </li>
+
+                        <!-- SLIDE  -->
+                        <li class="light" data-transition="slideleft" data-slotamount="1" data-masterspeed="1000" data-thumb="corporate/assets/images/slider/bg-2-thumb.jpg">
+
+                            <!-- MAIN IMAGE -->
+                            <img src="corporate/assets/images/slider/bg-2.jpg" alt="" data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat">
+
+                            <!-- LAYERS -->
+                            <!-- LAYER NR. 1 -->
+                            <div class="tp-caption big-text text-orange tp-fade fadeout"
+                                 data-x="center" data-hoffset="-80"
+                                 data-y="200"
+                                 data-speed="500"
+                                 data-start="500"
+                                 data-easing="Power4.easeOut"
+                                 data-splitin="chars"
+                                 data-splitout="chars"
+                                 data-elementdelay="0.05"
+                                 data-endelementdelay="0.05"
+                                 data-endspeed="300"
+                                 data-endeasing="Power1.easeOut" style="z-index: 6; white-space: nowrap; text-shadow: 2px 2px black;">
+                                Your customer is always right
+                            </div>
+
+                            <!-- LAYER NR. 2 -->
+                            <div class="tp-caption whiteline_long customin fadeout"
+                                 data-x="center" data-hoffset="-80"
+                                 data-y="275"
+                                 data-customin="x:0;y:0;z:0;rotationX:0;rotationY:0;rotationZ:0;scaleX:0;scaleY:0;skewX:0;skewY:0;opacity:0;transformPerspective:600;transformOrigin:50% 50%;"
+                                 data-speed="500"
+                                 data-start="500"
+                                 data-easing="Power4.easeOut"
+                                 data-splitin="none"
+                                 data-splitout="none"
+                                 data-elementdelay="0.1"
+                                 data-endelementdelay="0.1"
+                                 data-endspeed="600"
+                                 data-endeasing="Power1.easeOut" style="z-index: 7; white-space: nowrap;">
+                            </div>
+
+                            <!-- LAYER NR. 3 -->
+                            <div class="tp-caption light_normal_22 bg-greensea tp-fade fadeout"
+                                 data-x="center" data-hoffset="-80"
+                                 data-y="300"
+                                 data-speed="600"
+                                 data-start="800"
+                                 data-easing="Power4.easeOut"
+                                 data-splitin="none"
+                                 data-splitout="none"
+                                 data-elementdelay="0.1"
+                                 data-endelementdelay="0.1"
+                                 data-endspeed="600"
+                                 data-endeasing="Power1.easeOut" style="z-index: 8; white-space: nowrap;">
+                                “What is it that keeps bringing them back?<br />The role of the customer and customer insight is integral<br/> to a company’s innovation and brand development process.” <br /> ― <a href="http://www.restaurant.org/Manage-My-Restaurant/Marketing-Sales/Brand-Management/The-key-to-success-Your-customer-is-always-right" class="text-orange" target="_blank">Peter Nolan</a>
+                            </div>
+
+
+                        </li>
+
+                        <!-- SLIDE  -->
+                        <li class="light" data-transition="slideleft" data-slotamount="1" data-masterspeed="1000" data-thumb="corporate/assets/images/slider/bg-3-thumb.jpg" data-delay="15000" data-saveperformance="off">
+
+                            <!-- MAIN IMAGE -->
+                            <img src="corporate/assets/images/slider/bg-3.jpg" alt="" data-bgposition="right center" data-kenburns="on" data-duration="16000" data-ease="Linear.easeNone" data-bgfit="150" data-bgfitend="100" data-bgpositionend="center center">
+
+                            <!-- LAYERS -->
+                            <!-- LAYER NR. 1 -->
+                            <div class="tp-caption white_heavy_70 tp-fade fadeout"
+                                 data-x="center" data-hoffset="-80"
+                                 data-y="center" data-voffset="0"
+                                 data-speed="500"
+                                 data-start="500"
+                                 data-easing="Power4.easeOut"
+                                 data-splitin="chars"
+                                 data-splitout="chars"
+                                 data-elementdelay="0.05"
+                                 data-endelementdelay="0.05"
+                                 data-endspeed="300"
+                                 data-endeasing="Power1.easeOut" style="z-index: 6; white-space: nowrap;">
+                                CONNECT
+                            </div>
+
+                            <!-- LAYER NR. 2 -->
+                            <div class="tp-caption whiteline_long customin fadeout"
+                                 data-x="center" data-hoffset="-80"
+                                 data-y="center" data-voffset="50"
+                                 data-customin="x:0;y:0;z:0;rotationX:0;rotationY:0;rotationZ:0;scaleX:0;scaleY:0;skewX:0;skewY:0;opacity:0;transformPerspective:600;transformOrigin:50% 50%;"
+                                 data-speed="500"
+                                 data-start="500"
+                                 data-easing="Power4.easeOut"
+                                 data-splitin="none"
+                                 data-splitout="none"
+                                 data-elementdelay="0.1"
+                                 data-endelementdelay="0.1"
+                                 data-endspeed="600"
+                                 data-endeasing="Power1.easeOut" style="z-index: 7; white-space: nowrap;">
+                            </div>
+
+                            <!-- LAYER NR. 3 -->
+                            <div class="tp-caption light_medium_20 tp-fade fadeout"
+                                 data-x="center" data-hoffset="-85"
+                                 data-y="center" data-voffset="120"
+                                 data-speed="600"
+                                 data-start="800"
+                                 data-easing="Power4.easeOut"
+                                 data-splitin="none"
+                                 data-splitout="none"
+                                 data-elementdelay="0.1"
+                                 data-endelementdelay="0.1"
+                                 data-endspeed="600"
+                                 data-endeasing="Power1.easeOut" style="z-index: 8; white-space: nowrap;">
+                                fbClone <b>instantly brings </b>you and your customer together <b><i class="fa fa-heart-o"></i></b>.
+                            </div>
+
+
+
+                        </li>
+                    </ul>
+
+                </div>
+
+                <script type="text/javascript">
+
+                    $(document).ready(function () {
+
+                        var apiRevoSlider = $('.tp-banner').show().revolution(
+                                {
+                                    dottedOverlay: "none",
+                                    delay: 9000,
+                                    startwidth: 1140,
+                                    startheight: 700,
+                                    hideThumbs: 200,
+
+                                    thumbWidth: 100,
+                                    thumbHeight: 50,
+                                    thumbAmount: 3,
+
+                                    navigationType: "none",
+                                    navigationArrows: "solo",
+                                    navigationStyle: "preview1",
+
+                                    touchenabled: "on",
+                                    onHoverStop: "on",
+
+                                    swipe_velocity: 0.7,
+                                    swipe_min_touches: 1,
+                                    swipe_max_touches: 1,
+                                    drag_block_vertical: false,
+
+
+                                    parallax: "mouse",
+                                    parallaxBgFreeze: "on",
+                                    parallaxLevels: [8, 7, 6, 5, 4, 3, 2, 1],
+                                    parallaxDisableOnMobile: "on",
+
+
+                                    keyboardNavigation: "on",
+
+                                    navigationHAlign: "center",
+                                    navigationVAlign: "bottom",
+                                    navigationHOffset: 0,
+                                    navigationVOffset: 20,
+
+                                    soloArrowLeftHalign: "left",
+                                    soloArrowLeftValign: "center",
+                                    soloArrowLeftHOffset: 20,
+                                    soloArrowLeftVOffset: 0,
+
+                                    soloArrowRightHalign: "right",
+                                    soloArrowRightValign: "center",
+                                    soloArrowRightHOffset: 20,
+                                    soloArrowRightVOffset: 0,
+
+                                    shadow: 0,
+                                    fullWidth: "off",
+                                    fullScreen: "on",
+
+                                    spinner: "spinner3",
+
+                                    stopLoop: "off",
+                                    stopAfterLoops: -1,
+                                    stopAtSlide: -1,
+
+                                    shuffle: "off",
+
+                                    forceFullWidth: "off",
+                                    fullScreenAlignForce: "off",
+                                    minFullScreenHeight: "400",
+
+                                    hideThumbsOnMobile: "off",
+                                    hideNavDelayOnMobile: 1500,
+                                    hideBulletsOnMobile: "off",
+                                    hideArrowsOnMobile: "off",
+                                    hideThumbsUnderResolution: 0,
+
+                                    hideSliderAtLimit: 0,
+                                    hideCaptionAtLimit: 0,
+                                    hideAllCaptionAtLilmit: 0,
+                                    startWithSlide: 0,
+                                    fullScreenOffsetContainer: ".header"
+                                });
+
+                        apiRevoSlider.bind("revolution.slide.onchange", function (e, data) {
+                            if ($(window).width() > 992) {
+                                if ($('#slider ul > li').eq(data.slideIndex - 1).hasClass('light')) {
+                                    $('#header:not(.sticky-header)').addClass('light');
+                                } else {
+                                    $('#header:not(.sticky-header)').removeClass('light');
+                                }
+                                MINOVATE.header.chooseLogo();
+                            }
+                        });
+
+                    }); //ready
+
+                </script>
+
+            </div>
+            <!-- END REVOLUTION SLIDER -->
+
+
+        </section><!-- #slider end -->
+        <!-- ============================================
+        =================== Content =====================
+        ============================================= -->
+
+        <section id="content">
+
+            <div class="content-wrap">
+
+
+
+
+
+                <!-- ============ Features ============ -->
+                <div class="container clearfix">
+
+
+
+                    <div class="center-block less-width text-center clearfix">
+                        <img class="mb-40" src="corporate/assets/images/brand.png" alt="">
+                        <h1>Why try <span class="text-greensea">fbClone</span>?</h1>
+                        <h5>We strive to aid restauranteurs by simplifying the collection of customer feedback.  This lets you focus your energy on what you do best - making awesome food!</h5>
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/o4Lf5lTstIw" frameborder="0" allowfullscreen></iframe>
+                    </div>
+                    <div class="center-block less-width text-center clearfix">
+                        <a href="/corporate/assets/extras/FS-Infographic.pdf" class="myBtn myBtn-3d myBtn-dark myBtn-lg" target="_blank">> Learn More</a>
+                    </div>
+
+
+
+
+                    <div class="line"></div>
+
+
+
+                    <div class="row">
+
+                        <div class="col-md-4 col-sm-6">
+                            <div class="feature-box" data-animate="fadeIn">
+                                <div class="heading">
+                                    <a href="#"><i class="fa fa-check"></i></a>
+                                    <h3>Quick, user friendly</h3>
+                                </div>
+                                <p>Capture feedback unintrusively. It's a cinch, your customers will love you.</p>
+                            </div>
+                        </div>
+                        <div class="col-md-4 col-sm-6">
+                            <div class="feature-box" data-animate="fadeIn" data-delay="200">
+                                <div class="heading">
+                                    <a href="#"><i class="fa fa-bullseye"></i></a>
+                                    <h3>Tackle the issue</h3>
+                                </div>
+                                <p>Address negative experiences as they happen.</p>
+                            </div>
+                        </div>
+                        <div class="col-md-4 col-sm-6">
+                            <div class="feature-box" data-animate="fadeIn" data-delay="400">
+                                <div class="heading">
+                                    <a href="#"><i class="fa fa-globe"></i></a>
+                                    <h3>Boost online reputation</h3>
+                                </div>
+                                <p>Negative reviews are hurt worse than a sprained knee, avoid them at all costs.</p>
+                            </div>
+                        </div>
+
+
+                        <div class="col-md-4 col-sm-6">
+                            <div class="feature-box" data-animate="fadeIn" data-delay="600">
+                                <div class="heading">
+                                    <a href="#"><i class="fa fa-comments"></i></a>
+                                    <h3>Give customers a voice</h3>
+                                </div>
+                                <p>Whether they love it or hate it, be brave enough to ask.</p>
+                            </div>
+                        </div>
+                        <div class="col-md-4 col-sm-6">
+                            <div class="feature-box" data-animate="fadeIn" data-delay="800">
+                                <div class="heading">
+                                    <a href="#"><i class="fa fa-cog"></i></a>
+                                    <h3>Online dashboard</h3>
+                                </div>
+                                <p>Aggregate data into actionable intel with our intuitive product.</p>
+                            </div>
+                        </div>
+                        <div class="col-md-4 col-sm-6">
+                            <div class="feature-box" data-animate="fadeIn" data-delay="1200">
+                                <div class="heading">
+                                    <a href="#"><i class="fa fa-puzzle-piece"></i></a>
+                                    <h3>Retain customer loyalty</h3>
+                                </div>
+                                <p>Newfound insight and clarity on your business will make you a rockstar.</p>
+                            </div>
+                        </div>
+
+                    </div>
+
+
+
+
+
+
+                </div><!-- /features -->
+                <!-- ============ Parallax box ============ -->
+                <div class="parallax-box parallax-1 dark" data-stellar-background-ratio="0.3">
+
+                    <div class="container clearfix">
+
+
+                        <div class="row">
+
+                            <div class="col-md-6">
+                                <h1 class="text-white text-light text-uppercase mb-0">fbClone Dashboard</h1>
+                                <h1 class="text-white text-xxl text-uppercase" style="line-height: 60px">See. Hear. INSIGHT.</h1>
+
+                                <p class="lead text-ondark mb-60">
+                                    Restauranteurs we've talked to have expressed a common sentiment - That is, how difficult it is to know how effective their initiatives are for retaining customers. <br />
+                                    <br />
+                                    What changes to the menu should I make? <br />
+                                    Is the ambiance enticing? <br />
+                                    Is my service up to par? <br />
+                                    <br />
+                                    Our dashboard gives you the tools to answer these riddles.
+                                </p>
+                                @*<a href="/app/#/signup" class="myBtn myBtn-border myBtn-light myBtn-rounded myBtn-lg">> Sign Up Now</a>*@
+                            </div>
+
+                            <div class="col-md-6">
+                                <img src="corporate/assets/images/parallax/devices.png" data-animate="fadeInUp" alt="" class="mt-40 pull-right img-responsive">
+                            </div>
+
+                        </div>
+
+                        
+                    </div>
+
+                </div><!-- /parallax box -->
+                <!-- ============ newsletter section ============ -->
+                <div class="section bg-light mb-0">
+                    <div class="container clearfix">
+
+
+                        @*<div class="heading-block center mb-60">
+                                <h2 class="text-uppercase">Subscribe to our newsletter</h2>
+                            </div>
+
+                            <form role="form">
+                                <div class="input-group input-group-3d w-3xl m-auto">
+                                    <input type="email" class="form-control input-3d" placeholder="Enter your Email" required>
+                                    <span class="input-group-btn">
+                                        <button class="myBtn myBtn-rounded" type="submit">Subscribe Now</button>
+                                    </span>
+                                </div>
+                            </form>*@
+
+                        @*<div class="heading-block center mb-60">
+                            <h1 class="text-uppercase mb-0">We are now in open beta testing!</h1>
+                        </div>
+                        <div class="center">
+                            <h4>1) You may sign up now <a href="/app/#/signup" class="myBtn myBtn-border myBtn-dark myBtn-rounded myBtn-lg">> HERE</a></h4>
+                            <h4>2) You <b class="underline">must</b> subscribe to be given access to download our app on the App Store or Google Play*</h4>                            
+                            
+                            <h5>*May take 1-2 days to receive instructions to download the app.</h5>
+                        </div>
+
+                        <form action="//fbClone.us12.list-manage.com/subscribe/post?u=3eb9f3ca9a7c4f063d9eca449&amp;id=e72908eea6" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
+                            <div id="mc_embed_signup_scroll" class="input-group input-group-3d w-3xl m-auto">
+                                <input id="mce-EMAIL" type="email" value="" class="form-control input-3d" placeholder="Enter your Email" required>
+                                <span class="input-group-btn">
+                                    <button class="myBtn myBtn-rounded" type="submit" id="mc-embedded-subscribe">Subscribe Now</button>
+                                </span>
+                            </div>
+                        </form>*@
+
+                    </div>
+                </div><!-- /newsletter section -->
+                <!-- ============ see more section ============ -->
+                <a href="#" class="myBtn myBtn-block myBtn-dark text-center">
+                    <div class="container clearfix">
+                        Clients who are just <strong>magnificent </strong> because they love fbClone
+                    </div>
+                </a><!-- /see more section -->
+                <!-- ============ clients carousel section ============ -->
+                <div id="clients-carousel" class="section owl-carousel carousel-full m-0 pb-0">
+
+                    <div class="carousel-item"><a href="#" class="desaturate"><img src="corporate/assets/images/clients/pho14.png" class="img-responsive" alt="Clients"></a></div>
+                    <div class="carousel-item"><a href="#" class="desaturate"><img src="corporate/assets/images/clients/pho14.png" class="img-responsive" alt="Clients"></a></div>
+                    <div class="carousel-item"><a href="#" class="desaturate"><img src="corporate/assets/images/clients/pho14.png" class="img-responsive" alt="Clients"></a></div>
+                    <div class="carousel-item"><a href="#" class="desaturate"><img src="corporate/assets/images/clients/pho14.png" class="img-responsive" alt="Clients"></a></div>
+                    <div class="carousel-item"><a href="#" class="desaturate"><img src="corporate/assets/images/clients/pho14.png" class="img-responsive" alt="Clients"></a></div>
+
+                </div><!-- /clients carousel section -->
+
+
+                <script type="text/javascript">
+
+                    $(document).ready(function() {
+
+                        var cCarousel = $("#clients-carousel");
+
+                        cCarousel.owlCarousel({
+                            loop: true,
+                            nav: false,
+                            autoPlay: 3000,
+                            autoplayHoverPause: true,
+                            pagination: false,
+                            responsive:{
+                                0:{ items:1 },
+                                600:{ items:2 },
+                                1000:{ items:3 },
+                                1200:{ items:4 },
+                                1400:{ items:5 }
+                            }
+                        });
+
+
+                    }); //ready
+
+                </script>
+
+
+
+            </div>
+        </section><!-- #content end -->
+        <!-- ============================================
+        ==================== Footer =====================
+        ============================================= -->
+
+        <footer id="footer">
+            @Html.Partial("_FooterPartial")
+        </footer><!-- #footer end -->
+
+    </div><!-- #wrapper end -->
+    <!-- ============================================
+    =================== Go to Top ===================
+    ============================================= -->
+
+    <div id="gotoTop" class="fa fa-angle-up hidden-md"></div>
+
+
+
+
+
+    <script type="text/javascript" src="/corporate/assets/js/bundle.min.js"></script>
+
+
+</body>
+</html>

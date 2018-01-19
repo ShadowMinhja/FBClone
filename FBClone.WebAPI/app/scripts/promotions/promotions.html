@@ -1,0 +1,182 @@
+﻿<script type="text/ng-template" id="firstTimePromotionEntry.html">
+    <div class="modal-header">
+        <h3 class="modal-title custom-font">Step 4: Add Promotion</h3>
+    </div>
+
+    <div class="modal-body">
+        This step will add your a promotion to advertise your customer! Just drag a picture to the box and press 'Upload' and you're done!
+    </div>
+
+    <div class="modal-footer">
+        <button class="btn btn-rounded btn-greensea btn-ef btn-ef-3 btn-ef-3c" ng-click="cancel()"> OK!</button>
+    </div>
+</script>
+
+
+<div class="page page-grid">
+
+
+
+
+    <!-- page header -->
+    <div class="pageheader">
+
+        <h2>{{page.title}} <span>// {{page.subtitle}}</span></h2>
+
+        <div class="page-bar">
+
+            <ul class="page-breadcrumb">
+                <li>
+                    <a ui-sref="app.dashboard"><i class="fa fa-home"></i> {{main.title}}</a>
+                </li>
+                <li>
+                    <a ui-sref="app.ui.grid">{{page.title}}</a>
+                </li>
+            </ul>
+
+        </div>
+
+    </div>
+    <!-- /page header -->
+    <!-- page content -->
+    <div class="pagecontent">
+
+
+        <!-- row -->
+        <div class="row">
+            <!-- col -->
+            <div class="col-md-12">
+
+
+
+                <!-- tile -->
+                <section class="tile pb-20" fullscreen="isFullscreen01">
+
+                    <!-- tile header -->
+                    <div class="tile-header bg-greensea dvd dvd-btm">
+                        <h1 class="custom-font"><strong>Your</strong> Promotion</h1>
+                        <ul class="controls">
+                            <li class="dropdown" dropdown on-toggle="toggled(open)">
+
+                                <a href dropdown-toggle class="dropdown-toggle settings"><i class="fa fa-cog"></i></a>
+
+                                <ul class="dropdown-menu pull-right with-arrow animated littleFadeInUp">
+                                    <li>
+                                        <a href tile-control-toggle>
+                                            <span class="minimize"><fa name="angle-down"></fa>&nbsp;&nbsp;&nbsp;Minimize</span>
+                                            <span class="expand"><fa name="angle-up"></fa>&nbsp;&nbsp;&nbsp;Expand</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href tile-control-refresh ng-click="ajaxFaker()">
+                                            <fa name="refresh"></fa> Refresh
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href tile-control-fullscreen ng-click="isFullscreen01 = !isFullscreen01">
+                                            <fa name="expand"></fa> Fullscreen
+                                        </a>
+                                    </li>
+
+                                </ul>
+
+                            </li>
+                            <li class="remove"><a href tile-control-close><i class="fa fa-times"></i></a></li>
+                        </ul>
+                    </div>
+                    <!-- /tile header -->
+                    <!-- tile body -->
+                    <div class="tile-body pb-30">
+                        <div class="row pb-30">
+                            <div class="col-md-4">
+                                <div nv-file-drop="" uploader="uploader">
+                                    <div nv-file-over="" uploader="uploader" over-class="another-promo-file-over-class" class="well my-promo-drop-zone" back-img="{{page.imageUrl}}">
+                                        <span class="text-lightred text-lg">Drag a promo image into the box to set a new promotion.</span>
+                                    </div>
+                                </div>
+                                <!-- Example: nv-file-select="" uploader="{Object}" options="{Object}" filters="{String}" -->
+                                <!--<input type="file" nv-file-select="" uploader="uploader" /><br />-->
+                                <div class="p-15 text-center">
+                                    <input ui-jq="filestyle" type="file" class="filestyle" ui-options="{
+                                            buttonText: 'Select image',
+                                            buttonName: 'btn-primary btn-rounded',
+                                            iconName: 'fa fa-camera'
+                                            }" id="fileInput" uploader="uploader" nv-file-select=""><br />
+                                    <span class="badge badge-warning">(Max. 1 MB or less)</span>
+                                </div>
+                            </div>
+                            <div class="col-md-8">
+                                <div class="p-10 bg-white b-a b-solid" style="height:250px">
+                                    <img-crop image="myImage"
+                                              result-image="myCroppedImage"
+                                              result-image-size="200"
+                                              area-type="rectangle" uploader="uploader"></img-crop>
+                                </div>
+                                <table class="table table-condensed text-white">
+                                    <thead>
+                                        <tr>
+                                            <th width="50%">Name</th>
+                                            <th ng-show="uploader.isHTML5">Size</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr ng-repeat="item in uploader.queue">
+                                            <td>
+                                                <strong>{{ item.file.name }}</strong>
+                                                <!-- Image preview -->
+                                                <!--auto height-->
+                                                <!--<div ng-thumb="{ file: item.file, width: 100 }"></div>-->
+                                                <!--auto width-->
+                                                <div ng-show="uploader.isHTML5" ng-thumb="{ file: item._file, height: 100 }"></div>
+                                                <!--fixed width and height -->
+                                                <!--<div ng-thumb="{ file: item.file, width: 100, height: 100 }"></div>-->
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <div>
+                                    <div>
+                                        Queue progress:
+                                        <div class="progress" style="">
+                                            <div class="progress-bar" role="progressbar" ng-style="{ 'width': uploader.progress + '%' }"></div>
+                                        </div>
+                                    </div>
+                                    <button type="button" class="btn btn-rounded btn-success btn-s" ng-click="uploadCroppedImage()" ng-disabled="!uploader.getNotUploadedItems().length">
+                                        <div class="help-tag-container">
+                                            <span class="glyphicon glyphicon-upload help-tag-container"></span> Upload
+                                            <blink ng-if="showUploaderHint()">
+                                                <div class="upIndicatorArrow ml-10"><span class="blocktext">Click to Upload</span></div>
+                                            </blink>
+                                        </div>
+                                    </button>
+                                    <button type="button" class="btn btn-rounded btn-warning btn-s" ng-click="uploader.cancelAll()" ng-disabled="!uploader.isUploading">
+                                        <span class="glyphicon glyphicon-ban-circle"></span> Cancel
+                                    </button>
+                                    <button type="button" class="btn btn-rounded btn-danger btn-s" ng-click="uploader.clearQueue()" ng-disabled="!uploader.queue.length">
+                                        <span class="glyphicon glyphicon-trash"></span> Remove
+                                    </button>                                    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- /tile body -->
+
+                </section>
+                <!-- /tile -->
+
+            </div>
+            <!-- /col -->
+        </div>
+        <!-- /row -->
+
+
+
+
+    </div>
+    <!-- /page content -->
+
+
+
+
+</div>

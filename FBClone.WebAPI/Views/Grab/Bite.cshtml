@@ -1,0 +1,134 @@
+﻿@model FBClone.Model.Bite
+@{
+    Layout = "~/Views/Shared/_BiteLayout.cshtml";
+}
+<script>
+        //history.pushState(history.state, "", window.location.href.replace('Grab/', ''));
+         window.location.assign(window.location.href.replace('Grab/', ''));
+</script>
+@*@Html.LabelFor(model => model.Comment, htmlAttributes: new { @class = "control-label col-md-2" })*@
+@*<div class="container clearfix mt-20">*@
+<div class="clearfix mt-20">
+    <div style="color: rgba(0, 0, 0, 0.870588); background-color: rgb(255, 255, 255); transition: all 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms; box-sizing: border-box; font-family: Roboto, sans-serif; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); box-shadow: rgba(0, 0, 0, 0.156863) 0px 3px 10px, rgba(0, 0, 0, 0.227451) 0px 3px 10px; border-radius: 2px;">
+    <div class="portfolio-bite" style="color: rgba(0, 0, 0, 0.870588); background-color: rgb(255, 255, 255); transition: all 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms; box-sizing: border-box; font-family: Roboto, sans-serif; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); box-shadow: rgba(0, 0, 0, 0.117647) 0px 1px 6px, rgba(0, 0, 0, 0.117647) 0px 1px 4px; border-radius: 2px; z-index: 1;">
+        <div style="padding-bottom: 0px;">
+            <div style="position: relative; display: block;">
+                <div>
+                    @if (Model.Images.Count > 0)
+                    {
+                        <div class="image-gallery-content pull-left" style="width:80%">
+                            <div class="image-gallery-slide-wrapper">
+                                <div class="image-gallery-swipe">
+                                    <div class="image-gallery-slides">
+                                        <div class="image-gallery-slide center image-gallery-original" style="transform: translate3d(0%, 0px, 0px); z-index: 1; transition: transform 0.45s ease-out;">
+                                            <div class="image-gallery-image">
+                                                <img src=@(String.Format("{0}?auto=format&amp;q=65&w=900&h=450&fit=crop&crop=entropy", Model.Images[0])) style="width:1200px; height:630px;">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                    <div class="pull-right" style="padding: 16px; font-size: 14px; color: rgba(0, 0, 0, 0.870588); width: 19%;">
+                        <div class="row">
+                            @if (Model.Venue != null)
+                            {
+                                <div class="col-md venue-display">
+                                    <div class="bitecard-selected-venue" style="font-size:larger">
+                                        <span>
+                                            <h7><b>@Model.Venue.Name</b></h7>
+                                            <span class="selected-venue-address-block">
+                                                @*<p>@Model.Venue.Address1,</p>*@
+                                                <p>@Model.Venue.Locality, @Model.Venue.Region @Model.Venue.PostalCode</p>
+                                            </span>
+                                        </span>
+                                        <span class="venue-comment">
+                                            <img src="/corporate/assets/images/icons/fa-hand-up.png" style="width:30px" />
+                                            Location
+                                        </span>
+                                    </div>
+                                </div>
+                            }
+                            @if (Model.MenuItem != null)
+                            {
+                                <div class="col-md menu-item-display">
+                                    <div>
+                                        <span class="menuItem-comment">
+                                            ... chowed on
+                                            <img src="/corporate/assets/images/icons/fa-hand-down.png" style="width:30px" />
+                                        </span>
+                                        <br>
+                                        <span>
+                                            <h7>
+                                                <p>@(new HtmlString(Model.MenuItem.ItemText))</p>
+                                                <p>&nbsp; @(Model.MenuItem.Price == -1 ? "Market Price" : "$" + @Model.MenuItem.Price)</p>
+                                            </h7>
+                                        </span>
+                                    </div>
+                                </div>
+                            }
+                        </div>
+                        <div class="row" style="padding-bottom: 10px;">
+                            <div class="col-md food-tag-display">
+                                @if (Model.FoodTags != null)
+                                {
+                                    foreach (var foodTag in Model.FoodTags)
+                                    {
+                                    <div style="margin-left: 2px; display: inline-block">
+                                        <img src="/assets/images/food_icons/png/@(foodTag).png" height="50" width="50">
+                                    </div>
+                                    }
+                                }
+                            </div>
+                            <div class="col-md food-tag-display">
+                                @if (Model.AllergenTags != null)
+                                {
+                                    foreach (var allergenTag in Model.AllergenTags)
+                                    {
+                                    <div style="margin-left: 2px; display: inline-block">
+                                        <img src="/assets/images/food_icons/png/Allergens/@(allergenTag).png" height="50" width="50">
+                                    </div>
+                                    }
+                                }
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md">
+                                @if (Model.QuestionResponseSet != null)
+                                {
+                                    <div style="font-size:x-large">
+                                        @foreach (var CatScore in ViewBag.Survey.CategoryScores) {
+                                            <div>
+                                                <span style="width: 68px;display:inline-block;">@CatScore.Category</span>
+                                                <progress class='@CatScore.Positivity' value=@CatScore.TotalScore max="100" style="width:10em;display:inline-block;margin-bottom:0"></progress>
+                                            </div>                                       
+                                        }
+                                    </div>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            @*<div style="padding: 16px; position: relative;">
+                <span style="font-size: 24px; color: rgba(0, 0, 0, 0.870588); display: block; line-height: 36px;">
+                    @(Model.Comment)
+                </span>
+                <span style="font-size: 14px; color: rgba(0, 0, 0, 0.541176); display: block;"></span>
+            </div>*@
+            @*<div style="padding: 16px; font-size: 14px; color: rgba(0, 0, 0, 0.870588);">
+                Who knew that happiness was edible? Check us out free, or sign up for even more delicious grub!
+            </div>*@
+            @*<div style="padding: 8px; position: relative;">
+                <button tabindex="0" type="button" style="border: 10px; box-sizing: border-box; display: inline-block; font-family: Roboto, sans-serif; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); cursor: pointer; text-decoration: none; outline: none; font-size: 0px; font-weight: inherit; transform: translate3d(0px, 0px, 0px); position: relative; overflow: visible; transition: all 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms; padding: 12px; width: 48px; height: 48px; background: none;"><div><div style="position: absolute; font-family: Roboto, sans-serif; font-size: 10px; line-height: 22px; padding: 0px 8px; z-index: 3000; color: rgb(255, 255, 255); overflow: hidden; top: -10000px; border-radius: 2px; opacity: 0; left: 7px; transition: top 0ms cubic-bezier(0.23, 1, 0.32, 1) 450ms, transform 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms, opacity 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms; box-sizing: border-box;"><div style="position: absolute; left: 50%; top: 0px; transform: translate(-50%, -50%); border-radius: 50%; background-color: transparent; transition: width 0ms cubic-bezier(0.23, 1, 0.32, 1) 450ms, height 0ms cubic-bezier(0.23, 1, 0.32, 1) 450ms, backgroundColor 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms; width: 0px; height: 0px;"></div><span style="position: relative; white-space: nowrap;">Like</span></div><span class="item ion-ios-heart-outline" style="color: rgba(0, 0, 0, 0.870588); position: relative; font-size: 24px; display: inline-block; transition: all 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms;"></span></div></button><button tabindex="0" type="button" style="border: 10px; box-sizing: border-box; display: inline-block; font-family: Roboto, sans-serif; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); cursor: pointer; text-decoration: none; outline: none; font-size: 0px; font-weight: inherit; transform: translate3d(0px, 0px, 0px); position: relative; overflow: visible; transition: all 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms; padding: 12px; width: 48px; height: 48px; background: none;"><div><div style="position: absolute; font-family: Roboto, sans-serif; font-size: 10px; line-height: 22px; padding: 0px 8px; z-index: 3000; color: rgb(255, 255, 255); overflow: hidden; top: -10000px; border-radius: 2px; opacity: 0; left: -6px; transition: top 0ms cubic-bezier(0.23, 1, 0.32, 1) 450ms, transform 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms, opacity 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms; box-sizing: border-box;"><div style="position: absolute; left: 50%; top: 0px; transform: translate(-50%, -50%); border-radius: 50%; background-color: transparent; transition: width 0ms cubic-bezier(0.23, 1, 0.32, 1) 450ms, height 0ms cubic-bezier(0.23, 1, 0.32, 1) 450ms, backgroundColor 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms; width: 0px; height: 0px;"></div><span style="position: relative; white-space: nowrap;">Comment</span></div><span class="ion-ios-chatbubble-outline" style="color: rgba(0, 0, 0, 0.870588); position: relative; font-size: 24px; display: inline-block; transition: all 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms;"></span></div></button><button tabindex="0" type="button" style="border: 10px; box-sizing: border-box; display: inline-block; font-family: Roboto, sans-serif; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); cursor: pointer; text-decoration: none; outline: none; font-size: 0px; font-weight: inherit; transform: translate3d(0px, 0px, 0px); position: relative; overflow: visible; transition: all 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms; padding: 12px; width: 48px; height: 48px; background: none;"><div><div style="position: absolute; font-family: Roboto, sans-serif; font-size: 10px; line-height: 22px; padding: 0px 8px; z-index: 3000; color: rgb(255, 255, 255); overflow: hidden; top: -10000px; border-radius: 2px; opacity: 0; left: 3.5px; transition: top 0ms cubic-bezier(0.23, 1, 0.32, 1) 450ms, transform 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms, opacity 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms; box-sizing: border-box;"><div style="position: absolute; left: 50%; top: 0px; transform: translate(-50%, -50%); border-radius: 50%; background-color: transparent; transition: width 0ms cubic-bezier(0.23, 1, 0.32, 1) 450ms, height 0ms cubic-bezier(0.23, 1, 0.32, 1) 450ms, backgroundColor 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms; width: 0px; height: 0px;"></div><span style="position: relative; white-space: nowrap;">Share</span></div><span class="ion-ios-redo-outline" style="color: rgba(0, 0, 0, 0.870588); position: relative; font-size: 24px; display: inline-block; transition: all 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms;"></span></div>
+                </button>
+            </div>*@
+        </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @*@Scripts.Render("/Scripts/app/global.js")*@
+}

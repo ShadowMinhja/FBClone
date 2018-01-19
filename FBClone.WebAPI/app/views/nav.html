@@ -1,0 +1,111 @@
+<div id="sidebar-wrap" ng-controller="NavCtrl">
+    <accordion close-others="oneAtTime">
+
+        <accordion-group is-open="status.isFirstOpen" ng-class="{'open': status.isFirstOpen, 'closed': !status.isFirstOpen}">
+            <accordion-heading>
+                Navigation <i class="fa" ng-class="{'fa-angle-up': status.isFirstOpen, 'fa-angle-down': !status.isFirstOpen}"></i>
+            </accordion-heading>
+            <ul id="navigation" nav-collapse ripple>
+                <li ui-sref-active="active">
+                    <a ui-sref="app.dashboard">
+                        <fa name="eye"></fa> <span>
+                            {{ 'Menu.DASHBOARD' | translate }}
+                        </span>
+                    </a>
+                </li>
+                <li ui-sref-active="active">
+                    <a ui-sref="app.admin">
+                        <fa name="gear"></fa> <span>
+                            {{ 'Menu.ADMINISTRATION' | translate }}
+                        </span>
+                    </a>
+                    <ul>
+                        <li ui-sref-active="active">
+                            <a ui-sref="app.admin.survey">
+                                <fa name="caret-right"></fa>
+                                {{ 'Menu.MANAGE_SURVEY' | translate }}
+                            </a>
+                        </li>
+                        <li ui-sref-active="active">
+                            <a ui-sref="app.admin.staff">
+                                <fa name="caret-right"></fa>
+                                {{ 'Menu.STAFF_MANAGEMENT' | translate }}
+                            </a>
+                        </li>
+                        <li ui-sref-active="active">
+                            <a ui-sref="app.admin.branding">
+                                <fa name="caret-right"></fa>
+                                {{ 'Menu.MY_BRANDING' | translate }}
+                            </a>
+                        </li>
+                        <li ui-sref-active="active">
+                            <a ui-sref="app.admin.promotions">
+                                <fa name="caret-right"></fa>
+                                {{ 'Menu.PROMOTIONS' | translate }}
+                            </a>
+                        </li>
+                        <li ui-sref-active="active">
+                            <a ui-sref="app.admin.locations">
+                                <fa name="caret-right"></fa>
+                                {{ 'Menu.LOCATIONS' | translate }}
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li ui-sref-active="active">
+                    <a ui-sref="app.menu">
+                        <fa name="cutlery"></fa> <span>
+                            {{ 'Menu.MENU' | translate }}
+                        </span>
+                    </a>
+                </li>
+                <li ui-sref-active="active">
+                    <a ui-sref="app.orders">
+                        <fa name="paper-plane-o"></fa> <span>
+                            {{ 'Menu.ORDERS' | translate }}
+                        </span>
+                    </a>
+                </li>
+                <li ui-sref-active="active">
+                    <a ui-sref="app.guestcards.sessiondata">
+                        <fa name="users"></fa> <span>
+                            {{ 'Menu.GUESTCARDS' | translate }}
+                        </span>
+                    </a>
+                </li>
+            </ul>
+        </accordion-group>
+
+        <accordion-group is-open="status.isSecondOpen" class="charts" ng-class="{'open': status.isSecondOpen, 'closed': !status.isSecondOpen}">
+            <accordion-heading>
+                Orders Summary <i class="fa" ng-class="{'fa-angle-up': status.isSecondOpen, 'fa-angle-down': !status.isSecondOpen}"></i>
+            </accordion-heading>
+
+            <div ng-controller="SparklineCtrl" class="summary">
+
+                <div class="media">
+                    <a class="pull-right" href="#">
+                        <span sparkline data="navChart1.data" options="navChart1.options"></span>
+                    </a>
+                    <div class="media-body">
+                        This week sales
+                        <h4 class="media-heading">26, 149</h4>
+                    </div>
+                </div>
+
+                <div class="media">
+                    <a class="pull-right" href="#">
+                        <span sparkline data="navChart2.data" options="navChart2.options"></span>
+                    </a>
+                    <div class="media-body">
+                        This week balance
+                        <h4 class="media-heading">318, 651</h4>
+                    </div>
+                </div>
+
+            </div>
+
+        </accordion-group>
+
+    </accordion>
+</div>

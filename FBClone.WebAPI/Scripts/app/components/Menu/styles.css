@@ -1,0 +1,34 @@
+﻿.gridlist-root {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.gridlist {
+}
+
+.gridlist > div {
+    height: auto !important;
+}
+
+.foodmenu-dialog > div > div {
+    overflow-x: hidden;
+}
+
+.menu-item {
+    flex-wrap: nowrap !important;
+}
+
+.menu-item > div {
+    height: auto !important;
+}
+
+.menu-item-select-btn {
+    font-size: 8px;
+}
+
+@media only screen and (max-width: 991px) {
+    .gridlist > div {
+        width: auto !important;
+    }
+}

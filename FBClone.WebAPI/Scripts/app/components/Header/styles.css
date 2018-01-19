@@ -1,0 +1,75 @@
+﻿#header.sticky-header #search-container, .menu-actions {
+    margin-top: 0 !important; 
+}
+
+#header.sticky-header .form-inline {
+    margin-top: -15px; 
+}
+
+#header.sticky-header .logout-button {
+    top: 5px;
+}
+
+#header.sticky-header #main-navbar ul li a {
+    height: 60px;
+    line-height: 60px;
+}
+
+#login-form {
+    width: 40%;
+} 
+
+.login-toggle {
+    visibility: collapse;
+}
+
+.login-toggle-field {
+    font-size: 14px !important;
+    width: 40% !important; 
+}
+
+.menu-actions {
+    position:relative;
+    text-align: right;
+}
+
+.login-button {
+    line-height: inherit !important;
+    height: inherit !important;
+    margin-top: 12%;
+}
+
+.logout-button {
+    position:relative;
+    top: 35px;
+    text-align: right;
+}
+
+@media only screen and (max-width: 992px){
+    #branding {
+        padding-left: 20px;
+        display: block;
+        top: -30px;
+    }
+
+    .navbar-header {
+        height: 40px;
+    }
+
+    .login-toggle {
+        visibility: visible;
+    }
+
+    #login-form {
+        display: none !important;
+    }
+
+    .login-toggle-field {
+        display: none !important;
+    }
+
+    .logout-button {
+        top: 0;
+    }
+
+}

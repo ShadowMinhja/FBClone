@@ -1,0 +1,93 @@
+﻿@using Microsoft.AspNet.Identity
+<script>
+    function logOffScript() {
+        //Remove Local Storage Record for Dashboard Login
+        localStorage.removeItem("fsLogin");
+        //Log Off
+        document.getElementById('logoutForm').submit();
+    }
+</script>
+
+@if (ViewBag.Environment != null && ViewBag.Environment == "PROD")
+{
+
+}
+
+<nav id="main-navbar" style="float:right;">
+    @Html.AntiForgeryToken()
+    <ul>
+        <li>
+            <a href="#">Product</a>
+            <ul>
+                <li><a href="/restauranteurs/about">About Us</a></li>
+                <li><a href="/restauranteurs/services">Services</a></li>
+                <li>@*<a href="/restauranteurs/testimonials">Testimonials</a>*@</li>
+            </ul>
+        </li>
+        <li>
+            <a href="/restauranteurs/pricing">Pricing</a>
+        </li>
+        <li>
+            <a href="#">Support</a>
+            <ul>
+                <li><a href="/restauranteurs/faq">FAQ</a></li>
+            </ul>
+        </li>
+        @*<li>
+                <a href="/restauranteurs/blog">Blog</a>
+            </li>*@
+        <li>
+            <a href="/restauranteurs/contact">Contact Us</a>
+        </li>
+        <li>
+            @if (Request.IsAuthenticated)
+            {   
+                <a href="#" class="sf-with-ul">Welcome, @(User.Identity.GetUserName())! <span class="caret"></span></a>
+                <ul>
+                    <li><a href="/app/#/dashboard">Dashboard</a></li>
+                    <li><a href="/Billing">Billing</a></li>
+                    <li>
+                        @using (Html.BeginForm("LogOff", "Restauranteurs", FormMethod.Post, new { id = "logoutForm" }))
+                        {
+                            @Html.AntiForgeryToken()
+                            <a href="javascript:logOffScript();">Log off</a>
+                        }
+                    </li>
+                </ul>
+            }
+            else
+            {
+                <a href="/login">Sign In</a>
+                @*<a href="/app/#/login">Sign In / Register</a>*@
+            }
+        </li>
+    </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                    <!-- ==============================================
+                    ================= Search Toggle ===================
+                    =============================================== -->
+                    @*<div id="search-toggle"> <span>|</span> <a href="#"><i class="fa fa-search"></i></a> </div>*@
+
+
+
+
+
+
+
+</nav><!-- #main-navbar end -->

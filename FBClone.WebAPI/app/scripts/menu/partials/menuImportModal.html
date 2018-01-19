@@ -1,0 +1,28 @@
+﻿<div>
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+        <h4 class="modal-title" id="myModalLabel" ng-bind="modalTitle"></h4>
+    </div>
+
+    <div class="modal-body">
+        <form role="form" name="menuForm">
+            <div class="row">
+                <div class="pl-20 text-bold text-italic">Import Menu Items</div>
+                <div class="col-md-6">
+                    <div class="form-group text-left">
+                        <label class="control-label">Menu Import File:</label>
+                        <input ui-jq="filestyle" type="file" class="filestyle" ui-options="{
+                        buttonText: 'Select CSV',
+                        buttonName: 'btn-primary btn-rounded',
+                        iconName: 'fa fa-file'
+                      }" id="fileInput">
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-rounded btn-primary" ng-click="importCsv()">Import</button>
+        <button class="btn btn-rounded btn-lightred" ng-click="cancel()">Cancel</button>
+    </div>
+</div>

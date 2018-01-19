@@ -1,0 +1,317 @@
+﻿html, body {
+   background: #e7eaeb; 
+}
+
+.flex {
+    display: -webkit-flex;
+}
+
+.help-tag-container {
+    position: relative; left: 0; top: 0;
+}
+
+.tile-body {
+    overflow-x: hidden;
+
+}
+.editable-table > tbody > tr > td {
+  padding: 4px
+}
+.editable-text {
+  padding-left: 4px;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  display: inline-block;
+}
+.editable-table tbody > tr > td > .controls {
+  /*width: 100%*/
+}
+.editable-input {
+  padding-left: 3px;
+}
+.editable-input.input-sm {
+  height: 30px;
+  font-size: 14px;
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+.wizard-step {
+    margin-right: -10px !important;
+}
+
+table.ng-table > thead {
+    /*background-color: #616f77;*/
+    background-color: rgba(65,188,158, 0.90);
+}
+
+div.ng-table-header {
+    color: white;
+}
+
+.ngTable th, td {
+    padding-right: 2px !important;
+    padding-left: 2px !important;
+}
+
+div.controls > select {
+    width: 90%;
+}
+
+.ng-table-counts {
+    margin-top: 35px;
+}
+
+.tile-body > table.table-bordered > tbody > tr > td {
+    /*border-color: #dbe0e2;*/
+    border-color: rgba(65,188,158, 0.45);
+}
+
+.form-control-static {
+    border: 1px solid #ddd;
+    width: auto;
+}
+
+.triangle {
+    width: 0;
+    height: 0;
+    border-bottom: 10px solid #d9534f;
+    border-left: 10px solid white;
+}
+
+/** Image Uploader **/
+.my-drop-zone { border: dotted 3px lightgray; width: 260px; height: 260px; }
+.nv-file-over { border: dotted 3px red; width: 260px; height: 260px; } /* Default class applied to drop zones on over */
+.another-file-over-class { border: dotted 3px green; width: 260px; height: 260px; }
+.menu-image-display { border: dotted 3px lightgray; width: 150px; height: 150px; }
+
+/** Promo Uploader **/
+.my-promo-drop-zone { border: dotted 3px lightgray; width: 325px; height: 486px; }
+.another-promo-file-over-class { border: dotted 3px green; width: 325px; height: 486px; }
+
+/** New user wizard arrows **/
+@keyframes         ng-blink {
+    0% { opacity:1; } 75% { opacity:1; } 76% { opacity:0; } 100% { opacity:0; }}
+@-webkit-keyframes ng-blink {
+    0% { opacity:1; } 75% { opacity:1; } 76% { opacity:0; } 100% { opacity:0; }}
+@-moz-keyframes    ng-blink {
+    0% { opacity:1; } 75% { opacity:1; } 76% { opacity:0; } 100% { opacity:0; }}
+@-ms-keyframes     ng-blink {
+    0% { opacity:1; } 75% { opacity:1; } 76% { opacity:0; } 100% { opacity:0; }}
+@-o-keyframes      ng-blink {
+    0% { opacity:1; } 75% { opacity:1; } 76% { opacity:0; } 100% { opacity:0; }}
+
+div.ng-blink span, div.ng-blink td, div.ng-blink th, div.ng-blink p, div.ng-blink div, div[ng-app] blink, div[ng-app] blink *{
+    text-decoration:   inherit;
+    animation:         ng-blink 0.75s ease-in infinite alternate;
+    -webkit-animation: ng-blink 0.75s ease-in infinite alternate;
+    -moz-animation:    ng-blink 0.75s ease-in infinite alternate;
+    -ms-animation:     ng-blink 0.75s ease-in infinite alternate;
+    -o-animation:      ng-blink 0.75s ease-in infinite alternate;
+}
+
+.hidden {
+    display: none;
+}
+
+.leftIndicatorArrow:before {
+    color:#e05d6f;
+    border-right: 20px solid;
+    border-top: 18px solid transparent;
+    border-bottom: 17px solid transparent;
+    content: '';
+    position: absolute;
+    left: -20px;
+}
+.leftIndicatorArrow {  
+    background-color: #e05d6f;
+    margin-left: 25px;
+    padding-right: 10px;
+    height: 35px;
+    top: -10px;
+    width: 150px;
+    position: relative;
+}
+
+.rightIndicatorArrow:after {
+  color:#e05d6f;
+  border-left: 20px solid;
+  border-top: 18px solid transparent;
+  border-bottom: 17px solid transparent;
+  display: inline-block;
+  content: '';
+  position: absolute;
+  right: -20px;
+
+}
+.rightIndicatorArrow {  
+    background-color: #e05d6f;
+  /*width: 150px; */
+  height: 35px;
+  display: inline-block;
+  position: relative;
+}
+
+.upIndicatorArrow:before {
+    width: 0; 
+    height: 0; 
+    padding-top: 10px;
+    border-left: 20px solid transparent;
+    border-right: 20px solid transparent;
+    border-bottom: 20px solid #e05d6f;
+}
+
+.upIndicatorArrow {  
+    text-align: center;
+	background: #e05d6f;
+	position: absolute;
+	width: 150px;
+	left: -65px;
+    top: 43px;
+	padding: 0 15px 0 5px;
+}
+
+.upIndicatorArrow:before, upIndicatorArrow:after {
+    content: "";
+	position: absolute;
+	top: -53%;
+	left: 33%;
+	margin-left: -10px;
+}
+
+.downIndicatorArrow:before {
+    width: 0; 
+    height: 0; 
+    padding-bottom: 10px;
+    border-left: 20px solid transparent;
+    border-right: 20px solid transparent;
+    border-top: 20px solid #e05d6f;
+}
+
+.downIndicatorArrow {  
+    text-align: center;
+	background: #e05d6f;
+	position: absolute;
+	width: 150px;
+	left: -65px;
+	padding: 0 15px 0 5px;
+	top: -50px;	
+}
+
+.downIndicatorArrow:before, downIndicatorArrow:after {
+    content: "";
+	position: absolute;
+	top: 80%;
+	left: 33%;
+	margin-left: -10px;
+}
+
+.blocktext{
+  color:white;
+  font-weight:bold;
+  padding-left:10px;
+  font-family:Arial;
+  font-size: 11px;
+  line-height: 35px;
+  vertical-align: middle;
+}
+
+
+/** Overrides **/
+.table > tbody > tr > td {
+    font-size: 16px;
+    line-height: 2.75;
+}
+
+td > span.editable-text {
+    text-overflow: ellipsis;
+    -ms-text-overflow: ellipsis;
+    -o-text-overflow: ellipsis;
+    /* Required for text-overflow to do anything */
+    /*white-space:nowrap;*/
+    overflow: hidden;
+}
+
+.as-sortable-placeholder {
+    background-color: #dbdbdb !important;
+}
+
+tr.as-sortable-item {
+    display: table-row;
+    margin: 2px;
+}
+
+select.editable-input-form-control {
+    color: black;
+}
+
+.toast-top-full-width {
+  top: 0;
+  right: 0;
+  left: 75px;
+  margin-right: auto;
+  margin-left: auto;
+  width: 85%;
+  margin-top: 50px;
+  font-size: x-large;
+}
+
+div.toast-top-full-width > div.toast > div {
+    margin-left: 50px;
+}
+
+.toast-message {
+  word-wrap: break-word;
+  font-size: large !important;
+}
+
+.signupScreen {
+    position: absolute;
+}
+.loginScreen {
+    position: absolute;
+}
+
+/*Guestcards*/
+#guestCardFeed.carousel {
+    position: initial;
+}
+#guestCardFeed .carousel-indicators {
+    margin-bottom: -10px;
+}
+#guestCardFeed .carousel-inner {
+    position: initial;
+}
+#guestCardFeed .carousel-caption {
+    position: initial;
+}
+
+.search-highlight {
+    background-color: rgba(255, 216, 0, 0.6);
+    color: white;
+    font-weight: bold;
+}
+
+.dragHandle {
+    cursor: move;
+}
+
+.section-tab {
+    margin-bottom: 10px;
+}
+
+#qrcode {
+  width:160px;
+  height:160px;
+  margin-top:15px;
+}
+
+.menu-item-img-crop {
+    height:200px; 
+    width: 400px;
+}
+
+.menu-item-img-back img {
+    height:200px; 
+    width: 300px;
+}

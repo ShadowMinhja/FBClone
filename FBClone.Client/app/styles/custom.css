@@ -1,0 +1,62 @@
+﻿.editable-table > tbody > tr > td {
+  padding: 4px
+}
+.editable-text {
+  padding-left: 4px;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  display: inline-block;
+}
+.editable-table tbody > tr > td > .controls {
+  /*width: 100%*/
+}
+.editable-input {
+  padding-left: 3px;
+}
+.editable-input.input-sm {
+  height: 30px;
+  font-size: 14px;
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+
+thead {
+    /*background-color: #616f77;*/
+    background-color: rgba(65,188,158, 0.90);
+}
+
+div.ng-table-header {
+    color: white;
+}
+
+.tile-body > table.table-bordered > tbody > tr > td {
+    /*border-color: #dbe0e2;*/
+    border-color: rgba(65,188,158, 0.45);
+}
+
+.form-control-static {
+    border: 1px solid #ddd;
+    width: auto;
+}
+
+.triangle {
+    width: 0;
+    height: 0;
+    border-bottom: 10px solid #d9534f;
+    border-left: 10px solid white;
+}
+
+/** Overrides **/
+.as-sortable-placeholder {
+    background-color: #dbdbdb !important;
+}
+
+tr.as-sortable-item {
+    display: table-row;
+    margin: 2px;
+}
+
+select.editable-input-form-control {
+    color: black;
+}

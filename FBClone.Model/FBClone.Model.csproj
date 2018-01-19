@@ -1,0 +1,362 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{9E01639D-E9DC-4745-A282-8AF40CD8C147}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>FBClone.Model</RootNamespace>
+    <AssemblyName>FBClone.Model</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Test|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\Test\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AutoMapper, Version=4.1.1.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutoMapper.4.1.1\lib\net45\AutoMapper.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="MongoDB.Bson, Version=2.2.4.26, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MongoDB.Bson.2.2.4\lib\net45\MongoDB.Bson.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.9.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.Composition" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Answer.cs">
+      <DependentUpon>FBClone.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AnswerDraft.cs">
+      <DependentUpon>FBClone.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AnswerDraftMap.cs">
+      <DependentUpon>FBClone.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AnswerMap.cs">
+      <DependentUpon>FBClone.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ApplicationSetting.cs">
+      <DependentUpon>FBClone.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ApplicationSettingMap.cs">
+      <DependentUpon>FBClone.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AspNetRole.cs">
+      <DependentUpon>FBClone.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AspNetRoleMap.cs">
+      <DependentUpon>FBClone.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AspNetUser.cs">
+      <DependentUpon>FBClone.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AspNetUserClaim.cs">
+      <DependentUpon>FBClone.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AspNetUserClaimMap.cs">
+      <DependentUpon>FBClone.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AspNetUserLogin.cs">
+      <DependentUpon>FBClone.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AspNetUserLoginMap.cs">
+      <DependentUpon>FBClone.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AspNetUserMap.cs">
+      <DependentUpon>FBClone.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AspNetUserRole.cs">
+      <DependentUpon>FBClone.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AspNetUserRoleMap.cs">
+      <DependentUpon>FBClone.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Category.cs">
+      <DependentUpon>FBClone.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CategoryMap.cs">
+      <DependentUpon>FBClone.tt</DependentUpon>
+    </Compile>
+    <Compile Include="City.cs">
+      <DependentUpon>FBClone.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CityMap.cs">
+      <DependentUpon>FBClone.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Country.cs">
+      <DependentUpon>FBClone.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CountryMap.cs">
+      <DependentUpon>FBClone.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CreditCard.cs">
+      <DependentUpon>FBClone.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CreditCardMap.cs">
+      <DependentUpon>FBClone.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FakeDbSet.cs">
+      <DependentUpon>FBClone.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FakeFBCloneContext.cs">
+      <DependentUpon>FBClone.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FBClone.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>FBClone.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FBCloneContext.cs">
+      <DependentUpon>FBClone.tt</DependentUpon>
+    </Compile>
+    <Compile Include="HubConnection.cs">
+      <DependentUpon>FBClone.tt</DependentUpon>
+    </Compile>
+    <Compile Include="HubConnectionMap.cs">
+      <DependentUpon>FBClone.tt</DependentUpon>
+    </Compile>
+    <Compile Include="IFBCloneContext.cs">
+      <DependentUpon>FBClone.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Invoice.cs">
+      <DependentUpon>FBClone.tt</DependentUpon>
+    </Compile>
+    <Compile Include="InvoiceMap.cs">
+      <DependentUpon>FBClone.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LineItem.cs">
+      <DependentUpon>FBClone.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LineItemMap.cs">
+      <DependentUpon>FBClone.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Location.cs">
+      <DependentUpon>FBClone.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LocationMap.cs">
+      <DependentUpon>FBClone.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Menu.cs">
+      <DependentUpon>FBClone.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MenuItem.cs">
+      <DependentUpon>FBClone.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MenuItemMap.cs">
+      <DependentUpon>FBClone.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MenuMap.cs">
+      <DependentUpon>FBClone.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MenuQrCode.cs">
+      <DependentUpon>FBClone.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MenuQrCodeMap.cs">
+      <DependentUpon>FBClone.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MenuSection.cs">
+      <DependentUpon>FBClone.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MenuSectionMap.cs">
+      <DependentUpon>FBClone.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Algolia\BiteIndex.cs" />
+    <Compile Include="Models\Algolia\UserIndex.cs" />
+    <Compile Include="Models\Mobile\ExternalLoginMobile.cs" />
+    <Compile Include="Models\Mongo\Actor.cs" />
+    <Compile Include="Models\Mongo\FollowContainer.cs" />
+    <Compile Include="Models\Mongo\SearchResult.cs" />
+    <Compile Include="Models\Mongo\Search.cs" />
+    <Compile Include="Models\Mongo\Bite.cs" />
+    <Compile Include="Models\Metadata\AnswerDraftMetadata.cs" />
+    <Compile Include="Models\Metadata\AnswerMetadata.cs" />
+    <Compile Include="Models\Metadata\ApplicationSettingMetadata.cs" />
+    <Compile Include="Models\Metadata\CategoryMetadata.cs" />
+    <Compile Include="Models\Metadata\AspNetUserMetadata.cs" />
+    <Compile Include="Models\Metadata\MenuQrCodeMetadata.cs" />
+    <Compile Include="Models\Metadata\MenuItemMetadata.cs" />
+    <Compile Include="Models\Metadata\MenuSectionMetadata.cs" />
+    <Compile Include="Models\Metadata\OrderDetailMetadata.cs" />
+    <Compile Include="Models\Metadata\QuestionMetadata.cs" />
+    <Compile Include="Models\Metadata\QuestionResponseMetadata.cs" />
+    <Compile Include="Models\Metadata\MenuMetadata.cs" />
+    <Compile Include="Models\Metadata\QuestionResponseSetMetadata.cs" />
+    <Compile Include="Models\Metadata\StaffMemberMetadata.cs" />
+    <Compile Include="Models\Metadata\StateProvinceMetadata.cs" />
+    <Compile Include="Models\Metadata\LocationMetadata.cs" />
+    <Compile Include="Models\Metadata\SurveyMetadata.cs" />
+    <Compile Include="Order.cs">
+      <DependentUpon>FBClone.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OrderDetail.cs">
+      <DependentUpon>FBClone.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OrderDetailMap.cs">
+      <DependentUpon>FBClone.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OrderMap.cs">
+      <DependentUpon>FBClone.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Question.cs">
+      <DependentUpon>FBClone.tt</DependentUpon>
+    </Compile>
+    <Compile Include="QuestionDraft.cs">
+      <DependentUpon>FBClone.tt</DependentUpon>
+    </Compile>
+    <Compile Include="QuestionDraftMap.cs">
+      <DependentUpon>FBClone.tt</DependentUpon>
+    </Compile>
+    <Compile Include="QuestionMap.cs">
+      <DependentUpon>FBClone.tt</DependentUpon>
+    </Compile>
+    <Compile Include="QuestionResponse.cs">
+      <DependentUpon>FBClone.tt</DependentUpon>
+    </Compile>
+    <Compile Include="QuestionResponseMap.cs">
+      <DependentUpon>FBClone.tt</DependentUpon>
+    </Compile>
+    <Compile Include="QuestionResponseSet.cs">
+      <DependentUpon>FBClone.tt</DependentUpon>
+    </Compile>
+    <Compile Include="QuestionResponseSetMap.cs">
+      <DependentUpon>FBClone.tt</DependentUpon>
+    </Compile>
+    <Compile Include="RspQuestionResponseSetAvgScoreByStaffMemberReturnModel.cs">
+      <DependentUpon>FBClone.tt</DependentUpon>
+    </Compile>
+    <Compile Include="RspQuestionResponseSetAvgScoreReturnModel.cs">
+      <DependentUpon>FBClone.tt</DependentUpon>
+    </Compile>
+    <Compile Include="RspQuestionResponseSetPositivitySpreadReturnModel.cs">
+      <DependentUpon>FBClone.tt</DependentUpon>
+    </Compile>
+    <Compile Include="RspQuestionTextAvgScoreReturnModel.cs">
+      <DependentUpon>FBClone.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SpGetAnswersByQuestionIdReturnModel.cs">
+      <DependentUpon>FBClone.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SpGetLocationReviewsReturnModel.cs">
+      <DependentUpon>FBClone.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SpGetMenuItemReviewsReturnModel.cs">
+      <DependentUpon>FBClone.tt</DependentUpon>
+    </Compile>
+    <Compile Include="StaffMember.cs">
+      <DependentUpon>FBClone.tt</DependentUpon>
+    </Compile>
+    <Compile Include="StaffMemberMap.cs">
+      <DependentUpon>FBClone.tt</DependentUpon>
+    </Compile>
+    <Compile Include="StateProvince.cs">
+      <DependentUpon>FBClone.tt</DependentUpon>
+    </Compile>
+    <Compile Include="StateProvinceMap.cs">
+      <DependentUpon>FBClone.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Subscription.cs">
+      <DependentUpon>FBClone.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SubscriptionMap.cs">
+      <DependentUpon>FBClone.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SubscriptionPlan.cs">
+      <DependentUpon>FBClone.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SubscriptionPlanMap.cs">
+      <DependentUpon>FBClone.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SubscriptionPlanProperty.cs">
+      <DependentUpon>FBClone.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SubscriptionPlanPropertyMap.cs">
+      <DependentUpon>FBClone.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Survey.cs">
+      <DependentUpon>FBClone.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SurveyMap.cs">
+      <DependentUpon>FBClone.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModels\SurveyCategoryScoresViewModel.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="EF.Reverse.POCO.Core.ttinclude" />
+    <None Include="EF.Reverse.POCO.ttinclude" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="FBClone.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>FBClone.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,157 @@
+﻿<script type="text/ng-template" id="firstTimeStaffEntry.html">
+    <div class="modal-header">
+        <h3 class="modal-title custom-font">Step 1: Add Staff</h3>
+    </div>
+
+    <div class="modal-body">
+        This step will add staff to associate with surveys your customers take.  Simply press 'Add +' and fill out the fields.<br/>
+        Then press the <i class="fa fa-check"></i> to save.
+    </div>
+
+    <div class="modal-footer">
+        <button class="btn btn-rounded btn-greensea btn-ef btn-ef-3 btn-ef-3c" ng-click="cancel()"> OK!</button>        
+    </div>
+</script>
+
+<div class="page page-grid"  ng-controller="StaffCtrl as staffGrid">
+
+    <!-- page header -->
+    <div class="pageheader">
+
+        <h2>{{page.title}} <span>{{page.subtitle}}</span></h2>
+
+        <div class="page-bar">
+
+            <ul class="page-breadcrumb">
+                <li>
+                    <a ui-sref="app.admin"><i class="fa fa-home"></i> {{main.title}}</a>
+                </li>
+                <li>
+                    <a ui-sref="app.admin.staff">{{page.title}}</a>
+                </li>
+            </ul>
+
+        </div>
+
+    </div>
+    <!-- /page header -->
+    <!-- page content -->
+    <div class="pagecontent">
+
+
+        <!-- row -->
+        <div class="row">
+            <!-- col -->
+            <div class="col-md-12">
+
+
+
+                <!-- tile -->
+                <section class="tile" fullscreen="isFullscreen01">
+
+                    <!-- tile header -->
+                    <div class="tile-header  bg-greensea dvd dvd-btm">
+                        <h1 class="custom-font"><strong>Your</strong>Staff</h1>
+                        <ul class="controls">
+                            <li class="dropdown" dropdown on-toggle="toggled(open)">
+
+                                <a href dropdown-toggle class="dropdown-toggle settings"><i class="fa fa-cog"></i></a>
+
+                                <ul class="dropdown-menu pull-right with-arrow animated littleFadeInUp">
+                                    <li>
+                                        <a href tile-control-toggle>
+                                            <span class="minimize"><fa name="angle-down"></fa>&nbsp;&nbsp;&nbsp;Minimize</span>
+                                            <span class="expand"><fa name="angle-up"></fa>&nbsp;&nbsp;&nbsp;Expand</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href tile-control-refresh ng-click="ajaxFaker()">
+                                            <fa name="refresh"></fa> Refresh
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href tile-control-fullscreen ng-click="isFullscreen01 = !isFullscreen01">
+                                            <fa name="expand"></fa> Fullscreen
+                                        </a>
+                                    </li>
+
+                                </ul>
+
+                            </li>
+                            <li class="remove"><a href tile-control-close><i class="fa fa-times"></i></a></li>
+                        </ul>
+                    </div>
+                    <!-- /tile header -->
+                    <!-- tile body -->
+                    <div class="tile-body">
+                        <div>
+                            <button class="btn btn-rounded btn-primary pull-left" ng-click="staffGrid.add()">Add <i class="fa fa-plus"></i></button>
+                            <div class="pull-left leftIndicatorArrow"><span class="blocktext">Click to Add Staff</span></div>
+                        </div>
+                        <button ng-click="staffGrid.tableParams.sorting({})" class="btn btn-rounded btn-default pull-right" ng-if="showFilter()">Clear sorting</button>
+                        <button ng-click="staffGrid.tableParams.filter({})" class="btn btn-rounded btn-default pull-right" ng-if="showFilter()">Clear filter</button>
+
+                        <table ng-table="staffGrid.tableParams" 
+                               show-filter="showFilter()" class="table table-bordered table-striped ngTable" 
+                               ng-form="staffGrid.tableForm" disable-filter="staffGrid.isAdding" row-tracked-table="staffGrid.tableTracker">
+                            <tr ng-repeat="row in $data" ng-form="rowForm" row-tracked-table-row="row">
+                                <td title="'Name'" filter="{name: 'text'}" sortable="'name'" ng-switch="row.isEditing" ng-class="name.$dirty ? 'bg-warning' : ''" ng-form="name" row-tracked-table-cell class="col-md-4">
+                                    <span ng-switch-default class="editable-text">{{row.name}}</span>
+                                    <div class="controls" ng-class="name.$invalid && name.$dirty ? 'has-error' : ''" ng-switch-when="true">
+                                        <div class="help-tag-container">
+                                            <input type="text" name="name" ng-model="row.name" class="editable-input form-control input-sm help-tag-container" required  placeholder="Add Name" />
+                                            <div class="upIndicatorArrow ml-40" ng-if="showHelp() && rowForm.$pristine"><span class="blocktext">Enter Details</span></div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td title="'Gender'" sortable="'gender'" filter="{ 'gender': 'text' }" ng-switch="row.isEditing" ng-class="name.$dirty ? 'bg-warning' : ''" ng-form="name" row-tracked-table-cell class="col-md-2">
+                                    <span ng-switch-default class="editable-input-form-control">{{row.gender}}</span>
+                                    <div class="controls" ng-class="name.$invalid && name.$dirty ? 'has-error' : ''" ng-switch-when="true">
+                                        <select name="gender" ng-model="row.gender" class="editable-input-form-control input-sm" required>
+                                            <option value="" selected>Select</option>
+                                            <option value="Male">Male</option>
+                                            <option value="Female">Female</option>
+                                        </select>
+                                    </div>
+                                </td>
+                                <td title="'Passcode'" ng-switch="row.isEditing" ng-class="name.$dirty ? 'bg-warning' : ''" ng-form="name" row-tracked-table-cell class="col-md-4">
+                                    <span ng-switch-default class="editable-text">{{row.passcode}}</span>
+                                    <div class="controls" ng-class="name.$invalid && name.$dirty ? 'has-error' : ''" ng-switch-when="true">
+                                        <input type="text" name="passcode" ng-model="row.passcode" class="editable-input form-control input-sm" placeholder="Enter Passcode" />
+                                    </div>
+                                </td>
+                                <td class="col-md-2">
+                                    <button class="btn btn-rounded btn-primary btn-sm" ng-click="staffGrid.save(row, rowForm)" ng-if="row.isEditing" ng-disabled="rowForm.$pristine || rowForm.$invalid">
+                                        <div class="help-tag-container">
+                                            <span class="glyphicon glyphicon-ok help-tag-container"></span>
+                                            <div class="upIndicatorArrow" ng-if="showHelp() && !rowForm.$pristine"><span class="blocktext">Press <span class="glyphicon glyphicon-ok"></span> to save.</span></div>
+                                        </div>
+                                    </button>
+                                    <button class="btn btn-rounded btn-default btn-sm" ng-click="staffGrid.cancel(row, rowForm)" ng-if="row.isEditing"><span class="glyphicon glyphicon-remove"></span></button>
+                                    <button class="btn btn-rounded btn-default btn-sm" ng-click="row.isEditing = true" ng-if="!row.isEditing"><span class="glyphicon glyphicon-pencil"></span></button>
+                                    <button class="btn btn-rounded btn-danger btn-sm" ng-click="staffGrid.del(row)" ng-if="!row.isEditing"><span class="glyphicon glyphicon-trash"></span></button>
+                                </td>
+
+                            </tr>
+                        </table>
+                    </div>
+                    <!-- /tile body -->
+
+                </section>
+                <!-- /tile -->
+
+            </div>
+            <!-- /col -->
+        </div>
+        <!-- /row -->
+
+
+
+
+    </div>
+    <!-- /page content -->
+
+
+
+
+</div>

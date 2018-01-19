@@ -1,0 +1,2 @@
+﻿*************
+NOTE: When adding a new root level controller, remember to add an exclusion to the web config for usernames that are not valid. Otherwise a user could try to use the same user name as the route, and it would never resolve.

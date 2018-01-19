@@ -1,0 +1,43 @@
+﻿<div>
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+        <h4 class="modal-title" id="myModalLabel" ng-bind="modalTitle"></h4>
+    </div>
+
+    <div class="modal-body">
+        <div class="row">
+            <div class="col-md-12">
+                <form name="modalForm" sf-schema="schema" sf-form="form" sf-model="entity"></form>
+            </div>
+        </div>
+        <div class="row">
+            <div class="pl-20 text-bold text-italic">Set Menu Item Image</div>
+            <div class="col-md-4">
+                <div class="form-group text-left">
+                    <label class="control-label">Image</label>
+                    <input ui-jq="filestyle" type="file" class="filestyle" ui-options="{
+                        buttonText: 'Select image',
+                        buttonName: 'btn-primary btn-rounded',
+                        iconName: 'fa fa-camera'
+                      }" id="fileInput">
+                    <div class="menu-image-display" back-img="{{imageUrl}}" ng-if="showBackImage()"></div>
+                    <div class="p-10 bg-white b-a b-solid inline-block menu-item-img-back" ng-if="!showBackImage()">
+                        <img ng-src="{{myCroppedImage}}" />
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-8">
+                <div class="p-10 bg-white b-a b-solid pull-right menu-item-img-crop">
+                    <img-crop image="myImage"
+                              result-image="myCroppedImage"
+                              result-image-size="768"
+                              area-type="rectangle"></img-crop>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-rounded btn-primary" ng-click="save()">Save</button>
+        <button class="btn btn-rounded btn-lightred" ng-click="cancel()">Cancel</button>
+    </div>
+</div>

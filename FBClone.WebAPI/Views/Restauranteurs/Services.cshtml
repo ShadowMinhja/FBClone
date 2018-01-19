@@ -1,0 +1,305 @@
+﻿@{
+    Layout = null;
+    ViewBag.Title = "fbClone | Services";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+
+
+
+
+
+    <!-- ============================================
+    ================= Stylesheets ===================
+    ============================================= -->
+
+    <link href="http://fonts.googleapis.com/css?family=Lato:300,400,400italic,700,700italic|Raleway:300,400,500,600,700" rel="stylesheet" type="text/css" />
+
+    <!-- ============================================
+    ============= Main App Stylesheet ===============
+    ============================================= -->
+
+    <link rel="stylesheet" href="/corporate/assets/css/bundle.min.css" type="text/css" />
+
+    <!-- jQuery -->
+    <script type="text/javascript" src="/corporate/assets/js/vendor/jquery-1.11.2.min.js"></script>
+
+
+
+
+
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <!--[if lt IE 9]>
+        <script src="http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"></script>
+    <![endif]-->
+    <!-- ============================================
+    ================== Page Title ===================
+    ============================================= -->
+
+    <title>@ViewBag.Title</title>
+
+
+
+
+
+
+
+</head>
+
+<body>
+
+
+
+
+
+
+
+
+    <!-- ============================================
+    ================= Page Wrapper ==================
+    ============================================= -->
+
+    <div id="wrapper" class="clearfix animsition">
+
+
+
+
+
+
+
+        <!-- ================================================
+        ================= Search Container ==================
+        ================================================= -->
+
+        <div id="search-container" class="search-box-wrapper">
+            <div class="container">
+                <i class="fa fa-search"></i>
+                <div class="search-box">
+                    <form action="http://example.com/" class="search-form" role="search">
+                        <input type="search" name="s" value="" title="Press Enter to submit your search" placeholder="Search…" class="search-field">
+                        <input type="submit" value="Search" class="search-submit">
+                    </form>
+                </div>
+            </div>
+        </div><!--/ #search-container -->
+        <!-- ============================================
+        ==================== Header =====================
+        ============================================= -->
+
+        <header id="header" class="transparent-header dark">
+            <!-- class .sticky-mobile makes header sticky on small devices -->
+
+            <div id="header-wrap">
+
+                <div class="container clearfix">
+
+                    <div id="main-navbar-toggle"><i class="fa fa-bars"></i></div>
+
+
+
+
+
+
+
+                    <!-- ============================================
+                    =================== Branding ====================
+                    ============================================= -->
+
+                    @Html.Partial("_BrandingPartial")
+                    <!-- ============================================
+                    ================= Main Navbar ===================
+                    ============================================= -->
+
+                    @Html.Partial("_MenuPartial")
+
+                </div>
+
+            </div>
+
+        </header><!-- #header end -->
+        <!-- ============================================
+        =================== Breadcrumbs =================
+        ============================================= -->
+        <section id="breadcrumbs">
+
+            <div class="container clearfix">
+                <h1>Services</h1>
+                <span>What's cookin' in the house.</span>
+                <ol class="breadcrumb">
+                    <li><a href="/">Home</a></li>
+                    <li><a href="#">Product</a></li>
+                    <li class="active">Services</li>
+                </ol>
+            </div>
+
+        </section><!-- #breadcrumbs end -->
+        <!-- ============================================
+        =================== Content =====================
+        ============================================= -->
+
+        <section id="content">
+
+            <div class="content-wrap">
+
+
+
+
+
+                <!-- ============ Features ============ -->
+                <div class="container clearfix">
+
+
+
+                    <div class="row">
+
+
+                        <div class="col-sm-4">
+                            <div class="feature-box icon-block" data-animate="fadeIn" data-delay="400">
+                                <a href="#"><i class="fa fa-mobile"></i></a>
+                                <div class="heading">
+                                    <h3>Mobile App</h3>
+                                </div>
+                                <p>Use our app for collecting customer feedback at the time of closing a customer's tab. Our intuitive, responsive app runs great on most popular hardware.  Download our app on Google Play and Apple Store.</p>
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="feature-box icon-block" data-animate="fadeIn" data-delay="600">
+                                <a href="#"><i class="fa fa-line-chart"></i></a>
+                                <div class="heading">
+                                    <h3>Analytics Dashboard</h3>
+                                </div>
+                                <p>A centralized portal for viewing the aggregated customer responses.  Manage and edit staff, questionaires, and view analytics.  Menu management coming soon.</p>
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="feature-box icon-block" data-animate="fadeIn">
+                                <a href="#"><i class="fa fa-support"></i></a>
+                                <div class="heading">
+                                    <h3>Device Supplier</h3>
+                                </div>
+                                <p>Don't have your own device? No problem. We can lend you ours, along with our custom, professionally designed tablet bi-fold for holding checks. See pricing for more details. Servicing Houston, TX area only.  More areas coming soon.</p>
+                            </div>
+                        </div>
+
+                    </div>
+
+
+
+
+
+
+                </div><!-- /features -->
+                <!-- ============ special offer section ============ -->
+                <div class="section bg-light mb-0">
+                    <div class="container clearfix">
+
+
+                        <div class="heading-block center mb-60">
+                            <h2 class="text-uppercase">Introductory Offer</h2>
+                            <p class="lead">Sign-up now and our dashboard is free to try for 60 days! Hurry, offer won't last.</p>
+                        </div>
+
+
+
+                        <div class="row">
+
+                            <div class="col-md-5">
+                                <img src="/corporate/assets/images/sections/macbook.png" alt="" class="img-responsive" data-animate="fadeInLeft">
+                            </div>
+
+                            <div class="col-md-7">
+
+                                <p>
+                                    The dashboard is the key component which provides insight to the restauranteur.  
+                                </p>
+
+                                <p>
+                                    It allows him/her to manage staff, questionnaires, and menu items (coming soon).  With this information, customer feedback can be associated to your business' specific attributes.
+                                    This valuable insight takes the guesswork out of why customers respond the way they do.
+                                </p>
+
+                                <a href="#" class="myBtn myBtn-3d myBtn-lg m-0 mt-40">Sign Up for Free Offer</a>
+
+                            </div>
+
+                        </div>
+
+
+
+                    </div>
+                </div><!-- /special offer section -->
+                
+                <!-- ============ support section ============ -->
+                <div class="section m-0 p-0">
+                    <div class="container clearfix">
+
+
+                        <div class="heading-block mb-60">
+                            <h2 class="text-uppercase">We'll set you up!</h2>
+                            <p class="lead">(Only in Houston, TX area. More areas coming soon)</p>
+                        </div>
+
+
+
+                        <div class="row">
+
+
+                            <div class="col-md-4">
+
+                                <img src="/corporate/assets/images/sections/folio.jpg" alt="" class="img-responsive" data-animate="fadeInLeft">
+
+                            </div>
+
+
+                            <div class="col-md-8">
+
+                                <p>Our app is free to download and use on your own device!  The fbClone app runs on Android or iOS.  Once you sign-up and login, questionnaires you configure are presented to customers at the time of billing.  However, if you need professional help to set up your restaurant to use the app we can help.</p>
+
+                                <p>
+                                    Our services:<br/>
+                                    <ul>
+                                        <li>Tablet Provider</li>
+                                        <li>Folio Case Provider</li>
+                                        <li>Support Services</li>
+                                    </ul>
+                                    - Contact us for more details
+                                </p>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div><!-- /support section -->
+
+
+
+
+
+
+            </div>
+        </section><!-- #content end -->
+        <!-- ============================================
+        ==================== Footer =====================
+        ============================================= -->
+
+        <footer id="footer">
+            @Html.Partial("_FooterPartial")
+        </footer><!-- #footer end -->
+
+    </div><!-- #wrapper end -->
+    <!-- ============================================
+    =================== Go to Top ===================
+    ============================================= -->
+
+    <div id="gotoTop" class="fa fa-angle-up hidden-md"></div>
+
+    <script type="text/javascript" src="/corporate/assets/js/bundle.min.js"></script>
+
+
+</body>
+</html>

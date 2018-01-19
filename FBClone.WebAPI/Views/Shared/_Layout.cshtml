@@ -1,0 +1,119 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <!-- ============================================
+    ================= Stylesheets ===================
+    ============================================= -->
+
+    <link href="http://fonts.googleapis.com/css?family=Lato:300,400,400italic,700,700italic|Raleway:300,400,500,600,700" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="/corporate/assets/css/bootstrap.css" type="text/css" />
+    <link rel="stylesheet" href="/corporate/assets/css/font-awesome.min.css" type="text/css" />
+    <link rel="stylesheet" href="/corporate/assets/css/animate.css" type="text/css" />
+    <link rel="stylesheet" href="/corporate/assets/js/vendor/flexslider/flexslider.css" type="text/css" />
+    <link rel="stylesheet" href="/corporate/assets/js/vendor/magnific/magnific-popup.css" type="text/css" />
+    <link rel="stylesheet" href="/corporate/assets/js/vendor/owl/owl.carousel.css" type="text/css" />
+    <link rel="stylesheet" href="/corporate/assets/js/vendor/owl/owl.theme.css" type="text/css" />
+    <link rel="stylesheet" href="/corporate/assets/js/vendor/morrisjs/morris.css" type="text/css" />
+
+    <!-- SLIDER REVOLUTION 4.x CSS SETTINGS -->
+    <link rel="stylesheet" type="text/css" href="/corporate/assets/js/vendor/rs-plugin/css/settings.css" media="screen" />
+
+    <!-- animsition CSS -->
+    <link rel="stylesheet" href="/corporate/assets/js/vendor/animsition/css/animsition.min.css">
+
+
+
+    <!-- jQuery -->
+    <script type="text/javascript" src="/corporate/assets/js/vendor/jquery-1.11.2.min.js"></script>
+
+
+
+
+
+
+    <!-- ============================================
+    ============= Main App Stylesheet ===============
+    ============================================= -->
+
+    <link rel="stylesheet" href="/corporate/assets/css/style.css" type="text/css" />
+
+
+
+
+
+
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <!--[if lt IE 9]>
+        <script src="http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"></script>
+    <![endif]-->
+    <!-- ============================================
+    ================== Page Title ===================
+    ============================================= -->
+
+    <title>@ViewBag.Title</title>
+
+</head>
+<body>
+    <!-- ============================================
+    ================= Page Wrapper ==================
+    ============================================= -->
+
+    <div id="wrapper" class="clearfix">
+
+        <!-- ============================================
+        ==================== Header =====================
+        ============================================= -->
+
+        <header id="header" class="transparent-header light">
+            <!-- class .sticky-mobile makes header sticky on small devices -->
+
+            <div id="header-wrap">
+
+                <div class="container clearfix bg-slategray">
+
+                    <div id="main-navbar-toggle"><i class="fa fa-bars"></i></div>
+
+
+
+
+
+
+
+                    <!-- ============================================
+                    =================== Branding ====================
+                    ============================================= -->
+
+                    @Html.Partial("_BrandingPartial")
+                    <!-- ============================================
+                    ================= Main Navbar ===================
+                    ============================================= -->
+
+                    @Html.Partial("_MenuPartial")
+
+                </div>
+
+            </div>
+
+        </header><!-- #header end -->
+        <!-- ============================================
+        =================== Content =====================
+        ============================================= -->
+
+        <section id="content">
+
+            <div class="content-wrap">
+                <!-- ============ Features ============ -->
+                <div class="container clearfix">
+                    <div class="center-block less-width clearfix  bg-tr-white">
+                        @RenderBody()
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        @RenderSection("scripts", required: false)
+</body>
+</html>

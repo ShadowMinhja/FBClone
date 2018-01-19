@@ -1,0 +1,130 @@
+<html>
+<head>
+
+<style>
+    @font-face {
+        font-family: 'Myriad Pro';
+        src: url('/assets/fonts/MyriadPro-Regular.otf');
+    }
+
+    body{
+        background-color: #fff;
+        font-family: "Myriad Pro", Helvetica, sans-serif;
+    }
+
+    .container-fluid {
+        padding-right: 15px;
+        padding-left: 15px;
+        margin-right: auto;
+        margin-left: auto;
+        box-sizing: border-box;
+    }
+
+    .row {
+        margin-right: auto;
+        margin-left: auto;
+        box-sizing: border-box;
+    }
+
+    .container-fluid:after, .container-fluid:before, .row:after, .row:before {
+        display: table;
+        content: " ";
+    }
+    
+    .col-md-2, .col-md-8, .col-md-12 {        
+        position: relative;
+        min-height: 1px;
+        padding-right: 15px;
+        padding-left: 15px;
+        box-sizing: border-box;
+        display: inline-block;
+    }
+    .col-md-2 {
+        width: 16.66666667%;
+    }
+
+    .col-md-8 {
+        width: 66.66666667%;
+    }
+
+    .col-md-12 {
+        width: 100%;
+    }
+
+    .text-center {
+        text-align: center;
+    }
+
+    img {
+        margin: auto;
+        display: block;
+    }
+
+    .confirm-button {
+        border-radius: 90px;
+        background-color: #F5B11A;
+        color: #fff;
+        margin: 27px auto 0;
+        width: 270px;
+        padding: 10px 16px;
+        text-decoration: none;
+        display: block;
+        text-align: center;
+    }
+
+    .fbClone-logo {
+        padding: 5px;
+        margin-top: 10px;
+    }
+
+    .fooddrink-picture {
+        width: 80%;
+        margin-top: 12px;
+        height: auto;
+    }
+
+    .confirm-text {
+        margin: 23px auto 0;
+        text-align: center;
+    }
+
+    .question-text{
+        background-color: #a0decf;
+        text-align: center;
+        border-style: solid;
+        margin-top: 32px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+</style>
+
+</head>
+<body>
+    <div class="container-fluid">
+	    <div class="row">
+        <div class="col-md-12">
+			<img alt="Bootstrap Image Preview" src="https://fbClone.io/assets/images/fbCloneLogo.png" class="img-rounded fbClone-logo" height ="68px" width="60px"/>          
+        </div>
+	    </div>
+	    <div class="row">
+		    <div class="col-md-12 img-container">
+			       <img alt="Bootstrap Image Preview" src="https://fbClone.io/assets/images/food_drink.jpg" class= "fooddrink-picture" height ="200px" width="400" />
+			        <h4 class="text-center confirm-text">
+				            Hi {personName}, confirm your email address to start discovering and sharing your love of food with friends.
+			        </h4> 
+                    <a href="{confirmEmailLink}" class="btn active btn-block btn-lg confirm-button" type="button">CONFIRM EMAIL ADDRESS</a>
+            </div>
+	    </div>
+        <br/>
+	    <div class="row">
+		    <div class="col-md-12 question-text">
+                <h4 class="text-center">
+                    <strong>HAVE QUESTIONS?</strong>
+                </h4>
+                <p>Give us a call at (512) 815-2105 or email <a href="mailto:support@fbClone.io">support@fbClone.io</a></p>
+		    </div>
+	    </div>
+    </div>  
+</body>
+</html>

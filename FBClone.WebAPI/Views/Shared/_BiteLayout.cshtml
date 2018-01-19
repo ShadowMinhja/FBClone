@@ -1,0 +1,31 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    @Html.Raw(ViewBag.MetaTag)
+
+    @*<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">*@
+    <link rel="stylesheet" href=@(String.Format("{0}/Scripts/app/styles/bootstrap.min.css", ViewBag.RootURI ?? String.Empty)) type="text/css">
+    <link rel="stylesheet" href=@(String.Format("{0}/corporate/assets/css/font-awesome.min.css", ViewBag.RootURI ?? String.Empty)) type="text/css">
+    <link href=@(String.Format("{0}/Scripts/app/dist/bundle.min.css", ViewBag.RootURI ?? String.Empty)) rel ="stylesheet">
+</head>
+
+<body class="device-lg">
+    <!--Facebook App-->
+    <script>
+
+    </script>
+
+    <!-- ============================================
+    ============== Vendor JavaScripts ===============
+    ============================================= -->
+    <section id="content">
+        <div class="content-wrap">
+            @RenderBody()
+        </div>
+    </section>
+
+    @RenderSection("scripts", required: false)
+    
+</body>
+</html>

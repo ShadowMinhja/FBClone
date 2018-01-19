@@ -1,0 +1,504 @@
+
+<div class="page page-dashboard">
+
+    <div class="pageheader">
+
+        <h2>{{page.title}} <!--<span>// {{page.subtitle}}</span>--></h2>
+
+        <div class="page-bar">
+
+            <ul class="page-breadcrumb">
+                <li>
+                    <a ui-sref="app.dashboard"><i class="fa fa-home"></i> {{main.title}}</a>
+                </li>
+                <li>
+                    <a ui-sref="app.dashboard">{{page.title}}</a>
+                </li>
+            </ul>
+
+            <div class="page-toolbar">
+                <a href="javascript:;" class="btn btn-rounded btn-lightred no-border" daterangepicker="dateFilter.rangeOptions" date-begin="dateFilter.startDate" date-end="dateFilter.endDate">
+                    <i class="fa fa-calendar"></i>&nbsp;&nbsp;<span>{{dateFilter.startDate}} - {{dateFilter.endDate}}</span>&nbsp;&nbsp;<i class="fa fa-angle-down"></i>
+                </a>
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- first time user row -->
+    <div class="row" ng-if="page.showFirstTime">
+        <div class="col-md-offset-1 col-md-10">
+            <div class="panel panel-greensea">
+                <div class="panel-heading">
+                    <h3 class="panel-title">New User Setup</h3>
+                </div>
+                <div class="panel-body">
+                    <h4>Hi! Looks like this is your first time here at fbClone! Getting started is really easy! Just complete the five steps below to set up your business, and you'll be all done!</h4>
+                    <tabset class="tab-animation tab-container tab-wizard" justified="true" set-ng-animate="true">
+
+                        <tab active="steps.step1" disabled="{{page.settings.staffSetup}}">
+
+                            <tab-heading>
+                                Staff Setup
+                                <span class="badge badge-default pull-right wizard-step">1</span>
+                            </tab-heading>
+                            <div class="row">
+                                <br />
+                                <div class="col-md-1 icon-circle">
+                                    <i class="fa fa-users fa-3x icon-top-margin"></i>
+                                </div>
+                                <div class="col-md-11">
+                                    <a ui-sref="app.admin.staff">
+                                        <div class="flex">
+                                            <div>Staff Management</div>
+                                            <blink>
+                                                <div class="leftIndicatorArrow"><span class="blocktext">Click Here to Start</span></div>
+                                            </blink>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-11">
+                                    <p>Add Staff to your establishment, who can help you interact with your customers.</p>
+                                </div>
+                            </div>
+                        </tab>
+
+                        <tab active="steps.step2" disabled="{{page.settings.surveySetup}}">
+
+                            <tab-heading>
+                                Survey Setup
+                                <span class="badge badge-default pull-right wizard-step">2</span>
+                            </tab-heading>
+                            <div class="row">
+                                <br />
+                                <div class="col-md-1 icon-circle">
+                                    <i class="fa fa-cogs fa-3x icon-top-margin"></i>
+                                </div>
+                                <div class="col-md-11">
+                                    <a ui-sref="app.admin.survey">
+                                        <div class="flex">
+                                            <div>Customize Survey</div>
+                                            <blink>
+                                                <div class="pull-left leftIndicatorArrow"><span class="blocktext">Click Here to Continue</span></div>
+                                            </blink>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-11">
+                                    <p>One of fbClone's best features is the ability to customize your survey, so <strong>you</strong> can learn the information you need to succeed.  A sample survey has been created for you. Just publish it to get started!</p>
+                                </div>
+                            </div>
+                        </tab>
+
+                        <tab active="steps.step3" disabled="{{page.settings.surveySetup == false}}">
+
+                            <tab-heading>
+                                Branding Setup
+                                <span class="badge badge-default pull-right wizard-step">3</span>
+                            </tab-heading>
+                            <div class="row">
+                                <br />
+                                <div class="col-md-1  icon-circle">
+                                    <i class="fa fa-upload fa-3x icon-top-margin"></i>
+                                </div>
+                                <div class="col-md-11">
+                                    <a ui-sref="app.admin.branding">
+                                        <div class="flex">
+                                            <div>Upload Logo</div>
+                                            <blink>
+                                                <div class="pull-left leftIndicatorArrow"><span class="blocktext">Click Here to Continue</span></div>
+                                            </blink>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-11">
+                                    <p>Upload your beautiful logo to show your customers who you are!</p>
+                                </div>
+                            </div>
+                        </tab>
+
+                        <tab active="steps.step4" disabled="{{page.settings.brandingSetup == false}}">
+
+                            <tab-heading>
+                                Promotions Setup
+                                <span class="badge badge-default pull-right wizard-step">4</span>
+                            </tab-heading>
+                            <div class="row">
+                                <br />
+                                <div class="col-md-1">
+                                    <i class="fa fa-smile-o fa-5x"></i>
+                                </div>
+                                <div class="col-md-11">
+                                    <a ui-sref="app.admin.promotions">
+                                        <div class="flex">
+                                            <div>Add Promotions</div>
+                                            <blink>
+                                                <div class="pull-left leftIndicatorArrow"><span class="blocktext">Click Here to Continue</span></div>
+                                            </blink>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-11">
+                                    <p>Add a promotional coupon to reward your customers for their valuable feedback and put a smile on their face!</p>
+                                </div>
+                            </div>
+                        </tab>
+
+                        <tab active="steps.step5" disabled="{{page.settings.promotionSetup == false}}">
+
+                            <tab-heading>
+                                Claim Your Business
+                                <span class="badge badge-default pull-right wizard-step">5</span>
+                            </tab-heading>
+                            <div class="row">
+                                <br />
+                                <div class="col-md-1">
+                                    <i class="fa fa-location-arrow fa-5x"></i>
+                                </div>
+                                <div class="col-md-11">
+                                    <a ui-sref="app.admin.locations">
+                                        <div class="flex">
+                                            <div>Manage Locations</div>
+                                            <blink>
+                                                <div class="pull-left leftIndicatorArrow"><span class="blocktext">Click Here to Continue</span></div>
+                                            </blink>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-11">
+                                    <p>Claim your business so customers can find you, and you can start to manage your menu, orders, and more!</p>
+                                </div>
+                            </div>
+                        </tab>
+
+                    </tabset>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /row -->
+    <!-- cards row -->
+    <div class="row" ng-if="!page.showFirstTime">
+
+        <!-- col -->
+        <div class="card-container col-lg-3 col-sm-6 col-sm-12">
+            <div class="card">
+                <div class="front bg-blue">
+
+                    <!-- row -->
+                    <div class="row">
+                        <!-- col -->
+                        <div class="col-xs-4">
+                            <i class="fa fa-users fa-4x"></i>
+                        </div>
+                        <!-- /col -->
+                        <!-- col -->
+                        <div class="col-xs-8">
+                            <p class="text-elg text-strong mb-0">{{page.customerResponses}}</p>
+                            <span>Customer Responses</span>                            
+                        </div>
+                        <!-- /col -->
+                    </div>
+                    <!-- /row -->
+
+                </div>
+                <div class="back bg-blue">
+
+                    <!-- row -->
+                    <div class="row">
+                        <!-- col -->
+                        <div class="col-xs-12">
+                            <a ui-sref="app.guestcards.sessiondata"><i class="fa fa-arrow-right fa-2x"></i> See Details</a>
+                        </div>
+                        <!-- /col -->                       
+                    </div>
+                    <!-- /row -->
+
+                </div>
+            </div>
+        </div>
+        <!-- /col -->
+        <!-- col -->
+        <div class="card-container col-lg-3 col-sm-6 col-sm-12">
+            <div class="card">
+                <div class="front bg-lightred">
+
+                    <!-- row -->
+                    <div class="row">
+                        <!-- col -->
+                        <div class="col-xs-4">
+                            <i class="fa fa-comment fa-4x"></i>
+                        </div>
+                        <!-- /col -->
+                        <!-- col -->
+                        <div class="col-xs-8">
+                            <p class="text-elg text-strong mb-0">{{page.averageScore}}</p>
+                            <span>Average Score</span>
+                        </div>
+                        <!-- /col -->
+                    </div>
+                    <!-- /row -->
+
+                </div>
+                <div class="back bg-lightred">
+
+                    <!-- row -->
+                    <div class="row">
+                        <!-- col -->
+                        <div class="col-xs-12">
+                            <a ui-sref="app.guestcards.sessiondata"><i class="fa fa-arrow-right fa-2x"></i> See Details</a>
+                        </div>
+                        <!-- /col -->
+                    </div>
+                    <!-- /row -->
+
+                </div>
+            </div>
+        </div>
+        <!-- /col -->
+        <!-- col -->
+        <div class="card-container col-lg-3 col-sm-6 col-sm-12">
+            <div class="card">
+                <div class="front bg-orange">
+
+                    <!-- row -->
+                    <div class="row">
+                        <!-- col -->
+                        <div class="col-xs-4">
+                            <i class="fa fa-clock-o fa-4x"></i>
+                        </div>
+                        <!-- /col -->
+                        <!-- col -->
+                        <div class="col-xs-8">
+                            <p class="text-elg text-strong mb-0">{{page.averageDuration}}</p>
+                            <span>Average Duration</span>
+                        </div>
+                        <!-- /col -->
+                    </div>
+                    <!-- /row -->
+
+                </div>
+                <div class="back bg-orange">
+
+                    <!-- row -->
+                    <div class="row">
+                        <!-- col -->
+                        <div class="col-xs-12">
+                            <a ui-sref="app.guestcards.sessiondata"><i class="fa fa-arrow-right fa-2x"></i> See Details</a>
+                        </div>
+                        <!-- /col -->
+                    </div>
+                    <!-- /row -->
+
+                </div>
+            </div>
+        </div>
+        <!-- /col -->
+    </div>
+    <!-- /row -->
+    <!-- row -->
+    <div class="row" ng-if="!page.showFirstTime">
+
+
+
+        <!-- col -->
+        <div class="col-md-8">
+
+            <!-- tile -->
+            <section class="tile" fullscreen="isFullscreen01">
+
+                <!-- tile header -->
+                <div class="tile-header bg-greensea dvd dvd-btm">
+                    <h1 class="custom-font"><strong>Overall </strong>Sentiment</h1>
+                    <ul class="controls">
+                        <li class="dropdown" dropdown on-toggle="toggled(open)">
+
+                            <a href tile-control-toggle>
+                                <span class="minimize"><fa name="angle-down"></fa></span>
+                                <span class="expand"><fa name="angle-up"></fa></span>
+                            </a>
+
+                        </li>
+                    </ul>
+                </div>
+                <!-- /tile header -->
+                <!-- tile widget -->
+                <div class="tile-widget bg-greensea">
+
+                    <flot dataset="sentimentDataset" options="sentimentOptions" height="250px"></flot>
+
+                </div>
+                <!-- /tile widget -->
+                <!-- tile body -->
+                <div class="tile-body">
+
+                    <!-- row -->
+                    <div class="row">
+
+
+                        <!-- col -->
+                        <div class="col-md-8 col-sm-12">
+
+                            <h4 class="underline custom-font mb-20"><strong>Positivity</strong> Statistics</h4>
+
+                            <!-- row -->
+                            <div class="row">                               
+                                <!-- col -->
+                                <div class="col-lg-4 text-center">
+                                    <div easypiechart options="easypiechart.options" percent="easypiechart.percent" class="easypiechart" style="width: 140px; height: 140px;">
+                                        <i class="fa fa-thumbs-o-up fa-4x text-greensea" style="line-height: 140px;"></i>
+                                        <p class="text-uppercase text-elg mt-20 mb-0"><strong class="text-greensea">{{page.positivityCounts.countGood}}</strong> <small class="text-lg text-light text-default lt">Good</small></p>
+                                        <p class="text-light">{{page.positivityCounts.percentGood}}</p>
+                                    </div>
+                                </div>
+                                <!-- /col -->
+                                <!-- col -->
+                                <div class="col-lg-4 text-center">
+                                    <div easypiechart options="easypiechart2.options" percent="easypiechart2.percent" class="easypiechart" style="width: 140px; height: 140px;">
+                                        <i class="fa fa-thumbs-o-down fa-4x text-lightred" style="line-height: 140px;"></i>
+                                        <p class="text-uppercase text-elg mt-20 mb-0"><strong class="text-lightred">{{page.positivityCounts.countBad}}</strong> <small class="text-lg text-light text-default lt">Bad</small></p>
+                                        <p class="text-light">{{page.positivityCounts.percentBad}}</p>
+                                    </div>
+                                </div>
+                                <!-- /col -->
+                            </div>
+                            <!-- /row -->
+                        </div>
+                        <!-- /col -->
+                        <!-- col -->
+                        <div class="col-md-4 col-sm-12">
+                            <h4 class="underline custom-font"><strong>Staff Member</strong> Statistics</h4>
+                            <div class="progress-list" ng-repeat="staffScore in staffScores">
+                                <div class="details">
+                                    <div class="title">{{staffScore.staffMember}}</div>
+                                    <!--<div class="description">Age 45+</div>-->
+                                </div>
+                                <div class="status pull-right">
+                                    <span>{{staffScore.averageScore}}</span>%
+                                </div>
+                                <div class="clearfix"></div>
+                                <progressbar class="progress-xs not-rounded" value="staffScore.averageScore" type="dutch"><b>{{staffScore.averageScore}}%</b></progressbar>
+                            </div>                            
+                        </div>
+                        <!-- /col -->
+                    </div>
+                    <!-- /row -->
+                </div>
+                <!-- /tile body -->
+            </section>
+            <!-- /tile -->
+        </div>
+        <!-- /col -->
+        <!-- col -->
+        <div class="col-md-4">
+            <!-- tile -->
+            <section class="tile" fullscreen="isFullscreen02">
+                <!-- tile header -->
+                <div class="tile-header dvd dvd-btm">
+                    <h1 class="custom-font"><strong>Response </strong>Breakdown</h1>
+                    <ul class="controls">
+                        <li class="dropdown" dropdown on-toggle="toggled(open)">
+                            <a href tile-control-toggle>
+                                <span class="minimize"><fa name="angle-down"></fa></span>
+                                <span class="expand"><fa name="angle-up"></fa></span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <!-- /tile header -->
+                <!-- tile widget -->
+                <div class="tile-widget">
+                    <div morris-donut-chart donut-data='donutData' style="height: 250px"></div>
+                </div>
+                <!-- /tile widget -->
+                <!-- tile body -->
+                <div class="tile-body p-0">
+                    <accordion close-others="oneAtATime">
+                        <accordion-group is-open="status.tab1.open" class="panel-transparent">
+                            <accordion-heading>
+                                <span ng-class="{'text-default lt': !status.tab1.open}"><i class="fa text-sm mr-5" ng-class="{'fa-minus': status.tab1.open, 'fa-plus': !status.tab1.open}"></i> This Period</span><span class="badge pull-right bg-lightred"></span>
+                            </accordion-heading>
+                            <table class="table table-no-border m-0">
+                                <thead ng-if="responses.length > 0">
+                                    <tr class="bg-darkgray text-white">
+                                        <td></td>
+                                        <td>Question</td>
+                                        <td>Score</td>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr ng-repeat="response in responses">
+                                        <td>{{response.sequence}}</td>
+                                        <td>{{response.questionText}}</td>
+                                        <td>{{response.averageScore}}%</td>
+                                        <!--<td><i class="fa fa-caret-up text-success"></i></td>-->
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </accordion-group>
+                        <!--<accordion-group is-open="status.tab2.open" class="panel-transparent">
+                            <accordion-heading>
+                                <span ng-class="{'text-default lt': !status.tab2.open}"><i class="fa text-sm mr-5" ng-class="{'fa-minus': status.tab2.open, 'fa-plus': !status.tab2.open}"></i> Last Month</span>
+                            </accordion-heading>
+                            <table class="table table-no-border m-0">
+                                <tbody>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>Chrome</td>
+                                        <td>6985</td>
+                                        <td><i class="fa fa-caret-up text-success"></i></td>
+                                    </tr>
+                                    <tr>
+                                        <td>2</td>
+                                        <td>Other</td>
+                                        <td>2697</td>
+                                        <td><i class="fa fa-caret-up text-success"></i></td>
+                                    </tr>
+                                    <tr>
+                                        <td>3</td>
+                                        <td>Safari</td>
+                                        <td>3597</td>
+                                        <td><i class="fa fa-caret-down text-danger"></i></td>
+                                    </tr>
+                                    <tr>
+                                        <td>4</td>
+                                        <td>Firefox</td>
+                                        <td>2145</td>
+                                        <td><i class="fa fa-caret-up text-success"></i></td>
+                                    </tr>
+                                    <tr>
+                                        <td>5</td>
+                                        <td>Internet Explorer</td>
+                                        <td>1854</td>
+                                        <td><i class="fa fa-caret-down text-danger"></i></td>
+                                    </tr>
+                                    <tr>
+                                        <td>6</td>
+                                        <td>Opera</td>
+                                        <td>654</td>
+                                        <td><i class="fa fa-caret-up text-success"></i></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </accordion-group>-->
+                    </accordion>
+                </div>
+                <!-- /tile body -->
+            </section>
+            <!-- /tile -->
+        </div>
+        <!-- /col -->
+    </div>
+    <!-- /row -->
+</div>

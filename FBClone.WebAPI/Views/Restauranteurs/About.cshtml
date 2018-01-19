@@ -1,0 +1,324 @@
+﻿@{
+    Layout = null;
+    ViewBag.Title = "fbClone | About";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+
+
+
+
+
+    <!-- ============================================
+    ================= Stylesheets ===================
+    ============================================= -->
+
+    <link href="http://fonts.googleapis.com/css?family=Lato:300,400,400italic,700,700italic|Raleway:300,400,500,600,700" rel="stylesheet" type="text/css" />
+    
+
+    <!-- ============================================
+    ============= Main App Stylesheet ===============
+    ============================================= -->
+
+    <link rel="stylesheet" href="/corporate/assets/css/bundle.min.css" type="text/css" />
+
+    <!-- jQuery -->
+    <script type="text/javascript" src="/corporate/assets/js/vendor/jquery-1.11.2.min.js"></script>
+
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <!--[if lt IE 9]>
+        <script src="http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"></script>
+    <![endif]-->
+    <!-- ============================================
+    ================== Page Title ===================
+    ============================================= -->
+
+    <title>@ViewBag.Title</title>
+
+
+
+
+
+
+
+</head>
+
+<body>
+
+
+
+
+
+
+
+
+    <!-- ============================================
+    ================= Page Wrapper ==================
+    ============================================= -->
+
+    <div id="wrapper" class="clearfix animsition">
+
+
+
+
+
+
+
+        <!-- ================================================
+        ================= Search Container ==================
+        ================================================= -->
+
+        <div id="search-container" class="search-box-wrapper">
+            <div class="container">
+                <i class="fa fa-search"></i>
+                <div class="search-box">
+                    <form action="http://example.com/" class="search-form" role="search">
+                        <input type="search" name="s" value="" title="Press Enter to submit your search" placeholder="Search…" class="search-field">
+                        <input type="submit" value="Search" class="search-submit">
+                    </form>
+                </div>
+            </div>
+        </div><!--/ #search-container -->
+        <!-- ============================================
+        ==================== Header =====================
+        ============================================= -->
+
+        <header id="header" class="transparent-header dark">
+            <!-- class .sticky-mobile makes header sticky on small devices -->
+
+            <div id="header-wrap">
+
+                <div class="container clearfix">
+
+                    <div id="main-navbar-toggle"><i class="fa fa-bars"></i></div>
+
+
+
+
+
+
+
+                    <!-- ============================================
+                    =================== Branding ====================
+                    ============================================= -->
+                    
+                    @Html.Partial("_BrandingPartial")
+                    <!-- ============================================
+                    ================= Main Navbar ===================
+                    ============================================= -->
+
+                    @Html.Partial("_MenuPartial")
+
+                </div>
+
+            </div>
+
+        </header><!-- #header end -->
+        <!-- ============================================
+        =================== Breadcrumbs =================
+        ============================================= -->
+        <section id="breadcrumbs" class="breadcrumbs-sm">
+
+            <div class="container clearfix">
+                <h1>About Us</h1>
+                <span>Everything about us</span>
+                <ol class="breadcrumb">
+                    <li><a href="/">Home</a></li>
+                    <li><a href="#">Product</a></li>
+                    <li class="active">About Us</li>
+                </ol>
+            </div>
+
+        </section><!-- #breadcrumbs end -->
+        <!-- ============================================
+        =================== Content =====================
+        ============================================= -->
+
+        <section id="content">
+
+            <div class="content-wrap">
+
+
+
+
+
+
+
+                <!-- ============ Features ============ -->
+                <div class="container clearfix">
+
+
+
+                    <div class="heading-block center less-width center-block mb-60">
+                        <h1 class="text-uppercase">Restaurant 2.0</h1>
+                        <p class="lead">Today's customers are speaking. Are you prepared to listen?</p>
+                    </div>
+
+
+                    <div class="row">
+
+                        <div class="col-sm-4">
+                            <div class="feature-box no-icon" data-animate="fadeIn">
+                                <div class="heading">
+                                    <h3 class="underline">About <span class="text-theme">Us</span></h3>
+                                </div>
+                                <p>We are geeks and food-lovers. From the marriage of the two was born fbClone, a company with the ambition of promoting technology-aided foody service goodness.</p>
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="feature-box no-icon" data-animate="fadeIn" data-delay="200">
+                                <div class="heading">
+                                    <h3 class="underline">Our <span class="text-theme">Mission</span></h3>
+                                </div>
+                                <p>Our passion is to create artisan dining experiences, helping restauranteurs to personalize the service experience. We aim to serve all food-lovers, no matter the scale.</p>
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="feature-box no-icon" data-animate="fadeIn" data-delay="400">
+                                <div class="heading">
+                                    <h3 class="underline">What we <span class="text-theme">do</span></h3>
+                                </div>
+                                <p>Our platform, fbClone allows you to collect customer service information, and correlate it to your restaurant's operations.  In this way, what you see and hear becomes the insight from which you can tailor your restaurant's service, to your target audience.</p>
+                            </div>
+                        </div>
+
+
+
+                    </div>
+
+
+
+
+
+
+                </div><!-- /features -->
+           
+                <!-- ============ team section ============ -->
+                @*<div class="section m-0 p-0">
+                    <div class="container clearfix">
+
+                        <div class="heading-block mb-20">
+                            <h3 class="mb-0">Our Team</h3>
+                        </div>
+
+                        <div class="row">
+
+
+                            <div class="col-md-4 col-sm-6">
+
+                                <img src="/corporate/assets/images/avatars/139e58b.jpg" alt="" class="img-responsive mb-20" height="275" width="275">
+
+                                <div class="heading-block color-divider mb-20">
+                                    <h4 class="mb-0 text-uppercase">Hoang-Minh Trung Nguyen</h4>
+                                    <span class="text-italic text-theme">CEO, Co-Founder, & Software Architect</span>
+                                </div>
+
+                                <div class="social-connect mt-40">
+                                    <a class="social-icon social-icon-light social-facebook" href="https://www.facebook.com/ShadowMinhja">
+                                        <div class="front">
+                                            <i class="fa fa-facebook"></i>
+                                        </div>
+                                        <div class="back">
+                                            <i class="fa fa-facebook"></i>
+                                        </div>
+                                    </a>
+
+                                </div>
+
+                                <a href="" class="plus"></a>
+
+                            </div>
+                            <div class="col-md-4 col-sm-6">
+
+                                <img src="/corporate/assets/images/avatars/1271263.jpg" alt="" class="img-responsive mb-20" height="275" width="275">
+
+                                <div class="heading-block color-divider mb-20">
+                                    <h4 class="mb-0 text-uppercase">Hung Manh Nguyen</h4>
+                                    <span class="text-italic text-theme">CFO, Co-Founder, & Lead Developer</span>
+                                </div>
+
+                                <div class="social-connect mt-40">
+                                    <a class="social-icon social-icon-light social-facebook" href="https://www.facebook.com/profile.php?id=100006633064426">
+                                        <div class="front">
+                                            <i class="fa fa-facebook"></i>
+                                        </div>
+                                        <div class="back">
+                                            <i class="fa fa-facebook"></i>
+                                        </div>
+                                    </a>
+                                    
+                                </div>
+
+                                <a href="" class="plus"></a>
+
+                            </div>
+                            <div class="col-md-4 col-sm-6">
+
+                                <img src="/corporate/assets/images/avatars/27825ce.jpg" alt="" class="img-responsive mb-20" height="200" width="200">
+
+                                <div class="heading-block color-divider mb-20">
+                                    <h4 class="mb-0 text-uppercase">Tuong-Van Thuy Nguyen</h4>
+                                    <span class="text-italic text-theme">Project Director, User Experience</span>
+                                </div>
+
+                                <div class="social-connect mt-40">
+                                    <a class="social-icon social-icon-light social-facebook" href="https://www.facebook.com/van.nguyen.39904181?fref=ts">
+                                        <div class="front">
+                                            <i class="fa fa-facebook"></i>
+                                        </div>
+                                        <div class="back">
+                                            <i class="fa fa-facebook"></i>
+                                        </div>
+                                    </a>
+                                 
+                                </div>
+
+                                <a href="" class="plus"></a>
+
+                            </div>
+
+
+                        </div>
+
+
+                    </div>
+
+
+                </div><!-- /team section -->
+                *@
+
+
+
+
+
+
+            </div>
+        </section><!-- #content end -->
+        <!-- ============================================
+        ==================== Footer =====================
+        ============================================= -->
+
+        <footer id="footer">
+            @Html.Partial("_FooterPartial")
+        </footer><!-- #footer end -->
+
+    </div><!-- #wrapper end -->
+    <!-- ============================================
+    =================== Go to Top ===================
+    ============================================= -->
+
+    <div id="gotoTop" class="fa fa-angle-up hidden-md"></div>
+
+
+
+
+    <script type="text/javascript" src="/corporate/assets/js/bundle.min.js"></script>
+
+
+</body>
+</html>

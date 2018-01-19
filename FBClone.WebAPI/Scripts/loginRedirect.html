@@ -1,0 +1,8 @@
+﻿<script>
+    var searchString = location.search;
+    if (searchString != null)
+    {
+        window.location = searchString.replace("?redirectUrl=", "").replace("%3CHASHBANG%3E", "#");
+    }
+    
+</script>

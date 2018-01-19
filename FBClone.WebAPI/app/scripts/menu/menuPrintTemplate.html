@@ -1,0 +1,29 @@
+﻿<link rel="stylesheet" type="text/css" media="all" href="/app/bower_components/bootstrap/dist/css/bootstrap.css" />
+<link rel="stylesheet" href="/app/styles/menuPrint.css">
+<div style="background-color: #204e81">
+    <img src="/corporate/assets/images/logo-dark.png" height="73" width="138"/><br/>
+    <span style="margin-left: auto; margin-right: auto; font-weight: bold; font-size: 2em; color: white">Menu</span>
+</div>
+
+<div class="sections">
+    <div ng-repeat="section in menuSections" class="section">
+        <div class="sectionTitle">
+            <h2>{{section.sectionTitle}}</h2>
+            <h3>{{section.sectionSubTitle}}</h3>
+        </div>
+        <div ng-repeat="item in section.menuItems">
+            <div class="row">
+                <div class="col-md-2">
+                    <div class="menu-image-display" back-img="{{item.itemImageUrl}}" ng-if="item.itemImageUrl != null"></div>
+                </div>
+                <div class="col-md-8" ng-show="item.itemText">
+                    <div ng-bind-html="item.itemText | to_trusted"></div>
+                </div>
+                <div class="col-md-2">
+                    <div ng-bind-html="item.price | currency"></div>
+                </div>
+            </div>
+            <hr />
+        </div>
+    </div>
+</div>

@@ -1,0 +1,44 @@
+﻿.venue-display {
+    display: inline-flex;
+}
+
+.menu-item-display {
+    display: inline-flex;
+}
+
+.food-tag-display {
+    display: inline-flex;
+}
+
+.food-tag-display > div > button > div {
+    width: 40px;
+    height: 40px;
+    padding: 0 5px;
+}
+
+.bitecard-selected-venue, .bitecard-selected-menuItem {
+    display: block;
+}
+
+.bitecard-selected-venue, .bitecard-selected-menuItem > span :first-child {
+    line-height: inherit;
+}
+
+.bitecard-menuItem-comment {
+    color: #41BC9E;
+}
+.bitecard-menuItem-comment > i {
+    color: #29ABE2  !important;
+}
+
+.survey-result {
+    display: flex;
+}
+
+.survey-result .fa-fire {
+    color: red;
+}
+
+.bitecard-action-button {
+    color: rgba(0, 0, 0, 0.45) !important;
+}

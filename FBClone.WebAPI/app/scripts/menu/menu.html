@@ -1,0 +1,233 @@
+﻿<div class="page page-grid">
+
+    <!-- page header -->
+    <div class="pageheader">
+
+        <h2>{{page.title}} <span>{{page.subtitle}}</span></h2>
+
+        <div class="page-bar">
+
+            <ul class="page-breadcrumb">
+                <li>
+                    <a ui-sref="app"><i class="fa fa-home"></i> {{main.title}}</a>
+                </li>
+                <li>
+                    <a ui-sref="app.menu">{{page.title}}</a>
+                </li>
+            </ul>
+
+        </div>
+
+    </div>
+    <!-- /page header -->
+    <!-- page content -->
+    <div class="pagecontent">
+
+        <!--Survey Grid-->
+        <!-- row -->
+        <div class="row">
+            <div class="col-md-12">
+                <div class="pull-left">
+                    <h4>Edit an existing menu:</h4>
+                </div>
+                <div class="pull-left" style="margin-left: 10px">
+                    <ui-select ng-model="selectedMenu.selected" class="w-md mb-10" on-select="setMenu($item, $model)">
+                        <ui-select-match placeholder="Select a menu...">{{$select.selected.description}} <a href ng-click="clear($event)"><i class="fa fa-times"></i></a></ui-select-match>
+                        <ui-select-choices repeat="menu in menus | filter: $select.search">
+                            <div ng-bind-html="menu.description | highlight: $select.search"></div>
+                            Created Date: <span ng-bind-html="menu.createdAt| date: 'shortDate' | highlight: $select.search"></span>
+                        </ui-select-choices>
+                    </ui-select>
+                </div>
+                <div class="pull-left" style="margin-left: 10px">
+                    <div>
+                        <button class="btn btn-rounded btn-primary" ng-click="addMenu()">
+                            <i class="fa fa-plus" style="margin-right: 0"></i>
+                            Add New
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row" ng-if="menus.length == 0">
+            <div class="col-md-12">
+                You have no menus set up for your restaurant.
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12" ng-show="selectedMenu.selected">
+                <section class="tile">
+                    <div class="tile-header bg-greensea">
+                        <div class="row">
+                            <div class="col-md-5">
+                                <h2>
+                                    <i class="fa fa-file-text-o"></i> {{menu.description}}
+                                </h2>
+                            </div>
+                            <div class="col-md-offset-1 col-md-2">
+                                <h3>Menu Status: {{menu.active}} </h3>
+                            </div>
+                            <div class="col-md-3">
+                                <a href class="icon icon-orange icon-ef-2 icon-ef-2b hover-color" ng-click="importMenu()" title="Import Menu">
+                                    <i class="fa fa-upload" style="margin-right: 0"></i>
+                                    Import Menu
+                                </a>
+                                <a href class="icon icon-orange icon-ef-2 icon-ef-2b hover-color" ng-click="printMenu(true)" title="Print Preview">
+                                    <i class="fa fa-eye" style="margin-right: 0"></i>
+                                    Preview
+                                </a>
+                                <a href class="icon icon-orange icon-ef-2 icon-ef-2b hover-color" ng-click="printMenu(false)" title="Print">
+                                    <i class="fa fa-print" style="margin-right: 0"></i>
+                                    Print
+                                </a>
+                                <a href class="icon icon-orange icon-ef-2 icon-ef-2b hover-color" ng-click="editMenu()" title="Menu Options">
+                                    <i class="fa fa-gear" style="margin-right: 0"></i>
+                                    Options
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <!--</div>-->
+                    <div class="tile-body" style="padding-top: 0">
+                        <div class="row">
+                            <div class="col-md-3" style="padding-left: 0">
+                                <ul ui-sortable="sortableOptions" ng-model="menu.sections" class="tabs-menu tabs-inline tabs-left">
+                                    <li id="tab{{section.id}}" ng-repeat="section in menu.menuSections | orderBy: sequence" ng-class="{ 'active': isSectionCurrent(section)}">
+                                        <a href ng-click="setCurrentSection(section)" data-toggle="tab">
+                                            <div class="clearfix">
+                                                <div class="dragHandle" style="float: left; width: 7%; padding-top: 5%">
+                                                    <i class="fa fa-ellipsis-v fa-2x "></i>
+                                                </div>
+                                                <div style="float: left; width: 93%">
+                                                    <span class="section-header">{{section.sectionTitle}}</span><br />
+                                                    {{section.sectionSubTitle}}
+
+                                                    <div style="margin-top: 10px">
+                                                        <button class="btn btn-rounded btn-primary" ng-click="editSection(section)" ng-show="isSectionCurrent(section)">
+                                                            <i class="fa fa-edit" style="margin-right: 0"></i>
+                                                            Edit
+                                                        </button>
+                                                        <button class="btn btn-rounded btn-lightred" ng-click="deleteSection(section)" ng-show="isSectionCurrent(section)">
+                                                            <i class="fa fa-trash-o" style="margin-right: 0"></i>
+                                                            Delete
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li class="not-sortable">
+                                        <div style="display: block; padding: 10px 20px; color: #666; background: #ddd; text-decoration: none; border-top: 1px solid #bbb;">
+                                            <button class="btn btn-rounded btn-primary" ng-click="addNewSection()">
+                                                <i class="fa fa-plus" style="margin-right: 0"></i>
+                                            </button>
+                                            Add New Section
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="col-md-7">
+                                <div class="tab-content padding tab-content-inline">
+                                    <div class="tab-pane fade in active">
+                                        <div class="pull-right">
+                                            <form>
+                                                <div class="form-group">
+                                                    <input type="text" class="form-control" ng-model="keywords" placeholder="Search Keywords" ng-change="keywordChanged(keywords)">
+                                                </div>
+                                            </form>
+                                        </div>
+                                        <tabset type="pills">
+                                            <tab heading="Edit Section" class="section-tab">
+                                                <div class="row" ng-show="currentSection.menuItems">
+                                                    <div class="col-md-8">
+                                                        <h4>Section Items</h4>
+                                                    </div>
+                                                    <button class="btn btn-rounded btn-orange" ng-click="addItem()">
+                                                        <i class="fa fa-plus" style="margin-right: 0"></i>
+                                                    </button>
+                                                    Add New Item
+                                                </div>
+
+                                                <!--Show Menu Items as Cards-->
+                                                <div ng-show="currentSection.menuItems.length > 0">
+                                                    <md-card class="md-default-theme" ng-repeat="item in currentSection.menuItems">
+                                                        <md-card-content>
+                                                            <div id="menuItem{{item.id}}" class="row">
+                                                                <div class="col-md-12">
+                                                                    <label>Sequence: </label>&nbsp;{{item.sequence}}
+                                                                </div>
+
+                                                                <div class="col-md-6">
+                                                                    <label>Menu Item:</label>
+                                                                    <div ng-bind-html="highlightSearchString(item.itemText, keywords)"></div>
+                                                                </div>
+                                                                <div class="col-md-6">
+                                                                    <label>Price:</label>
+                                                                    <div ng-bind-html="item.price | currency"></div>
+
+                                                                </div>
+                                                                <div class="col-md-12">
+                                                                    <button class="btn btn-rounded btn-success" ng-click="editItem(item)">
+                                                                        <i class="fa fa-edit" style="margin-right: 0"></i>
+                                                                        Edit Item
+                                                                    </button>
+                                                                    <button class="btn btn-rounded " ng-click="deleteItem(item)">
+                                                                        <i class="fa fa-trash-o" style="margin-right: 0"></i>
+                                                                        Delete Item
+                                                                    </button>
+
+                                                                </div>
+                                                            </div>
+                                                        </md-card-content>
+                                                    </md-card>
+                                                </div>
+                                                <div ng-show="currentSection.menuItems.length == 0">
+                                                    No Menu Items Currently in Section
+                                                </div>
+                                            </tab>
+                                            <tab heading="Preview Section" class="section-tab">
+                                                <div ng-repeat="item in currentSection.menuItems">
+                                                    <div class="row">
+                                                        <div class="col-md-2">
+                                                            <div class="menu-image-display" back-img="{{item.itemImageUrl}}" ng-if="item.itemImageUrl != null"></div>
+                                                        </div>
+                                                        <div class="col-md-8" ng-show="item.itemText">
+                                                            <div ng-bind-html="item.itemText | to_trusted"></div>
+                                                        </div>
+                                                        <div class="col-md-2">
+                                                            <div ng-bind-html="item.price | currency"></div>
+                                                        </div>
+                                                    </div>
+                                                    <hr />
+                                                </div>
+                                            </tab>
+                                        </tabset>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="pull-right">
+                                    <ul class="list-group" ng-repeat="bookmarkAnchor in bookmarkAnchors">
+                                        <li class="list-group-item">
+                                            <a href="" ng-click="gotoAnchor(bookmarkAnchor)">
+                                                Go to section {{bookmarkAnchor.menuSection.sectionTitle}}, Item {{bookmarkAnchor.menuItem.sequence}}
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+        <!-- /row -->
+
+    </div>
+    <!-- /page content -->
+
+
+
+
+</div>

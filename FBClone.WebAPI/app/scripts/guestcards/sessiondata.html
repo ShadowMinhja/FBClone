@@ -1,0 +1,174 @@
+<div class="page page-widgets">
+
+
+
+
+    <!-- page header -->
+    <div class="pageheader">
+
+        <h2>{{page.title}} <span>// {{page.subtitle}}</span></h2>
+
+        <div class="page-bar">
+
+            <ul class="page-breadcrumb">
+                <li>
+                    <a ui-sref="app.dashboard"><i class="fa fa-home"></i> {{main.title}}</a>
+                </li>
+                <li>
+                    <a ui-sref="app.guestcards.sessiondata">{{page.title}}</a>
+                </li>
+            </ul>
+
+        </div>
+
+    </div>
+    <!-- /page header -->
+    <!-- page content -->
+    <div class="pagecontent">
+
+        <!-- row -->
+            <!-- col -->
+            <div class="col-md-offset-1 col-md-8">
+                <div class="row">
+                    <!-- tile -->
+                    <section class="tile tile-simple bg-blue" style="height: 250px; overflow: hidden;" set-ng-animate="false">
+
+                        <!-- tile header -->
+                        <div class="tile-header  bg-greensea">
+                            <h1 class="custom-font"><strong>fbClone</strong> Feed</h1>
+                        </div>
+                        <!-- /tile header -->
+                        <!-- tile body -->
+                        <div class="tile-body p-0" style="overflow-x: hidden;">
+                            <carousel id="guestCardFeed" interval="myInterval">
+                                <slide ng-repeat="response in page.questionResponseSets | limitTo:3" active="response.active">
+                                    <div class="carousel-caption">
+                                        <h4>{{response.customerName == null ? 'Anonymous' : response.customerName}} - {{response.createdAt}}</h4>
+                                        <progressbar class="progress" value="response.totalScore" type="{{response.positivity == 'Good' ? 'greensea' : 'lightred'}}" style="width:50%; margin-left:auto; margin-right:auto;">{{response.totalScore}}%</progressbar>
+                                        <p>Table: {{response.tableNumber}}</p>
+                                        <p>Staff: {{response.staffMember.name}}</p>
+                                        <p>Time Taken: {{response.sessionDuration}} seconds</p>
+                                    </div>
+                                </slide>
+                            </carousel>
+
+                        </div>
+                        <!-- /tile body -->
+
+                    </section>
+                    <!-- /tile -->
+
+                </div>
+            <!-- /col -->
+
+        </div>
+        <!-- /row -->
+
+        <!-- row -->
+        <div class="row">
+
+            <!-- col -->
+            <div class="col-md-offset-1 col-md-8">
+
+                <!-- tile -->
+                <section class="tile tile-simple">
+
+                    <!-- tile widget -->
+                    <div class="tile-widget dvd dvd-btm" ng-if="showMaster()">
+                        <div class="inline-block">
+                            <h5 class="text-strong m-0">Filter by Staff Member</h5>
+                            <select class="input-sm" ng-model="page.selectedStaff" ng-options="staffMember.id as staffMember.name for staffMember in staffMembers" ng-change="changeStaffMember()">
+                                <option value="" selected>All</option>
+                            </select>
+                        </div>
+
+                        <div ng-controller="DaterangepickerCtrl" class="inline-block pl-30">
+                            <h5 class="text-strong m-0">Filter by Date Range</h5>
+                            <div class="page-toolbar">
+                                <a href="javascript:;" class="btn btn-rounded btn-lightred no-border" daterangepicker="dateFilter.rangeOptions" date-begin="dateFilter.startDate" date-end="dateFilter.endDate">
+                                    <i class="fa fa-calendar"></i>&nbsp;&nbsp;<span>{{dateFilter.startDate}} - {{dateFilter.endDate}}</span>&nbsp;&nbsp;<i class="fa fa-angle-down"></i>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="inline-block pull-right">
+                            <pagination total-items="totalItems" items-per-page="page.itemsPerPage" ng-model="currentPage" ng-change="pageChanged(currentPage)" class="pagination-sm mt-0 mb-10"></pagination>
+                        </div>
+                    </div>
+                    <!-- /tile widget -->
+                    <!-- tile body -->
+                    <div class="tile-body p-0">
+
+                        <ul class="list-unstyled" ng-repeat="response in page.questionResponseSets" ng-if="showMaster()">
+                            <li class="p-10 b-b">
+                                <div class="media">
+                                    <div class="pull-left thumb thumb-sm">
+                                        <!--<img class="media-object img-circle" src="/assets/images/random-avatar8.jpg" alt="">-->
+                                        <i class="fa fa-user"></i>
+                                    </div>
+                                    <div class="media-body text-md row">
+                                        <div class="col-md-3">
+                                            <span class="media-heading mb-0">{{response.customerName == null ? 'Anonymous' : response.customerName}} - {{response.createdAt}}</span>
+                                            <p class="text-muted">Table: {{response.tableNumber}}</p>
+                                            <p class="text-muted">Staff: {{response.staffMember.name}}</p>
+                                            <p class="text-muted">Time Taken: {{response.sessionDuration}} seconds</p>
+                                        </div>
+                                        <div class="col-md-offset-1 col-md-4">
+                                            <progressbar class="progress" value="response.totalScore" type="{{response.positivity == 'Good' ? 'greensea' : 'lightred'}}">{{response.totalScore}}%</progressbar>
+                                        </div>
+                                        <div class="col-md-offset-2 col-md-2">
+                                            <i class="fa fa-chevron-right fa-2x inline-block" ng-click="sessionDetails(response)"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+
+                        </ul>
+                        <div ng-if="page.questionResponseSets.length == 0" class="text-center">
+                            <h5 class="text-lg text-slategray">No Results</h5>
+                        </div>
+                        <div ng-if="showDetail()">
+                            <span class="text-md" ng-click="sessionSummary()"><i class="fa fa-chevron-left"></i> Back To List</span>
+                            <h3 class="custom-font text-strong">{{selectedSession.survey.name}}</h3>
+                            <h4 class="custom-font text-strong">{{selectedSession.survey.description}}</h4>
+                            <div>
+                                <div class="media-body text-md">
+                                    <span class="media-heading mb-0">{{selectedSession.customerName == null ? 'Anonymous' : selectedSession.customerName}} - {{selectedSession.createdAt}}</span>
+                                    <div class="col-md-5 pull-right">
+                                        <progressbar class="progress" value="selectedSession.totalScore" type="{{selectedSession.positivity == 'Good' ? 'greensea' : 'lightred'}}">{{selectedSession.totalScore}}%</progressbar>
+                                    </div>
+                                    <p class="text-muted">Table: {{selectedSession.tableNumber}}</p>
+                                    <p class="text-muted">Staff: {{selectedSession.staffMember.name}}</p>
+                                    <p class="text-muted">Time Taken: {{selectedSession.sessionDuration}} seconds</p>
+                                </div>
+                            </div>
+                            <div ng-repeat="questionResponse in selectedSession.questionResponses">
+                                <div class="panel panel-filled panel-default text-md">
+                                    <div class="panel-heading">
+                                        <h4>Question {{$index+1}}: {{questionResponse.question.questionText}}</h4>
+                                    </div>
+                                    <div class="panel-body">
+                                        <p class=""><b>Answer:</b> {{questionResponse.answer.answerText}}</p>
+                                        <p class="col-md-5 pull-right">
+                                            <progressbar class="progress" value="questionResponse.questionScore" type="{{questionResponse.questionScore > 75 ? 'greensea' : 'lightred'}}">{{questionResponse.questionScore}}%</progressbar>
+                                        </p>
+                                        <p class=""><b>Question Skipped:</b> {{questionResponse.skipped == true ? 'Yes' : 'No'}}</p>
+                                        <p class=""><b>Comments:</b> {{questionResponse.comments == null ? 'None' : questionResponse.comments}}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /tile body -->
+
+                </section>
+                <!-- /tile -->
+            </div>
+            <!-- /col -->
+        </div>
+        <!-- /row -->
+
+     
+    </div>
+    <!-- /page content -->
+
+</div>

@@ -1,0 +1,11 @@
+.footer-background {
+    background-color: #262F36;
+    height: 25%;
+    width: 100%;
+    color: white;
+    text-align: center;
+}
+
+#footer .footer-main {
+    padding-bottom: 0;
+}

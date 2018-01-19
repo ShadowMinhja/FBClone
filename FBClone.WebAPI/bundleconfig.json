@@ -1,0 +1,77 @@
+[
+  {
+    "outputFileName": "app/bower_components/angular-schema-form/dist/bootstrap-decorator.js",
+    "inputFiles": [
+      "app/bower_components/angular-schema-form/dist/bootstrap-decorator.js"
+    ]
+  },
+  {
+    "outputFileName": "app/bower_components/tx-tinymce/tx-tinymce.js",
+    "inputFiles": [
+      "app/bower_components/tx-tinymce/tx-tinymce.js"
+    ]
+  },
+  {
+    "outputFileName": "app/bower_components/ngImgCrop/compile/unminified/ng-img-crop.js",
+    "inputFiles": [
+      "app/bower_components/ngImgCrop/compile/unminified/ng-img-crop.js"
+    ]
+  },
+  {
+    "outputFileName": "corporate/assets/css/bundle.css",
+    "inputFiles": [
+      "corporate/assets/css/bootstrap.css",
+      "corporate/assets/css/font-awesome.css",
+      "corporate/assets/css/animate.css",
+      "corporate/assets/js/vendor/flexslider/flexslider.css",
+      "corporate/assets/js/vendor/magnific/magnific-popup.css",
+      "corporate/assets/js/vendor/owl/owl.carousel.css",
+      "corporate/assets/js/vendor/owl/owl.theme.css",
+      "corporate/assets/js/vendor/morrisjs/morris.css",
+      "corporate/assets/js/vendor/rs-plugin/css/settings.css",
+      "corporate/assets/js/vendor/animsition/css/animsition.min.css",
+      "corporate/assets/css/style.css"
+    ]
+  },
+  {
+    "outputFileName": "corporate/assets/js/bundle.js",
+    "inputFiles": [
+      "corporate/assets/js/vendor/bootstrap.min.js",
+      "corporate/assets/js/vendor/superfish/js/superfish.min.js",
+      "corporate/assets/js/vendor/jRespond/jRespond.min.js",
+      "corporate/assets/js/vendor/smoothscroll/SmoothScroll.min.js",
+      "corporate/assets/js/vendor/appear/jquery.appear.js",
+      "corporate/assets/js/vendor/stellar/jquery.stellar.min.js",
+      "corporate/assets/js/vendor/flexslider/jquery.flexslider-min.js",
+      "corporate/assets/js/vendor/magnific/jquery.magnific-popup.min.js",
+      "corporate/assets/js/vendor/owl/owl.carousel.min.js",
+      "corporate/assets/js/vendor/jflickrfeed/jflickrfeed.min.js",
+      "corporate/assets/js/vendor/tweet-js/jquery.tweet.min.js",
+      "corporate/assets/js/vendor/countTo/jquery.countTo.js",
+      "corporate/assets/js/vendor/morrisjs/raphael-min.js",
+      "corporate/assets/js/vendor/morrisjs/morris.min.js",
+      "corporate/assets/js/vendor/rs-plugin/js/jquery.themepunch.tools.min.js",
+      "corporate/assets/js/vendor/rs-plugin/js/jquery.themepunch.revolution.min.js",
+      "corporate/assets/js/vendor/animsition/js/jquery.animsition.min.js",
+      "corporate/assets/js/global.js"
+    ]
+  },
+  {
+    "outputFileName": "corporate/assets/css/style.min.css",
+    "inputFiles": [
+      "corporate/assets/css/style.css"
+    ]
+  },
+  {
+    "outputFileName": "Scripts/app/dist/bundle.min.css",
+    "inputFiles": [
+      "Scripts/app/dist/bundle.css"
+    ]
+  },
+  {
+    "outputFileName": "Scripts/app/dist/bundle.min.js",
+    "inputFiles": [
+      "Scripts/app/dist/bundle.js"
+    ]
+  }
+]

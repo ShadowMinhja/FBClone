@@ -1,0 +1,14 @@
+﻿@model FBClone.Model.Bite
+@{
+    Layout = "~/Views/Shared/_BiteLayout.cshtml";
+}
+
+<div class="container clearfix w-3xl mt-20">
+    <h1 class="text-mega text-default lter">Oopsie!</h1>
+    <h3><i class="fa fa-exclamation-triangle"></i><!-- react-text: 139 --> Did you click on the wrong link? There's plenty of food to go around, so go back and find some more grub! <!-- /react-text --></h3>
+    <h4><a href="/"><i class="fa fa-arrow-circle-left"></i><!-- react-text: 143 --> Get back to the fun<!-- /react-text --></a></h4>
+</div>
+
+@section Scripts {
+    @Scripts.Render("/Scripts/app/global.js")
+}

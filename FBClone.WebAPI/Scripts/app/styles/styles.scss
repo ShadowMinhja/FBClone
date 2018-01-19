@@ -1,0 +1,94 @@
+.brandPrimary { 
+    color: #F5B11A;
+}
+.brandSecondary {
+    color: #41BC9E;
+}
+.brandTertiary {
+    color: #F05722;
+}
+
+.container-fluid {
+    padding-left: 0;
+    padding-right: 0;
+}
+
+#title-section > .row {
+    margin: 0;
+}
+
+#home-description .row, #home-description-section > .row {
+    margin: 0;
+}
+
+/*Helper CSS*/
+.hidden {
+    display: none !important;
+}
+
+/*Main Styles*/
+body.device-xxs {
+    overflow-x: hidden;
+}
+
+#header.sticky-header {
+    height: auto;
+}
+
+#content {
+    overflow: inherit !important;
+    min-height: 667px;
+}
+
+#content .container {
+    z-index: inherit;
+}
+
+#content .content-wrap {
+    padding: 0;
+}
+
+
+/*#main-navbar {
+    background-color: #41BC9E;
+}*/
+
+/*Fix for menu ul collapse in header*/
+#main-navbar ul {
+    height: auto !important;
+}
+
+#main-navbar ul li {
+    border-top: 0;
+}
+
+#main-navbar ul li:last-child {
+    border-bottom: 0;
+}
+
+/*Fix for login hover border*/
+ #login-form .form-control:hover:not(:disabled) {
+    border-color: transparent !important;
+}
+
+.menu-actions > .form-control:hover:not(:disabled) {
+    border-color: transparent !important;
+}
+
+/*Tagging Menu*/
+.iconMenu {
+    border-radius: 25px !important;    
+    margin-top: -60px;    
+}
+
+/*Fix for Bootstrap 4 Button*/
+[type=reset], [type=submit], button, html [type=button] {
+    -webkit-appearance: initial !important;
+}
+
+/*Override Mobile Style*/
+@media (max-width: 479px) {
+    .container {
+        width: auto !important;
+    }
+}

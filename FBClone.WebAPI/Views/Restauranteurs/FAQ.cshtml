@@ -1,0 +1,401 @@
+﻿@{
+    Layout = null;
+    ViewBag.Title = "fbClone | Frequently Asked Questions";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+
+
+
+
+
+    <!-- ============================================
+    ================= Stylesheets ===================
+    ============================================= -->
+
+    <link href="http://fonts.googleapis.com/css?family=Lato:300,400,400italic,700,700italic|Raleway:300,400,500,600,700" rel="stylesheet" type="text/css" />
+
+    <!-- ============================================
+    ============= Main App Stylesheet ===============
+    ============================================= -->
+
+    <link rel="stylesheet" href="/corporate/assets/css/bundle.min.css" type="text/css" />
+
+    <!-- jQuery -->
+    <script type="text/javascript" src="/corporate/assets/js/vendor/jquery-1.11.2.min.js"></script>
+
+
+
+
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <!--[if lt IE 9]>
+        <script src="http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"></script>
+    <![endif]-->
+    <!-- ============================================
+    ================== Page Title ===================
+    ============================================= -->
+
+    <title>@ViewBag.Title</title>
+
+
+
+
+
+
+
+</head>
+
+<body>
+
+
+
+
+
+
+
+
+    <!-- ============================================
+    ================= Page Wrapper ==================
+    ============================================= -->
+
+    <div id="wrapper" class="clearfix animsition">
+
+
+
+
+
+
+
+        <!-- ================================================
+        ================= Search Container ==================
+        ================================================= -->
+
+        <div id="search-container" class="search-box-wrapper">
+            <div class="container">
+                <i class="fa fa-search"></i>
+                <div class="search-box">
+                    <form action="http://example.com/" class="search-form" role="search">
+                        <input type="search" name="s" value="" title="Press Enter to submit your search" placeholder="Search…" class="search-field">
+                        <input type="submit" value="Search" class="search-submit">
+                    </form>
+                </div>
+            </div>
+        </div><!--/ #search-container -->
+        <!-- ============================================
+        ==================== Header =====================
+        ============================================= -->
+
+        <header id="header" class="transparent-header dark">
+            <!-- class .sticky-mobile makes header sticky on small devices -->
+
+            <div id="header-wrap">
+
+                <div class="container clearfix">
+
+                    <div id="main-navbar-toggle"><i class="fa fa-bars"></i></div>
+
+
+
+
+
+
+
+                    <!-- ============================================
+                    =================== Branding ====================
+                    ============================================= -->
+
+                    @Html.Partial("_BrandingPartial")
+                    <!-- ============================================
+                    ================= Main Navbar ===================
+                    ============================================= -->
+
+                    @Html.Partial("_MenuPartial")
+
+                </div>
+
+            </div>
+
+        </header><!-- #header end -->
+        <!-- ============================================
+        =================== Breadcrumbs =================
+        ============================================= -->
+        <section id="breadcrumbs" class="breadcrumbs-sm">
+
+            <div class="container clearfix">
+                <h1>Frequently Asked Questions</h1>
+                <span>Everything about us</span>
+                <ol class="breadcrumb">
+                    <li><a href="/">Home</a></li>
+                    <li><a href="#">Support</a></li>
+                    <li class="active">FAQ</li>
+                </ol>
+            </div>
+
+        </section><!-- #breadcrumbs end -->
+        <!-- ============================================
+        =================== Content =====================
+        ============================================= -->
+
+        <section id="content">
+
+            <div class="content-wrap">
+
+
+
+
+
+
+
+                <!-- ============ faq ============ -->
+                <div class="container clearfix">
+
+
+
+                    <div class="heading-block mb-60">
+                        <h1 class="text-uppercase">What's on your mind?</h1>
+                        <p>We've tried our best, but sometimes, even we can miss a few things.  Here are some common issues reported to us.  We're constantly working to make things better, but for now you can find most answers here.</p>
+                    </div>
+
+
+                    <div class="row">
+
+                        <div class="col-md-3 col-sm-3">
+                            <ul class="tabs-menu">
+                                <li class="active"><a href="#tab_1" data-toggle="tab">1. General Questions</a></li>
+                                <li class=""><a href="#tab_2" data-toggle="tab">2. Managing the Dashboard</a></li>
+                                <li class=""><a href="#tab_3" data-toggle="tab">3. Downloading and using the App</a></li>
+                            </ul>
+                        </div>
+
+                        <div class="col-md-9 col-sm-9">
+                            <div class="tab-content">
+
+                                <!-- START TAB 1 -->
+                                <div class="tab-pane active" id="tab_1">
+                                    <div class="panel-group" id="accordion1">
+
+                                        <div class="panel panel-faq active">
+                                            <div class="panel-heading">
+                                                <h4 class="panel-title">
+                                                    <a href="#accordion1_1" data-parent="#accordion1" data-toggle="collapse">
+                                                        1.1 General Questions
+                                                    </a>
+                                                </h4>
+                                            </div>
+                                            <div class="panel-collapse collapse in" id="accordion1_1">
+                                                <div class="panel-body">
+                                                    This section addresses general questions for getting started, what to do once registered, etc.
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="panel panel-faq">
+                                            <div class="panel-heading">
+                                                <h4 class="panel-title">
+                                                    <a href="#accordion1_2" data-parent="#accordion1" data-toggle="collapse" class="accordion-toggle collapsed">
+                                                        1.2 What do I do once I register and login?
+                                                    </a>
+                                                </h4>
+                                            </div>
+                                            <div class="panel-collapse collapse" id="accordion1_2">
+                                                <div class="panel-body">
+                                                    When you sign in, you are taken to the dashboard.  You'll want to manage and edit your staff, locations, and surveys.  Once this is done, you can download the app on any number of mobile devices, and use the same login to connect up and consume the configured questionnaires.
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="panel panel-faq">
+                                            <div class="panel-heading">
+                                                <h4 class="panel-title">
+                                                    <a href="#accordion1_3" data-parent="#accordion1" data-toggle="collapse" class="accordion-toggle collapsed">
+                                                        1.3 Who can use this app?
+                                                    </a>
+                                                </h4>
+                                            </div>
+                                            <div class="panel-collapse collapse" id="accordion1_3">
+                                                <div class="panel-body">
+                                                    Typically, only the owner of the establishment need register on fbClone.  From that point, the managers and servers can download the app either on their personal device, or on standardized tablet hardware using a single account. Any number of devices may connect at a time to the system*
+                                                    <br/>*Subject to change at our discretion
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <!-- END TAB 1 -->
+                                <!-- START TAB 2 -->
+                                <div class="tab-pane" id="tab_2">
+                                    <div class="panel-group" id="accordion2">
+
+                                        <div class="panel panel-faq active">
+                                            <div class="panel-heading">
+                                                <h4 class="panel-title">
+                                                    <a href="#accordion2_1" data-parent="#accordion2" data-toggle="collapse" class="accordion-toggle">
+                                                        2.1 Managing the Dashboard
+                                                    </a>
+                                                </h4>
+                                            </div>
+                                            <div class="panel-collapse collapse  in" id="accordion2_1">
+                                                <div class="panel-body">
+                                                    <p>
+                                                        This section addresses how to manage and use the dashboard.
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="panel panel-faq">
+                                            <div class="panel-heading">
+                                                <h4 class="panel-title">
+                                                    <a href="#accordion2_2" data-parent="#accordion2" data-toggle="collapse" class="accordion-toggle collapsed">
+                                                        2.2 Dashboard Setup
+                                                    </a>
+                                                </h4>
+                                            </div>
+                                            <div class="panel-collapse collapse" id="accordion2_2">
+                                                <div class="panel-body">
+                                                    When you sign in, you are taken to the dashboard.  Registration automatically preloads one survey for you. You'll want to create staff members, and locations to manage your survey results. 
+                                                    Also, make sure to visit the branding page under the Admin section to set up your restaurant logo to personalize it.  The Admin Branding page can be used to show an advertisement at the end of the customer's survey.
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="panel panel-faq">
+                                            <div class="panel-heading">
+                                                <h4 class="panel-title">
+                                                    <a href="#accordion2_3" data-parent="#accordion2" data-toggle="collapse" class="accordion-toggle collapsed">
+                                                        2.3 How do I build a survey?
+                                                    </a>
+                                                </h4>
+                                            </div>
+                                            <div class="panel-collapse collapse" id="accordion2_3">
+                                                <div class="panel-body">
+                                                    To start off, navigate to the survey creation page under Admin --> Manage Surveys.  Afterwards, add a survey.  When you are done, click on it to reveal an editor to create questions for the survey.
+                                                    Create questions one at a time, modifying the sequence to display the questions in order.  To add answer choices to the question, click on the "Answer Choices" table cell to bring up a modal editor to add answer choices.
+                                                    Once you add the answer choices, click "Confirm" to associate them with the current question.  Save the question and continue until you have created all the questions you want for your survey.
+                                                    When you are satisfied with your survey, click "Publish" to activate the survey and make it visible to the mobile app.
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <!-- END TAB 2 -->
+                                <!-- START TAB 3 -->
+                                <div class="tab-pane" id="tab_3">
+                                    <div class="panel-group" id="accordion3">
+
+                                        <div class="panel panel-faq active">
+                                            <div class="panel-heading">
+                                                <h4 class="panel-title">
+                                                    <a href="#accordion3_1" data-parent="#accordion3" data-toggle="collapse" class="accordion-toggle">
+                                                        3.1 Downloading and Using the App
+                                                    </a>
+                                                </h4>
+                                            </div>
+                                            <div class="panel-collapse collapse  in" id="accordion3_1">
+                                                <div class="panel-body">
+                                                    <p>
+                                                        This section addresses questions about the mobile app.
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="panel panel-faq">
+                                            <div class="panel-heading">
+                                                <h4 class="panel-title">
+                                                    <a href="#accordion3_2" data-parent="#accordion3" data-toggle="collapse" class="accordion-toggle collapsed">
+                                                        3.2 What platforms can the app run on?
+                                                    </a>
+                                                </h4>
+                                            </div>
+                                            <div class="panel-collapse collapse" id="accordion3_2">
+                                                <div class="panel-body">
+                                                    We are proud to say that our app is designed to be responsive, and fit to most device form factors. Our app is currently tested on iOS and Android, and works well on iPhone, iPad, and all Android mobile devices.
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="panel panel-faq">
+                                            <div class="panel-heading">
+                                                <h4 class="panel-title">
+                                                    <a href="#accordion3_3" data-parent="#accordion3" data-toggle="collapse" class="accordion-toggle collapsed">
+                                                        3.3 Where can I get the app?
+                                                    </a>
+                                                </h4>
+                                            </div>
+                                            <div class="panel-collapse collapse" id="accordion3_3">
+                                                <div class="panel-body">
+                                                    Using your mobile device, you can go to the respective app store for that device (App Store for iOS and Google Play for Android).
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="panel panel-faq">
+                                            <div class="panel-heading">
+                                                <h4 class="panel-title">
+                                                    <a href="#accordion3_4" data-parent="#accordion4" data-toggle="collapse" class="accordion-toggle collapsed">
+                                                        3.4 How does the app connect to my account?
+                                                    </a>
+                                                </h4>
+                                            </div>
+                                            <div class="panel-collapse collapse" id="accordion3_4">
+                                                <div class="panel-body">
+                                                    When you start the app, you must login using the fbClone account that you registered with online.  
+                                                    Once you do, as the manager/server, start the survey, then hand it to your customer for them to complete the questionnaire.  Their results are stored securely online, where you can view them from the online dashboard.
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <!-- END TAB 3 -->
+
+                            </div>
+                        </div>
+
+
+
+                    </div>
+
+
+
+
+
+
+                </div><!-- /faq -->
+
+
+
+
+
+
+
+            </div>
+        </section><!-- #content end -->
+        <!-- ============================================
+        ==================== Footer =====================
+        ============================================= -->
+
+        <footer id="footer">
+            @Html.Partial("_FooterPartial")
+        </footer><!-- #footer end -->
+
+    </div><!-- #wrapper end -->
+    <!-- ============================================
+    =================== Go to Top ===================
+    ============================================= -->
+
+    <div id="gotoTop" class="fa fa-angle-up hidden-md"></div>
+
+    <script type="text/javascript" src="/corporate/assets/js/bundle.min.js"></script>
+
+
+</body>
+</html>

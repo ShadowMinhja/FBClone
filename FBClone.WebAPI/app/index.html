@@ -1,0 +1,353 @@
+﻿<!doctype html>
+<html ng-app="fbCloneApp" ng-controller="MainCtrl as main" class="no-js {{containerClass}} sidebar-sm-forced sidebar-sm">
+  <head>
+    <meta charset="utf-8">
+    <title>fbClone - Portal Dashboard</title>
+    <meta name="description" content="We strive to aid restauranteurs by simplifying the collection of customer feedback. This lets you focus your energy on what you do best - making awesome food!">
+    <meta name="keywords" content="Customer Service, Restaurant Analytics, Restauranteur, Restaurant" >
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta property="og:image" content="http://www.fbClone.io/corporate/assets/images/slider/bg-2-thumb.jpg" >
+    <meta property="og:title" content="fbClone - Portal Dashboard" >
+    <meta property="og:description" content="We strive to aid restauranteurs by simplifying the collection of customer feedback. This lets you focus your energy on what you do best - making awesome food!" >
+    <meta property="og:site_name" content="fbClone" >
+    <meta property="og:url" content="www.fbClone.io">
+    <meta property="og:type" content="website">
+    <!--<meta property="fb:app_id" content="1409634932398010" >-->
+    <meta property="fb:app_id" content="1210353988992773">    
+    
+    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+    <link rel="icon" type="image/ico" href="favicon.ico" />
+    <!-- build:css(.) styles/vendor.css -->
+    <!-- bower:css -->
+    <link rel="stylesheet" href="/assets/bower_components/bootstrap/dist/css/bootstrap.css" />
+    <link rel="stylesheet" href="/assets/bower_components/font-awesome/css/font-awesome.css" />
+    <link rel="stylesheet" href="/assets/bower_components/animate.css/animate.css" />
+    <link rel="stylesheet" href="/assets/bower_components/angular-loading-bar/build/loading-bar.css" />
+    <link rel="stylesheet" href="/assets/bower_components/bootstrap-daterangepicker/daterangepicker.css" />
+    <link rel="stylesheet" href="/assets/bower_components/angular-ui-tree/dist/angular-ui-tree.min.css" />
+    <link rel="stylesheet" href="/assets/bower_components/simple-line-icons/css/simple-line-icons.css" />
+    <link rel="stylesheet" href="/assets/bower_components/angular-toastr/dist/angular-toastr.css" />
+    <link rel="stylesheet" href="/assets/bower_components/angular-bootstrap-nav-tree/dist/abn_tree.css" />
+    <link rel="stylesheet" href="/assets/bower_components/chosen/chosen.min.css" />
+    <link rel="stylesheet" href="/assets/bower_components/angular-ui-select/dist/select.css" />      
+    <link rel="stylesheet" href="/assets/bower_components/angular-bootstrap-colorpicker/css/colorpicker.css" />
+    <link rel="stylesheet" href="/assets/bower_components/ngImgCropFullExtended/compile/minified/ng-img-crop.css" />
+    <link rel="stylesheet" href="/assets/bower_components/ng-table/dist/ng-table.css" />
+    <link rel="stylesheet" href="/assets/bower_components/morrisjs/morris.css" />
+    <link rel="stylesheet" href="/assets/bower_components/rickshaw/rickshaw.min.css" />
+    <link rel="stylesheet" href="/assets/bower_components/owl-carousel/owl-carousel/owl.carousel.css" />
+    <link rel="stylesheet" href="/assets/bower_components/owl-carousel/owl-carousel/owl.theme.css" />
+    <link rel="stylesheet" href="/assets/bower_components/fullcalendar/fullcalendar.css" />
+    <link rel="stylesheet" href="/assets/bower_components/angular-material/angular-material.css" />
+    <link rel="stylesheet" href="/assets/bower_components/material-design-iconic-font/dist/css/material-design-iconic-font.css" />
+    <link rel="stylesheet" href="/assets/bower_components/ng-sortable/dist/ng-sortable.css" />
+    <link rel="stylesheet" href="/assets/bower_components/ng-sortable/dist/ng-sortable.style.css" />    
+    <link rel="stylesheet" href="/assets/bower_components/angular-google-places-autocomplete/src/autocomplete.css">
+    <!-- endbower -->
+    <!-- endbuild -->
+    <!-- build:css(.tmp) styles/main.css -->
+    <link rel="stylesheet" href="/assets/styles/main.min.css">
+    <link rel="stylesheet" href="/assets/styles/custom.min.css">
+    <!-- endbuild -->
+  </head>
+<body id="minovate" class="{{main.settings.navbarHeaderColor}} {{main.settings.activeColor}} {{containerClass}} sidebar-sm-forced sidebar-sm"
+      ng-class="{'header-fixed':main.settings.headerFixed, 'header-static':!main.settings.headerFixed, 'aside-fixed':main.settings.asideFixed, 'aside-static':!main.settings.asideFixed, 'rightbar-show':main.settings.rightbarShow, 'rightbar-hidden':!main.settings.rightbarShow }">
+
+    <!--[if lt IE 7]>
+      <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+    <!-- Application content -->
+    <div id="wrap" ui-view autoscroll="true"></div>
+
+    <!-- Page Loader -->
+    <div id="pageloader" page-loader></div>
+
+
+    <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
+    <script>
+        (function (i, s, o, g, r, a, m) {
+            i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+                (i[r].q = i[r].q || []).push(arguments)
+            }, i[r].l = 1 * new Date(); a = s.createElement(o),
+            m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+        })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+
+        ga('create', 'UA-72475561-1', 'auto');
+        ga('send', 'pageview');
+    </script>    
+    <!-- build:js(.) scripts/oldieshim.js -->
+    <!--[if lt IE 9]>
+    <script src="/assets/bower_components/es5-shim/es5-shim.js"></script>
+    <script src="/assets/bower_components/json3/lib/json3.min.js"></script>
+    <![endif]-->
+    <!-- endbuild -->
+    <!-- build:js(.) scripts/vendor.js -->
+    <!-- bower:js -->
+    <script src="/assets/bower_components/jquery/jquery.js"></script>
+    <script src="/assets/bower_components/angular/angular.js"></script>
+    <script src="/assets/bower_components/json3/lib/json3.js"></script>
+    <script src="/assets/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="/assets/bower_components/angular-resource/angular-resource.js"></script>
+    <script src="/assets/bower_components/angular-cookies/angular-cookies.js"></script>
+    <script src="/assets/bower_components/angular-sanitize/angular-sanitize.js"></script>
+    <script src="/assets/bower_components/angular-animate/angular-animate.js"></script>
+    <script src="/assets/bower_components/angular-touch/angular-touch.js"></script>
+    <script src="/assets/bower_components/angular-local-storage/dist/angular-local-storage.js"></script>
+    <script src="/assets/bower_components/angular-messages/angular-messages.js"></script>
+    <script src="/assets/bower_components/angular-fontawesome/dist/angular-fontawesome.js"></script>
+    <script src="/assets/bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+    <script src="/assets/bower_components/jquery.slimscroll/jquery.slimscroll.min.js"></script>
+    <script src="/assets/bower_components/jquery.sparkline/index.js"></script>
+    <script src="/assets/bower_components/angular-loading-bar/build/loading-bar.js"></script>
+    <script src="/assets/bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+    <script src="/assets/bower_components/angular-ui-utils/ui-utils.js"></script>
+    <script src="/assets/bower_components/moment/moment.js"></script>
+    <script src="/assets/bower_components/bootstrap-daterangepicker/daterangepicker.js"></script>
+    <script src="/assets/bower_components/ng-bs-daterangepicker/src/ng-bs-daterangepicker.js"></script>
+    <script src="/assets/bower_components/angular-momentjs/angular-momentjs.js"></script>
+    <script src="/assets/bower_components/angular-toastr/dist/angular-toastr.tpls.js"></script>
+    <script src="/assets/bower_components/angular-bootstrap-nav-tree/dist/abn_tree_directive.js"></script>
+    <script src="/assets/bower_components/oclazyload/dist/ocLazyLoad.js"></script>
+    <script src="/assets/bower_components/chosen/chosen.jquery.min.js"></script>
+    <script src="/assets/bower_components/angular-ui-select/dist/select.js"></script>
+    <script src="/assets/bower_components/textAngular/dist/textAngular.min.js"></script>
+    <script src="/assets/bower_components/angular-bootstrap-colorpicker/js/bootstrap-colorpicker-module.js"></script>
+    <script src="/assets/bower_components/angular-file-upload/angular-file-upload.js"></script>
+    <script src="/assets/bower_components/ngImgCropFullExtended/compile/minified/ng-img-crop.js"></script>
+    <script src="/assets/bower_components/ng-table/dist/ng-table.js"></script>
+    <script src="/assets/bower_components/raphael/raphael.js"></script>
+    <script src="/assets/bower_components/mocha/mocha.js"></script>
+    <script src="/assets/bower_components/morrisjs/morris.js"></script>
+    <script src="/assets/bower_components/flot/jquery.flot.js"></script>
+    <script src="/assets/bower_components/flot/jquery.flot.resize.js"></script>
+    <script src="/assets/bower_components/flot.tooltip/js/jquery.flot.tooltip.js"></script>
+    <script src="/assets/bower_components/angular-flot/angular-flot.js"></script>
+    <script src="/assets/bower_components/flot-spline/js/jquery.flot.spline.min.js"></script>
+    <script src="/assets/bower_components/d3/d3.js"></script>
+    <script src="/assets/bower_components/rickshaw/rickshaw.js"></script>
+    <script src="/assets/bower_components/angular-rickshaw/rickshaw.js"></script>
+    <script src="/assets/bower_components/owl-carousel/owl-carousel/owl.carousel.min.js"></script>
+    <script src="/assets/bower_components/lodash-compat/lodash.js"></script>
+    <!--<script src="/assets/bower_components/angular-google-maps/dist/angular-google-maps.js"></script>-->
+    <script src="/assets/bower_components/jquery-ui/ui/jquery-ui.js"></script>
+    <script src="/assets/bower_components/jquery.easy-pie-chart/dist/angular.easypiechart.min.js"></script>
+    <script src="/assets/bower_components/ng-tags-input/ng-tags-input.min.js"></script>
+    
+    <script src="/assets/bower_components/angular-translate/angular-translate.js"></script>
+    <script src="/assets/bower_components/angular-translate-loader-static-files/angular-translate-loader-static-files.js"></script>
+    <script src="/assets/bower_components/angular-translate-storage-cookie/angular-translate-storage-cookie.js"></script>
+    <script src="/assets/bower_components/angular-translate-storage-local/angular-translate-storage-local.js"></script>
+    <script src="/assets/bower_components/jquery.inputmask/dist/jquery.inputmask.bundle.min.js"></script>
+    <script src="/assets/bower_components/angular-aria/angular-aria.js"></script>
+    <script src="/assets/bower_components/angular-material/angular-material.js"></script>
+    <script src="/assets/bower_components/ng-sortable/dist/ng-sortable.js"></script>
+    <script src="/assets/bower_components/angular-file-upload/angular-file-upload.js"></script>
+    <script src="/assets/bower_components/tv4/tv4.js"></script>
+    <script src="/assets/bower_components/objectpath/lib/ObjectPath.js"></script>
+    <script src="/assets/bower_components/angular-schema-form/dist/schema-form.min.js"></script>
+    <script src="/assets/bower_components/angular-schema-form/dist/bootstrap-decorator.min.js"></script>
+    <script src="/assets/bower_components/tinymce-dist/tinymce.min.js"></script>
+    <script src="/assets/bower_components/tx-tinymce/tx-tinymce.js"></script>
+    <script src="/assets/bower_components/angular-schema-form-tinymce/bootstrap-tinymce.min.js"></script>
+
+    <script src="https://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyAQqQqEYII6ht1pUokNE9lMhKmZ_L5LzFs"></script>
+    <script src="/assets/bower_components/angular-google-places-autocomplete/src/autocomplete.js"></script>
+    <script src="/Scripts/jquery.signalR-2.2.0.min.js"></script>
+
+    <!-- endbower -->
+    <!-- endbuild -->
+    <!-- build:js({.tmp,app}) scripts/app.js -->
+
+    <script src="scripts/app.js"></script>
+
+    <!-- FILTERS -->
+    <!-- RESOURCES/SERVICES -->
+    <script src="scripts/common/services/common.services.js"></script>
+    <script src="scripts/common/services/helper.services.js"></script>
+    <script src="scripts/common/userAccount.js"></script>
+    <script src="scripts/common/currentUser.js"></script>
+    <script src="scripts/common/resources/applicationSetting.resource.js"></script>
+    <script src="scripts/common/resources/stateProvince.resource.js"></script>
+    <script src="scripts/common/resources/menuQrCode.resource.js"></script>
+    <script src="scripts/hubs/receiveOrder.service.js"></script>
+    <script src="scripts/dashboard/dashboard.resource.js"></script>
+
+    <script src="scripts/staff/staff.resource.js"></script>
+    <script src="scripts/location/location.resource.js"></script>
+    <script src="scripts/branding/branding.resource.js"></script>
+    <script src="scripts/promotions/promotions.resource.js"></script>
+
+    <script src="scripts/survey/survey.resource.js"></script>
+    <script src="scripts/survey/questiondraft.resource.js"></script>
+    <script src="scripts/survey/answerdraft.resource.js"></script>
+    <script src="scripts/survey/surveyState.service.js"></script>
+    <script src="scripts/survey/category.resource.js"></script>
+
+    <script src="scripts/menu/menuImage.resource.js"></script>
+    <script src="scripts/menu/menuImport.resource.js"></script>
+    <script src="scripts/menu/menu.resource.js"></script>
+    <script src="scripts/menu/menuEdit.resource.js"></script>
+    <script src="scripts/menu/menuPrint.resource.js"></script>
+
+    <script src="scripts/orders/order.resource.js"></script>
+
+    <script src="scripts/guestcards/questionresponseset.resource.js"></script>
+    <!-- CONTROLLERS -->
+    <!--<script src="scripts/controllers/main.js"></script> Replaced by maincontroller -->
+    <script src="scripts/common/modalinstance.controller.js"></script>
+    <script src="scripts/main.controller.js"></script>
+    <script src="scripts/dashboard/dashboard.controller.js"></script>
+    <script src="scripts/login/login.controller.js"></script>
+    <script src="scripts/login/signup.controller.js"></script>
+    <script src="scripts/login/forgotpassword.controller.js"></script>
+    <!--Admin Screens-->
+    <script src="scripts/survey/surveyheader.controller.js"></script>
+    <script src="scripts/survey/survey.controller.js"></script>
+    <script src="scripts/survey/questiondraft.controller.js"></script>
+    <script src="scripts/survey/answerdraft.controller.js"></script>
+    <script src="scripts/menu/menu.controller.js"></script>
+    <script src="scripts/menu/menuEdit.controller.js"></script>
+    <script src="scripts/menu/menusectionEdit.controller.js"></script>
+    <script src="scripts/menu/menuitemEdit.controller.js"></script>
+    <script src="scripts/menu/menuImport.controller.js"></script>
+
+    <script src="scripts/orders/orders.controller.js"></script>
+    <script src="scripts/staff/staff.controller.js"></script>
+    <script src="scripts/location/location.controller.js"></script>
+    <script src="scripts/branding/branding.controller.js"></script>
+    <script src="scripts/promotions/promotions.controller.js"></script>
+    <!--Guestcard Screens-->
+    <script src="scripts/guestcards/guestcards.controller.js"></script>
+    <script src="scripts/nav.js"></script>
+
+    <!-- FILTER -->
+    <script src="scripts/common/filters/trustedHtmlFilter.js"></script>
+
+    <!-- DIRECTIVE -->
+    <script src="scripts/common/directives/ngtable.tracker.js"></script>
+    <script src="scripts/common/directives/ngtable.lastrepeat.js"></script>
+    <script src="scripts/common/directives/imageuploader.preview.js"></script>
+    <script src="scripts/common/directives/backImg.js"></script>
+    <script src="scripts/common/directives/ngBlink.js"></script>
+
+    <!-- TEMPLATE -->
+    <script src="/assets/directives/navcollapse.js"></script>
+    <script src="/assets/directives/slimscroll.js"></script>
+    <script src="/assets/controllers/navbar-chart.js"></script>
+    <script src="/assets/directives/sparkline.js"></script>
+    <script src="/assets/directives/collapsesidebar.js"></script>
+    <script src="/assets/directives/ripple.js"></script>
+    <script src="/assets/directives/pageloader.js"></script>
+    <script src="/assets/controllers/daterangepicker.js"></script>
+    <script src="/assets/directives/daterangepicker.js"></script>
+    <script src="/assets/controllers/boxedlayout.js"></script>
+    <script src="/assets/controllers/fullwidthlayout.js"></script>
+    <script src="/assets/controllers/sidebarsmlayout.js"></script>
+    <script src="/assets/controllers/sidebarxslayout.js"></script>
+    <script src="/assets/controllers/hzmenu.js"></script>
+    <script src="/assets/controllers/rtl.js"></script>
+    <script src="/assets/controllers/ui-typography.js"></script>
+    <script src="/assets/directives/tilecontrolclose.js"></script>
+    <script src="/assets/directives/tilecontroltoggle.js"></script>
+    <script src="/assets/directives/tilecontrolrefresh.js"></script>
+    <script src="/assets/directives/tilecontrolfullscreen.js"></script>
+    <script src="/assets/directives/prettyprint.js"></script>
+    <script src="/assets/controllers/ui-lists.js"></script>
+    <script src="/assets/directives/lazymodel.js"></script>
+    <script src="/assets/controllers/ui-buttonsicons.js"></script>
+    <script src="/assets/directives/activatebutton.js"></script>
+    <!--<script src="/assets/controllers/ui-navs.js"></script>
+    <script src="/assets/controllers/ui-modals.js"></script>
+    <script src="/assets/controllers/ui-tiles.js"></script>
+    <script src="/assets/controllers/ui-portlets.js"></script>
+    <script src="/assets/controllers/ui-grid.js"></script>
+    <script src="/assets/controllers/ui-alerts.js"></script>-->
+    <script src="/assets/directives/toastrinject.js"></script>
+    <script src="/assets/controllers/ui-general.js"></script>
+    <script src="/assets/directives/setnganimate.js"></script>
+    <!--<script src="/assets/controllers/ui-tree.js"></script>-->
+    <!--<script src="/assets/controllers/forms-common.js"></script>
+    <script src="/assets/controllers/forms-validate.js"></script>
+    <script src="/assets/directives/onblurvalidation.js"></script>
+    <script src="/assets/directives/formsubmit.js"></script>
+    <script src="/assets/controllers/forms-wizard.js"></script>
+    <script src="/assets/controllers/form-upload.js"></script>
+    <script src="/assets/controllers/form-img-crop.js"></script>
+    <script src="/assets/controllers/tables-bootstrap.js"></script>
+    <script src="/assets/directives/check-toggler.js"></script>
+    <script src="/assets/controllers/tables-datatables.js"></script>
+    <script src="/assets/controllers/tables-ui-grid.js"></script>
+    <script src="/assets/controllers/tables-ng-table.js"></script>
+    <script src="/assets/controllers/tables-smart-table.js"></script>
+    <script src="/assets/controllers/tables-footable.js"></script>
+    <script src="/assets/controllers/charts.js"></script>-->
+    <script src="/assets/directives/chart-morris.js"></script>
+    <script src="/assets/directives/gaugechart.js"></script>
+    <script src="/assets/directives/wrap-owlcarousel.js"></script>
+    <script src="/assets/directives/todofocus.js"></script>
+    <script src="/assets/directives/todoescape.js"></script>
+    <script src="/assets/directives/clock.js"></script>
+    <script src="/assets/controllers/ui-widgets.js"></script>
+    <script src="/assets/directives/active-toggle.js"></script>
+    <!--<script src="/assets/directives/vector-map.js"></script>
+    <script src="/assets/controllers/maps-vector-map.js"></script>
+    <script src="/assets/controllers/maps-google-map.js"></script>-->
+    <script src="/assets/controllers/calendar.js"></script>
+    <!--<script src="/assets/controllers/mail-inbox.js"></script>
+    <script src="/assets/controllers/mail-compose.js"></script>
+    <script src="/assets/controllers/mail-single.js"></script>
+    <script src="/assets/controllers/mail.js"></script>-->
+    <!--<script src="/assets/controllers/pages-login.js"></script>
+    <script src="/assets/controllers/pages-signup.js"></script>
+    <script src="/assets/controllers/pages-forgot-password.js"></script>-->
+    <!--<script src="/assets/controllers/pages-gallery.js"></script>
+    <script src="/assets/controllers/pages-timeline.js"></script>
+    <script src="/assets/controllers/pages-chat.js"></script>
+    <script src="/assets/controllers/pages-search-results.js"></script>
+    <script src="/assets/controllers/pages-profile.js"></script>-->
+    <script src="/assets/controllers/help.js"></script>
+    <script src="/assets/directives/anchor-scroll.js"></script>
+    <!--<script src="/assets/controllers/shop-orders.js"></script>
+    <script src="/assets/controllers/shop-products.js"></script>
+    <script src="/assets/controllers/shop-invoices.js"></script>
+    <script src="/assets/controllers/shop-single-order.js"></script>
+    <script src="/assets/controllers/shop-single-product.js"></script>
+    <script src="/assets/controllers/shop-single-invoice.js"></script>
+    <script src="/assets/controllers/offcanvaslayout.js"></script>-->
+    <script src="/assets/directives/offcanvas-sidebar.js"></script>
+    <script src="/assets/directives/submitvalidate.js"></script>
+    <script src="/assets/directives/native-tab.js"></script>
+    <script src="/assets/controllers/maps-leaflet.js"></script>
+
+    <!--<script src="/assets/controllers/material/autocomplete.js"></script>
+    <script src="/assets/controllers/material/bottom-sheet.js"></script>
+    <script src="/assets/controllers/material/buttons.js"></script>
+    <script src="/assets/controllers/material/cards.js"></script>
+    <script src="/assets/controllers/material/checkbox.js"></script>
+    <script src="/assets/controllers/material/chips.js"></script>
+    <script src="/assets/controllers/material/content.js"></script>
+    <script src="/assets/controllers/material/dialog.js"></script>
+    <script src="/assets/controllers/material/divider.js"></script>
+    <script src="/assets/controllers/material/fab-speed-dial.js"></script>
+    <script src="/assets/controllers/material/fab-toolbar.js"></script>
+    <script src="/assets/controllers/material/grid-list.js"></script>
+    <script src="/assets/controllers/material/inputs.js"></script>
+    <script src="/assets/controllers/material/list.js"></script>
+    <script src="/assets/controllers/material/menu.js"></script>
+    <script src="/assets/controllers/material/progress-circular.js"></script>
+    <script src="/assets/controllers/material/progress-linear.js"></script>
+    <script src="/assets/controllers/material/radio-button.js"></script>
+    <script src="/assets/controllers/material/select.js"></script>
+    <script src="/assets/controllers/material/sidenav.js"></script>
+    <script src="/assets/controllers/material/slider.js"></script>
+    <script src="/assets/controllers/material/subheader.js"></script>
+    <script src="/assets/controllers/material/swipe.js"></script>
+    <script src="/assets/controllers/material/switch.js"></script>
+    <script src="/assets/controllers/material/tabs.js"></script>
+    <script src="/assets/controllers/material/toast.js"></script>
+    <script src="/assets/controllers/material/toolbar.js"></script>
+    <script src="/assets/controllers/material/tooltip.js"></script>
+    <script src="/assets/controllers/material/whiteframe.js"></script>-->
+    <!-- endbuild -->
+</body>
+</html>

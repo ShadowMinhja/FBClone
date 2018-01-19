@@ -1,0 +1,355 @@
+﻿<script type="text/ng-template" id="answerChoiceEditor.html">
+    <div class="modal-header">
+        <h3 class="modal-title custom-font">Select Answer Choices</h3>
+    </div>
+
+    <form name="answerChoiceSelectionForm" submit-validate ng-submit="updateAnswerChoices(answerChoiceSelectionForm.$valid)" role="form" novalidate>
+        <div class="modal-body">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Add Answer Choice</h3>
+                </div>
+                <div class="panel-body">
+                    <div class="form-inline" ng-form="answerChoiceForm">
+                        <div class="form-group col-sm-5" ng-class="{ 'has-error' : answerChoiceForm.name.$invalid && !answerChoiceForm.name.$pristine, 'has-success' : answerChoiceForm.name.$valid && !answerChoiceForm.name.$pristine}">
+                            <label for="answerText">Answer Text: </label><br />
+                            <input type="text" name="answerText" id="answerText" class="form-control rounded form-control-static" ng-model="newAnswerChoice.answerText" on-blur-validation required>
+                            <p class="help-block">
+                                <span ng-show="answerChoiceForm.answerText.$invalid && !answerChoiceForm.answerText.$pristine">Answer Text is Required</span>
+                            </p>
+                        </div>
+
+                        <div class="form-group col-sm-4">
+                            <label for="answerFactor">%Weight </label><br />
+                            <input type="number" name="answerFactor" id="answerFactor" class="form-control rounded form-control-static" ng-model="newAnswerChoice.answerFactor" ng-pattern="/^[0-9]+$/" on-blur-validation required>
+                            <p class="help-block">
+                                <span ng-show="answerChoiceForm.answerFactor.$invalid && !answerChoiceForm.answerFactor.$pristine">Answer %Weight is Required</span>
+                            </p>
+                        </div>
+
+                        <!--<div class="form-group col-sm-2" ng-class="{ 'has-error' : answerChoiceForm.passcode.$invalid && !answerChoiceForm.sequence.$pristine, 'has-success' : answerChoiceForm.sequence.$valid && !answerChoiceForm.sequence.$pristine}">
+                            <label for="sequence">Sequence: </label><br />
+                            <span>{{newAnswerChoice.sequence}}</span>
+                            <input type="hidden" name="sequence" id="sequence" class="form-control rounded form-control-static" ng-model="newAnswerChoice.sequence" on-blur-validation required>
+                            <p class="help-block">
+                                <span ng-show="answerChoiceForm.sequence.$invalid && !answerChoiceForm.sequence.$pristine">Sequence is required</span>
+                            </p>
+                        </div>-->
+                        <div class="form-group col-sm-1">
+                            <br />
+                            <button class="btn btn-primary btn-sm" ng-click="answerDraftGrid_Create(answerChoiceForm)" ng-disabled="answerChoiceForm.$pristine || answerChoiceForm.$invalid"><span class="glyphicon glyphicon-plus-sign"></span></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="panel panel-default" ng-form="answerChoiceSelectionForm">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Select Answer Choices (drag to sort)</h3>
+                </div>
+                <div class="panel-body">
+                    <table id="answer-choice-ngtable" ng-table="tableParams" show-filter="true" class="table table-bordered table-striped">
+                        <tbody id="answer-choice-container" as-sortable="sortableOptions" ng-model="$data">
+                            <tr ng-repeat="row in $data" ng-class="isRowSelected(row.active) ? 'info' : ''" as-sortable-item class="as-sortable-item" on-last-repeat>
+                                <td class="col-sm-1" data-title="Included" filter="{selected: 'text'}" sortable="'selected'">
+                                    <input type="checkbox" ng-model="row.active" name="answerChoiceCheckBoxList" ng-change="answerCheckBoxChanged(row, $index);" />
+                                </td>
+                                <td class="col-sm-10 as-sortable-item-handle" data-title="'Answer Text'" filter="{answerText: 'text'}" sortable="'answerText'" as-sortable-item-handle>
+                                    <span>{{row.answerText}}</span>
+                                </td>
+                                <td class="col-sm-1" data-title="'Sequence'" filter="{sequence: 'text'}" sortable="'sequence'">
+                                    <span>{{getSequence(row.sequence)}}</span>
+                                </td>
+                                <td>
+                                    <button class="btn btn-danger btn-sm" ng-click="del(row)"><span class="glyphicon glyphicon-trash"></span></button>
+                                </td>
+                            </tr>
+                        </tbody>
+                        <tr style="background-color:gray"></tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal-footer">
+            <button type="submit" class="btn btn-primary" ng-click="ok(answerChoiceSelectionForm.selected, answerChoiceSelectionForm.$valid)">Confirm Selections</button>
+            <button class="btn btn-default btn-border" ng-click="cancel()">Cancel</button>
+        </div>
+    </form>
+</script>
+
+
+<div class="page page-grid">
+
+    <!-- page header -->
+    <div class="pageheader" ng-controller="SurveyHeaderCtrl">
+
+        <h2>{{page.title}} <span>{{page.subtitle}}</span></h2>
+
+        <div class="page-bar">
+
+            <ul class="page-breadcrumb">
+                <li>
+                    <a ui-sref="app.admin"><i class="fa fa-home"></i> {{main.title}}</a>
+                </li>
+                <li>
+                    <a ui-sref="app.admin.staff">{{page.title}}</a>
+                </li>
+            </ul>
+
+        </div>
+
+    </div>
+    <!-- /page header -->
+    <!-- page content -->
+    <div class="pagecontent">
+
+        <!--Survey Grid-->
+        <!-- row -->
+        <div class="row" ng-controller="SurveyCtrl as surveyGrid">
+            <!-- col -->
+            <div class="col-md-12">
+
+                <!-- tile -->
+                <section class="tile" fullscreen="isFullscreen01">
+
+                    <!-- tile header -->
+                    <div class="tile-header dvd dvd-btm">
+                        <h1 class="custom-font"><strong>Surveys</strong>List</h1>
+                        <ul class="controls">
+                            <li class="dropdown" dropdown on-toggle="toggled(open)">
+
+                                <a href dropdown-toggle class="dropdown-toggle settings"><i class="fa fa-cog"></i></a>
+
+                                <ul class="dropdown-menu pull-right with-arrow animated littleFadeInUp">
+                                    <li>
+                                        <a href tile-control-toggle>
+                                            <span class="minimize"><fa name="angle-down"></fa>&nbsp;&nbsp;&nbsp;Minimize</span>
+                                            <span class="expand"><fa name="angle-up"></fa>&nbsp;&nbsp;&nbsp;Expand</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href tile-control-refresh ng-click="ajaxFaker()">
+                                            <fa name="refresh"></fa> Refresh
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href tile-control-fullscreen ng-click="isFullscreen01 = !isFullscreen01">
+                                            <fa name="expand"></fa> Fullscreen
+                                        </a>
+                                    </li>
+
+                                </ul>
+
+                            </li>
+                            <li class="remove"><a href tile-control-close><i class="fa fa-times"></i></a></li>
+                        </ul>
+                    </div>
+                    <!-- /tile header -->
+                    <!-- tile body -->
+                    <div class="tile-body">
+                        <button class="btn btn-default pull-left" ng-click="surveyGrid.add()">Add <i class="fa fa-plus"></i></button>
+
+                        <button ng-click="surveyGrid.tableParams.sorting({})" class="btn btn-default pull-right">Clear sorting</button>
+                        <button ng-click="surveyGrid.tableParams.filter({})" class="btn btn-default pull-right">Clear filter</button>
+                   
+                        <table ng-table="surveyGrid.tableParams" show-filter="true" class="table table-bordered table-striped" ng-form="surveyGrid.tableForm" disable-filter="surveyGrid.isAdding" row-tracked-table="surveyGrid.tableTracker">
+                            <tr ng-repeat="row in $data" ng-form="rowForm" row-tracked-table-row="row" ng-click="surveyGrid.row_Click(row)" ng-class="isRowSelected(row.id) ? 'info' : ''">
+                                <td data-title="'Name'" filter="{name: 'text'}" sortable="'name'" ng-switch="row.isEditing" ng-class="name.$dirty ? 'bg-warning' : ''" ng-form="name" row-tracked-table-cell>
+                                    <span ng-switch-default class="editable-text">{{row.name}}</span>
+                                    <div class="controls" ng-class="name.$invalid && name.$dirty ? 'has-error' : ''" ng-switch-when="true">
+                                        <input type="text" name="name" ng-model="row.name" class="editable-input form-control input-sm" required placeholder="Survey Name" />
+                                    </div>
+                                </td>
+                                <td data-title="'Description'" filter="{description: 'text'}" sortable="'description'" ng-switch="row.isEditing" ng-class="name.$dirty ? 'bg-warning' : ''" ng-form="description" row-tracked-table-cell>
+                                    <span ng-switch-default class="editable-text">{{row.description}}</span>
+                                    <div class="controls" ng-class="name.$invalid && name.$dirty ? 'has-error' : ''" ng-switch-when="true">
+                                        <input type="text" name="description" ng-model="row.description" class="editable-input form-control input-sm" required placeholder="Survey Description" />
+                                    </div>
+                                </td>
+                                <td data-title="'Active'" filter="{active: 'text'}" sortable="'active'" ng-switch="row.isEditing" ng-class="name.$dirty ? 'bg-warning' : ''" ng-form="active" row-tracked-table-cell>
+                                    <span ng-switch-default class="editable-text">{{row.active == false ? 'No' : 'Yes'}}</span>
+                                    <div class="onoffswitch primary labeled inline-block" ng-class="name.$invalid && name.$dirty ? 'has-error' : ''" ng-switch-when="true">
+                                        <input type="checkbox" name="active" ng-model="row.active" class="onoffswitch-checkbox" id="active">
+                                        <label class="onoffswitch-label" for="active">
+                                            <span class="onoffswitch-inner"></span>
+                                            <span class="onoffswitch-switch"></span>
+                                        </label>
+                                    </div>
+                                </td>
+                                <td>
+                                    <button class="btn btn-primary btn-sm" ng-click="surveyGrid.save(row, rowForm)" ng-if="row.isEditing" ng-disabled="rowForm.$pristine || rowForm.$invalid"><span class="glyphicon glyphicon-ok"></span></button>
+                                    <button class="btn btn-default btn-sm" ng-click="surveyGrid.cancel(row, rowForm)" ng-if="row.isEditing"><span class="glyphicon glyphicon-remove"></span></button>
+                                    <button class="btn btn-default btn-sm" ng-click="row.isEditing = true" ng-if="!row.isEditing"><span class="glyphicon glyphicon-pencil"></span></button>
+                                    <button class="btn btn-danger btn-sm" ng-click="surveyGrid.del(row)" ng-if="!row.isEditing"><span class="glyphicon glyphicon-trash"></span></button>
+                                </td>
+                                <!--<td>
+                                    <button class="btn btn-primary mb-10" ng-click="openUpdateStaffSplash($event)" data-options="splash-2 splash-ef-14">Edit</button>
+                                </td>-->
+                            </tr>
+                        </table>
+
+                    </div>
+                    <!-- /tile body -->
+
+                </section>
+                <!-- /tile -->
+
+            </div>
+            <!-- /col -->
+        </div>
+        <!-- /row -->
+        <!--Questions Grid-->
+        <!-- row -->
+        <div class="row" ng-controller="QuestionDraftCtrl as questionGrid">
+            <!-- col -->
+            <div class="col-md-12">
+                <!-- tile -->
+                <section class="tile" fullscreen="isFullscreen02" ng-if="isSurveySelected()">
+
+                    <!-- tile header -->
+                    <div class="tile-header dvd dvd-btm">
+                        <h1 class="custom-font"><strong>Questions</strong>List</h1>
+                        <ul class="controls">
+                            <li class="dropdown" dropdown on-toggle="toggled(open)">
+                                <a href dropdown-toggle class="dropdown-toggle settings"><i class="fa fa-cog"></i></a>
+                                <ul class="dropdown-menu pull-right with-arrow animated littleFadeInUp">
+                                    <li>
+                                        <a href tile-control-toggle>
+                                            <span class="minimize"><fa name="angle-down"></fa>&nbsp;&nbsp;&nbsp;Minimize</span>
+                                            <span class="expand"><fa name="angle-up"></fa>&nbsp;&nbsp;&nbsp;Expand</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href tile-control-refresh ng-click="ajaxFaker()">
+                                            <fa name="refresh"></fa> Refresh
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href tile-control-fullscreen ng-click="isFullscreen02 = !isFullscreen02">
+                                            <fa name="expand"></fa> Fullscreen
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="remove"><a href tile-control-close><i class="fa fa-times"></i></a></li>
+                        </ul>
+                    </div>
+                    <!-- /tile header -->
+                    <!-- tile body -->
+                    <div class="tile-body">
+                        <button class="btn btn-default pull-left" ng-click="questionGrid.add()">Add <i class="fa fa-plus"></i></button>
+
+                        <button ng-click="questionGrid.tableParams.sorting({})" class="btn btn-default pull-right">Clear sorting</button>
+                        <button ng-click="questionGrid.tableParams.filter({})" class="btn btn-default pull-right">Clear filter</button>
+
+                        <table ng-table="questionGrid.tableParams" show-filter="true" class="table table-bordered table-striped" ng-form="questionGrid.tableForm" disable-filter="questionGrid.isAdding" row-tracked-table="questionGrid.tableTracker">
+                            <tr ng-repeat="row in $data" ng-form="rowForm" row-tracked-table-row="row">
+                                <td title="'Category'" class="col-sm-1" sortable="'category.name'" filter="{ 'category.name': 'text' }" ng-switch="row.isEditing" ng-class="name.$dirty ? 'bg-warning' : ''" ng-form="categoryId" row-tracked-table-cell>
+                                    <span ng-switch-default class="editable-input-form-control">{{row.category.name}}</span>
+                                    <div class="controls" ng-class="name.$invalid && name.$dirty ? 'has-error' : ''" ng-switch-when="true">
+                                        <select name="categoryId" ng-model="row.category" class="editable-input-form-control input-sm" required ng-options="c.name for c in questionGrid.categories">
+                                            <option value="" selected>Select</option>
+                                        </select>
+                                    </div>
+                                </td>
+
+                                <td title="'Question Type'" class="col-sm-2" sortable="'questionType'" filter="{ 'questionType': 'text' }" ng-switch="row.isEditing" ng-class="name.$dirty ? 'bg-warning' : ''" ng-form="questionType" row-tracked-table-cell>
+                                    <span ng-switch-default class="editable-input-form-control">{{row.questionType}}</span>
+                                    <div class="controls" ng-class="name.$invalid && name.$dirty ? 'has-error' : ''" ng-switch-when="true">
+                                        <select name="questionType" ng-model="row.questionType" class="editable-input-form-control input-sm" required>
+                                            <option value="" selected>Select</option>
+                                            <option value="Button">Button</option>
+                                            <option value="Radio">Radio</option>
+                                            <option value="Smiley">Smiley</option>
+                                            <option value="CheckBox">CheckBox</option>
+                                            <option value="Text">Free Response</option>
+                                        </select>
+                                    </div>
+                                </td>
+
+                                <td data-title="'Question'" class="col-sm-3" filter="{questionText: 'text'}" sortable="'questionText'" ng-switch="row.isEditing" ng-class="name.$dirty ? 'bg-warning' : ''" ng-form="questionText" row-tracked-table-cell>
+                                    <span ng-switch-default class="editable-text">{{row.questionText}}</span>
+                                    <div class="controls" ng-class="name.$invalid && name.$dirty ? 'has-error' : ''" ng-switch-when="true">
+                                        <input type="text" name="questionText" ng-model="row.questionText" class="editable-input form-control input-sm" required placeholder="Question Text" />
+                                    </div>
+                                </td>
+
+                                <td data-title="'Answer Choices'" class="col-sm-1" ng-click="openAnswerChoiceEditor($event, row)" 
+                                    data-options="splash-2 splash-ef-14" title="Click to Select Answer Choices" ng-form="answerChoices">
+                                    <div ng-repeat="answer in row.selectedAnswers">
+                                        {{answer.answerText}}
+                                    </div>
+                                    <div class="triangle pull-right"></div>
+                                </td>
+
+                                <td data-title="'Is Optional?'" class="col-sm-1" filter="{isOptional: 'text'}" sortable="'isOptional'" ng-switch="row.isEditing" ng-class="name.$dirty ? 'bg-warning' : ''" ng-form="isOptional" row-tracked-table-cell>
+                                    <span ng-switch-default class="editable-text">{{row.isOptional == false ? 'No' : 'Yes'}}</span>
+                                    <div class="onoffswitch primary labeled inline-block" ng-class="name.$invalid && name.$dirty ? 'has-error' : ''" ng-switch-when="true">
+                                        <input type="checkbox" name="isOptional" ng-model="row.isOptional" class="onoffswitch-checkbox" id="isOptional">
+                                        <label class="onoffswitch-label" for="isOptional">
+                                            <span class="onoffswitch-inner"></span>
+                                            <span class="onoffswitch-switch"></span>
+                                        </label>
+                                    </div>
+                                </td>
+
+                                <td data-title="'Admin Only'" class="col-sm-1" filter="{adminOnly: 'text'}" sortable="'adminOnly'" ng-switch="row.isEditing" ng-class="name.$dirty ? 'bg-warning' : ''" ng-form="adminOnly" row-tracked-table-cell>
+                                    <span ng-switch-default class="editable-text">{{row.adminOnly == false ? 'No' : 'Yes'}}</span>
+                                    <div class="onoffswitch primary labeled inline-block" ng-class="name.$invalid && name.$dirty ? 'has-error' : ''" ng-switch-when="true">
+                                        <input type="checkbox" name="adminOnly" ng-model="row.adminOnly" class="onoffswitch-checkbox" id="adminOnly">
+                                        <label class="onoffswitch-label" for="adminOnly">
+                                            <span class="onoffswitch-inner"></span>
+                                            <span class="onoffswitch-switch"></span>
+                                        </label>
+                                    </div>
+                                </td>
+
+                                <td data-title="'%Weight'" class="col-sm-1" filter="{questionFactor: 'text'}" sortable="'questionFactor'" ng-switch="row.isEditing" ng-class="name.$dirty ? 'bg-warning' : ''" ng-form="questionFactor" row-tracked-table-cell>
+                                    <span ng-switch-default class="editable-text">{{row.questionFactor}}</span>
+                                    <div class="controls" ng-class="name.$invalid && name.$dirty ? 'has-error' : ''" ng-switch-when="true">
+                                        <input type="number" name="questionFactor" ng-model="row.questionFactor" class="editable-input form-control input-sm" required placeholder="Enter Question Factor" maxlength="3" />
+                                    </div>
+                                </td>
+
+                                <td data-title="'Sequence'" class="col-sm-1" filter="{sequence: 'text'}" sortable="'sequence'" ng-switch="row.isEditing" ng-class="name.$dirty ? 'bg-warning' : ''" ng-form="sequence" row-tracked-table-cell>
+                                    <span ng-switch-default class="editable-text">{{row.sequence}}</span>
+                                    <div class="controls" ng-class="name.$invalid && name.$dirty ? 'has-error' : ''" ng-switch-when="true">
+                                        <input type="number" name="sequence" ng-model="row.sequence" class="editable-input form-control input-sm" required placeholder="Sequence" maxlength="1" />
+                                    </div>
+                                </td>
+
+                                <td>
+                                    <button class="btn btn-primary btn-sm" ng-click="questionGrid.save(row, rowForm)" ng-if="row.isEditing" ng-disabled="rowForm.$pristine || rowForm.$invalid"><span class="glyphicon glyphicon-ok"></span></button>
+                                    <button class="btn btn-default btn-sm" ng-click="questionGrid.cancel(row, rowForm)" ng-if="row.isEditing"><span class="glyphicon glyphicon-remove"></span></button>
+                                    <button class="btn btn-default btn-sm" ng-click="row.isEditing = true" ng-if="!row.isEditing"><span class="glyphicon glyphicon-pencil"></span></button>
+                                    <button class="btn btn-danger btn-sm" ng-click="questionGrid.del(row)" ng-if="!row.isEditing"><span class="glyphicon glyphicon-trash"></span></button>
+                                </td>
+                                <!--<td>
+                                    <button class="btn btn-primary mb-10" ng-click="openUpdateStaffSplash($event)" data-options="splash-2 splash-ef-14">Edit</button>
+                                </td>-->
+                            </tr>
+                        </table>
+
+                    </div>
+                    <!-- /tile body -->
+
+                </section>
+                <!-- /tile -->
+
+            </div>
+            <!-- /col -->
+        </div>
+        <!-- /row -->
+
+
+        <!--Answers Grid-->
+
+
+    </div>
+    <!-- /page content -->
+
+
+
+
+</div>

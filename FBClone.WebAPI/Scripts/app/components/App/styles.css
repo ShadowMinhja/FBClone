@@ -1,0 +1,34 @@
+.logoWrapper {
+  padding: 2em 0;
+}
+
+.logo {
+  width: 100%;
+  margin: 0 auto;
+  display: block;
+}
+
+.fsLogo {
+    height: 54px;
+    width: 254px;
+    padding-top: 5px;
+}
+
+.brandLogo {
+    flex: 1 0 15%;
+}
+
+.loginInputField {
+    color: #F5B11A;
+    margin-right: 5px;
+}
+
+.loginButton {
+    margin-left: 10px;
+    margin-top: 25px;
+}
+
+.menuComponent {
+    flex: 1 0 1%;
+}
+

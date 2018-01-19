@@ -1,0 +1,54 @@
+﻿#venue-container {
+    height: 50px;
+    width: 100%;
+    margin-top: -20px;
+}
+
+.venue-search-clear {
+    margin-top: 35px;
+}
+
+.venue-search-spinner {
+    height: initial !important;
+    top: 15px;
+    font-family: 'FontAwesome' !important;
+    position: absolute;
+}
+
+.venue-picker-wrapper {
+    background-color: transparent;
+}
+
+.venue-picker-wrapper input {
+    background-color: transparent;
+}
+
+.venueItem {
+    color: gray;
+    display: inline-block;
+    line-height: 0;
+}
+
+.venue-address-block {
+    display: block;
+    line-height: 10px;
+}
+
+.venue-picker-results {
+}
+
+.venue-picker-results div {
+    font-size: 11px;
+    overflow-x: hidden;
+}
+
+@media only screen and (max-width: 1200px) {
+   
+}
+
+@media only screen and (max-width: 991px) {
+    #venue-container {
+        /*float: none;
+        margin-top: 5px !important;*/
+    }
+}

@@ -1,0 +1,120 @@
+<div class="bg-slategray p-15 signupScreen" style="height: 100%; width:100%; overflow-y: scroll;">
+
+    <div class="text-center">
+        <h3 class="text-light text-white">
+            <!--<span class="text-lightred">f</span>eedSense-->
+            <img src="/assets/images/fbCloneLogo.png" class="w-sm"/>
+        </h3>
+    </div>
+
+    <div class="container bg-greensea lt mt-40" ng-controller="SignupCtrl as vm">
+        <div class="row">
+            <div class="col-md-8 bg-white text-slategray">
+                <h2 class="text-light text-greensea text-center">Sign Up</h2>
+
+                <form name="form" class="form-validation mt-20" novalidate>
+
+                    <h3 class="text-left">
+                        <i class="fa fa-life-buoy fa-spin"></i> Take control of your business now! Get Started Absolutely <span class="text-lightred">FREE</span>
+                    </h3>
+                    <!--<div class="form-group">
+                        <label for="firstNameTextBox" class="col-md-4">First Name <span class="text-lightred" style="font-size: 15px">*</span></label>
+                        <div class="col-md-8">
+                            <input type="text" id="firstNameTextBox" class="form-control b-solid" placeholder="Your First Name" ng-model="vm.userData.firstName" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="lastNameTextBox" class="col-md-4">Last Name <span class="text-lightred" style="font-size: 15px">*</span></label>
+                        <div class="col-md-8">
+                            <input type="text" id="lastNameTextBox" class="form-control b-solid" placeholder="Your Last Name" ng-model="vm.userData.lastName" required>
+                        </div>
+                    </div>-->
+
+                    <div class="form-group">
+                        <label for="businessNameTextBox" class="col-md-4">Business <span class="text-lightred" style="font-size: 15px">*</span></label>
+                        <div class="col-md-8">
+                            <input type="text" id="businessNameTextBox" class="form-control b-solid" placeholder="Your Organization Name (You can decide later)" ng-model="vm.userData.organizationName" required>
+                        </div>
+                    </div>
+                    
+                    <!--<div class="form-group">
+                        <label for="emailTextBox" class="col-md-4">Email<span class="text-lightred" style="font-size: 15px">*</span></label>
+                        <div class="col-md-8">
+                            <input type="email" id="emailTextBox" class="form-control b-solid" placeholder="Email" ng-model="vm.userData.email" required>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="passwordTextBox" class="col-md-4">Password <span class="text-lightred" style="font-size: 15px">*</span></label>
+                        <div class="col-md-8">
+                            <input type="password" id="passwordTextBox" placeholder="Password" class="form-control b-solid" ng-model="vm.userData.password" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-md-4"></label>
+                        <div class="col-md-8">
+                            <input type="password" placeholder="Re-enter Password" class="form-control b-solid" ng-model="vm.userData.confirmPassword" required>
+                        </div>
+                    </div>-->
+
+                    <div class="form-group" ng-model="vm.userData.subscriptionPlan">
+                        <label for="subscriptionSelect" class="col-md-4">Subscription Plan<span class="text-lightred" style="font-size: 15px">*</span></label>
+                        <div class="col-md-8">
+                            <select id="subscriptionSelect" class="form-control b-solid" ng-model="vm.userData.subscriptionPlan">
+                                <option value="free">Free</option>
+                                <option value="premium_monthly" disabled>Premium - Coming Soon</option>
+                                <option value="professional_monthly" disabled>Professional - Coming Soon</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group col-md-12">
+                        <label class="checkbox checkbox-custom-alt checkbox-custom-lg">
+                            <input type="checkbox" ng-model="vm.userData.accept" required><i></i> I agree to the <a href="javascript:;" style="color: #337ab7;">Terms of Service</a> & <a href="javascript:;" style="color: #337ab7;">Privacy Policy</a>
+                        </label>
+                    </div>
+
+                    <div class="form-group col-md-12">
+                        <label ng-class="{'alert alert-lightred': vm.message != null && vm.message.indexOf('Bad') != -1, 'alert alert-success': vm.message != null && vm.message.indexOf('successful') != -1 }">
+                            {{vm.message}}
+                        </label>
+                    </div>
+
+                    <div class="form-group col-md-12">
+                        <button type="submit" class="btn btn-lightred b-0 text-uppercase ml-40 w-sm" ng-disabled='form.$invalid' ng-click="vm.registerBusinessUser()">SIGN UP FREE</button>
+                    </div>
+
+                    <!--<div class="form-group col-md-12">
+                        <span class="text-light">Already have an account? <a ui-sref="core.login" class="b-0 text-uppercase" style="color: #337ab7;">Login</a></span>
+                    </div>-->
+                </form>
+            </div>
+            <div class="col-md-4">
+                <div class="b-solid p-15">
+                    <p class="text-strong">FREE! 60-Day Trial</p>
+                    <p>No credit card required</p>
+                    <p>Change Plan Anytime</p>
+                    <div class="mt-40">
+                        <h4>Free Trial Includes:</h4>
+                        <ul>
+                            <li>Free Android/iOS app download</li>
+                            <li>Free Access to analytics dashboard</li>
+                            <li>Free Customer service trends charts</li>
+                            <li ng-if="vm.isFree()">Limit 1 Questionnaire</li>
+                            <li ng-if="vm.isPremium()">Limit 5 Questionnaires</li>
+                            <li ng-if="vm.isProfessional()">Unlimited Questionnaires</li>
+                            <li ng-if="!vm.isFree()">Menu Management Included</li>
+                            <li ng-if="vm.isProfessional()">Machine Learning Analysis Included</li>
+                            <li ng-if="vm.isProfessional()">Free Support</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+
+    </div>
+
+</div>
