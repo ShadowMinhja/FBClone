@@ -1,6 +1,6 @@
 # FBClone
 
-This is a sample FBClone like application.
+This is a sample Facebook clone-like application.
 Keys, password, and DB Connection strings have been obfuscated so code may not be compileable.
 
 Features of the Project:
@@ -9,7 +9,7 @@ Features of the Project:
   b) SignalR  
   c) OAuth with FB and Google  
   d) Reverse POCO Entity Generator (FBClone.Model)  
-  e) Poly Glot connection to both SQL and MongoDB  
+  e) PolyGlot connections to both SQL and MongoDB  
   d) Microservices Integrations: Stream.IO, ImgIX, Azure Storage, Algolia  
 2) Project integrates B2C and B2B site.  
 3) B2C site written in React (FBClone.WebAPI\Scripts\app)  
